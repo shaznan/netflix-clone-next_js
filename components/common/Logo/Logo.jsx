@@ -10,7 +10,7 @@ const RenderImage = ({ className }) => (
 );
 
 const StyledImage = styled(RenderImage)`
-  width: 134px;
+  width: 180px;
   height: 36px;
 `;
 

@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
 
 export const HeaderWrapper = styled.div`
   margin-top: 1.5rem;
-  width: 90vw;
+  width: 95vw;
   display: flex;
   justify-content: space-between;
 `;
