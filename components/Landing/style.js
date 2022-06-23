@@ -22,19 +22,19 @@ export const Main = styled.section`
     background: -moz-linear-gradient(
       top,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0) 53%,
+      rgba(0, 0, 0, 0.5) 53%,
       rgba(0, 0, 0, 1) 100%
     ); /* FF3.6-15 */
     background: -webkit-linear-gradient(
       top,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0) 53%,
+      rgba(0, 0, 0, 0.5) 53%,
       rgba(0, 0, 0, 1) 100%
     ); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0) 53%,
+      rgba(0, 0, 0, 0.5) 53%,
       rgba(0, 0, 0, 1) 100%
     ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
@@ -48,3 +48,12 @@ export const Main = styled.section`
     z-index: -1;
   }
 `;
+
+export const HeroContainer = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const HeroWrapper = styled.div``;

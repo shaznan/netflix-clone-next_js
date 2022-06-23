@@ -1,18 +1,10 @@
-import React from 'react'
-import { HeadingOne, HeadingTwo } from './style'
+import React from "react";
+import { HeadingOne, HeadingTwo } from "./style";
 
+export const TitleOne = ({ Text }) => {
+  return <HeadingOne>{Text}</HeadingOne>;
+};
 
-export const TitleOne = ({children}) => {
-  return (
-    <HeadingOne>{children}</HeadingOne>
-  )
-}
-
-export const TitleTwo = ({children}) => {
-  return (
-    <HeadingTwo>{children}</HeadingTwo>
-  )
-}
-
-
-export default Title
+export const TitleTwo = ({ Text }) => {
+  return <HeadingTwo>{Text}</HeadingTwo>;
+};

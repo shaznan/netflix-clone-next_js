@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeadingOne = styled.h1`
-  font-size: 3.125rem;
+  font-size: 4rem;
   color: white;
-  font-weight: bold;
+  font-weight: 700;
 `;
 
 export const HeadingTwo = styled(HeadingOne)`
