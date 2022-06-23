@@ -56,4 +56,21 @@ export const HeroContainer = styled.div`
   align-items: center;
 `;
 
-export const HeroWrapper = styled.div``;
+export const HeroWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const GetStartedWrapper = styled.div`
+  display: flex;
+`;
+
+export const EmailBar = styled.input.attrs({
+  type: Text,
+  placeholder: "Email address",
+})`
+  padding: 1.5rem 18rem 1.5rem 0.5rem;
+  font-size: 1rem;
+`;
