@@ -1,11 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Header from '../components/Landing/Header'
+import Header from "../components/Landing/Header";
+import { Main } from "../components/Landing/style";
 
-export default function Home() {
+export default function Landing() {
   return (
-    <div>
+    <Main>
       <Header />
-    </div>
-  )
+    </Main>
+  );
 }
