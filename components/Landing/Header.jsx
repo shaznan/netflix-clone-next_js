@@ -2,14 +2,16 @@ import React from "react";
 import { HeaderContainer, HeaderWrapper } from "./style";
 import Logo from "../common/Logo/Logo";
 
-import { PrimaryButton } from "../common/Button/Button";
+import { Button } from "../common/Button/Button";
 
 const Header = () => {
   return (
     <HeaderContainer>
       <HeaderWrapper>
         <Logo />
-        <PrimaryButton text="Sign in" href="/signIn" />
+        <Button href="/signIn" type="primary">
+          Sign In
+        </Button>
       </HeaderWrapper>
     </HeaderContainer>
   );

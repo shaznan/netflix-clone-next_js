@@ -1,11 +1,20 @@
 import React from "react";
-import { StyledBtn } from "./style";
+import { StyledBtn, HeroBtn } from "./style";
 import Link from "next/link";
 
-export const PrimaryButton = ({ text, href }) => {
-  return (
-    <Link href={href}>
-      <StyledBtn>{text}</StyledBtn>
-    </Link>
-  );
+export const Button = ({ children, href = "", type }) => {
+  switch (type) {
+    case "primary":
+      return (
+        <Link href={href}>
+          <StyledBtn>{children}</StyledBtn>
+        </Link>
+      );
+    case "heroBtn":
+      return (
+        <Link href={href}>
+          <HeroBtn>{children}</HeroBtn>
+        </Link>
+      );
+  }
 };

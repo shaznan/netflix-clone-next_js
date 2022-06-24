@@ -65,12 +65,17 @@ export const HeroWrapper = styled.div`
 
 export const GetStartedWrapper = styled.div`
   display: flex;
+  margin-top: 1.2rem;
 `;
 
 export const EmailBar = styled.input.attrs({
-  type: Text,
+  type: "text",
   placeholder: "Email address",
 })`
-  padding: 1.5rem 18rem 1.5rem 0.5rem;
+  padding: 1.1rem 18rem 1.1rem 0.5rem;
   font-size: 1rem;
+`;
+
+export const HeroSlogan = styled.div`
+  margin: 0rem 0rem 1.6rem 0rem;
 `;
