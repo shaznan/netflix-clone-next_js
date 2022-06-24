@@ -54,6 +54,7 @@ export const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 8px solid #222222;
 `;
 
 export const HeroWrapper = styled.div`
