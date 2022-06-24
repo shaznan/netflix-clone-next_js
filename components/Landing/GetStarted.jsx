@@ -10,10 +10,12 @@ const GetStarted = () => {
   return (
     <GetStartedWrapper>
       <EmailBar />
-      <Button type={width < breakPoints.TAB_SCREEN ? "primary" : "heroBtn"}>
-        Get Started
-        <BsChevronRight />
-      </Button>
+      <div>
+        <Button type={width < breakPoints.TAB_SCREEN ? "primary" : "heroBtn"}>
+          Get Started
+          <BsChevronRight />
+        </Button>
+      </div>
     </GetStartedWrapper>
   );
 };
