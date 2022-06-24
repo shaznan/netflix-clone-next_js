@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStartedWrapper, EmailBar } from "./style";
+import { GetStartedWrapper, EmailBar, ButtonWrapper } from "./style";
 import { Button } from "../common/Button/Button";
 import { BsChevronRight } from "react-icons/bs";
 import useScreenSize from "../../hooks/useScreenSize";
@@ -10,14 +10,18 @@ const GetStarted = () => {
   return (
     <GetStartedWrapper>
       <EmailBar />
-      <div>
-        <Button type={width < breakPoints.TAB_SCREEN ? "primary" : "heroBtn"}>
+      <ButtonWrapper width={width}>
+        <Button
+          type={width < breakPoints.TAB_SCREEN ? "simplePrimary" : "heroBtn"}
+        >
           Get Started
           <BsChevronRight />
         </Button>
-      </div>
+      </ButtonWrapper>
     </GetStartedWrapper>
   );
 };
 
 export default GetStarted;
+
+// { display: "flex", justifyContent: "center", marginTop: "1rem" }

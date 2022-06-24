@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledBtn = styled.a`
   background-color: #e50914;
   color: white;
-  padding: 0rem 1rem;
+  padding: 0.4rem 1rem;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -16,4 +16,9 @@ export const HeroBtn = styled(StyledBtn)`
   font-size: 1.8rem;
   display: flex;
   align-items: center;
+`;
+
+export const StyledBtnWithoutRadius = styled(StyledBtn)`
+  border-radius: 0;
+  padding: 0.7rem 1rem;
 `;

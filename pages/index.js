@@ -15,7 +15,7 @@ export default function Landing() {
       <HeroContainer>
         <HeroWrapper>
           <Title type="main">Unlimited movies, TV</Title>
-          <Title type="main">shows, and more. </Title>s
+          <Title type="main">shows, and more. </Title>
           <HeroSlogan>
             <Text type="primary">Watch anywhere. Cancel anytime.</Text>
           </HeroSlogan>

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledBtn, HeroBtn } from "./style";
+import { StyledBtn, HeroBtn, StyledBtnWithoutRadius } from "./style";
 import Link from "next/link";
 
 export const Button = ({ children, href = "", type }) => {
@@ -14,6 +14,12 @@ export const Button = ({ children, href = "", type }) => {
       return (
         <Link href={href}>
           <HeroBtn>{children}</HeroBtn>
+        </Link>
+      );
+    case "simplePrimary":
+      return (
+        <Link href={href}>
+          <StyledBtnWithoutRadius>{children}</StyledBtnWithoutRadius>
         </Link>
       );
   }
