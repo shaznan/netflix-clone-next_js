@@ -5,6 +5,7 @@ export const LevelOne = styled.p`
   font-size: 1.65rem;
   color: white;
   font-weight: regular;
+  text-align: center;
 
   @media (max-width: ${breakPoints_px.STANDARD_DESKTOP_SCREEN}) {
     font-size: 1.4rem;
@@ -12,6 +13,7 @@ export const LevelOne = styled.p`
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
   }
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 1.1rem;
   }
 `;
 
@@ -19,6 +21,7 @@ export const LevelTwo = styled.p`
   font-size: 1.2rem;
   color: white;
   font-weight: regular;
+  text-align: center;
 `;
 
 export const LevelTwoSmall = styled(LevelTwo)`

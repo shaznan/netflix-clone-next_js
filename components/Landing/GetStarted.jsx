@@ -9,7 +9,7 @@ const GetStarted = () => {
   const { width } = useScreenSize();
   return (
     <GetStartedWrapper>
-      <EmailBar />
+      <EmailBar width={width} />
       <ButtonWrapper width={width}>
         <Button
           type={width < breakPoints.TAB_SCREEN ? "simplePrimary" : "heroBtn"}
@@ -23,5 +23,3 @@ const GetStarted = () => {
 };
 
 export default GetStarted;
-
-// { display: "flex", justifyContent: "center", marginTop: "1rem" }

@@ -21,7 +21,7 @@ const StyledImage = styled(RenderImage)`
     width: 110px;
   }
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    width: 105px;
+    width: 95px;
   }
 `;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakPoints_px } from "../../../constants";
 
 export const StyledBtn = styled.a`
   background-color: #e50914;
@@ -7,6 +8,11 @@ export const StyledBtn = styled.a`
   border-radius: 5px;
   display: flex;
   align-items: center;
+
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    padding: 0.1rem 1rem;
+    background-color: #e50914;
+  }
 `;
 
 export const HeroBtn = styled(StyledBtn)`
