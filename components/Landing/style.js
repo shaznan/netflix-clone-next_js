@@ -12,10 +12,17 @@ export const HeaderWrapper = styled.div`
   width: 92.5vw;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    width: 90vw;
+  }
 `;
 
 export const Main = styled.section`
   height: 76vh;
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    height: 50vh;
+  }
   width: 100vw;
   background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/c732cb00-be61-4d64-b8c3-99f022e7a123/34898001-4eca-456d-b768-b579b8eca1bd/LK-en-20220620-popsignuptwoweeks-perspective_alpha_website_large.jpg);
   position: relative;
@@ -38,7 +45,7 @@ export const Main = styled.section`
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.5) 53%,
       rgba(0, 0, 0, 1) 100%
-    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    );
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 
     content: "";
@@ -64,6 +71,7 @@ export const HeroWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 90vw;
 `;
 
 export const GetStartedWrapper = styled.div`
@@ -87,10 +95,25 @@ export const EmailBar = styled.input.attrs({
   type: "text",
   placeholder: "Email address",
 })`
-  padding: 1.1rem 18rem 1.1rem 0.5rem;
   font-size: 1rem;
+  width: ${(props) =>
+    props.width > breakPoints.TAB_SCREEN_SMALL
+      ? "31rem"
+      : props.width > breakPoints.MOBILE_SCREEN
+      ? "28rem"
+      : props.width < breakPoints.MOBILE_SCREEN
+      ? "90vw"
+      : ""};
+  padding: ${(props) =>
+    props?.width < breakPoints.TAB_SCREEN_SMALL
+      ? "0.8rem 0 0.8rem 0.5rem"
+      : "1.1rem 0 1.1rem 0.5rem"};
 `;
 
 export const HeroSlogan = styled.div`
   margin: 0rem 0rem 1.6rem 0rem;
+
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    margin-top: 1rem;
+  }
 `;
