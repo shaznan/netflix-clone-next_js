@@ -20,3 +20,7 @@ export const LevelTwo = styled.p`
   color: white;
   font-weight: regular;
 `;
+
+export const LevelTwoSmall = styled(LevelTwo)`
+  font-size: 1rem;
+`;
