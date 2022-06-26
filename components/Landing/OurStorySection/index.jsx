@@ -9,8 +9,8 @@ const OurStorySection = () => {
       alt="A Logo of Netflix"
       placeholder="Netflix"
       src={TV}
-      width="500px"
-      height="500px"
+      width="400px"
+      height="300px"
     />
   );
   return (
