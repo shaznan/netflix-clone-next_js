@@ -18,7 +18,7 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-export const Main = styled.div`
+export const Main = styled.section`
   height: 91.5vh;
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
     height: 70vh;
