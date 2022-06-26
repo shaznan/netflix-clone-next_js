@@ -2,16 +2,42 @@ import React from "react";
 import StoryCard from "../../common/StoryCard";
 import Image from "next/image";
 import TV from "../../../public/images/ourStory_tv.png";
+import ReactPlayer from "react-player";
 
 const OurStorySection = () => {
   const renderImage = () => (
-    <Image
-      alt="A Logo of Netflix"
-      placeholder="Netflix"
-      src={TV}
-      width="400px"
-      height="300px"
-    />
+    <div>
+      <Image
+        alt="A Logo of Netflix"
+        placeholder="Netflix"
+        src={TV}
+        width="400px"
+        height="300px"
+      />
+      {/* <ReactPlayer
+        url="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
+        playing={true}
+        volume={1}
+        width="50vw"
+        height="50vh"
+        onReady={() => console.log("ready now")}
+      /> */}
+      {/* <video width="320" height="240" autoPlay controls>
+        <source
+          src="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
+          type="video/mp4"
+        /> */}
+      {/* </video> */}
+      <ReactPlayer
+        url="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
+        playing={true}
+        loop={true}
+        volume={1}
+        width="50vw"
+        height="50vh"
+        onReady={() => console.log("ready now")}
+      />
+    </div>
   );
 
   const storyCardData = [
