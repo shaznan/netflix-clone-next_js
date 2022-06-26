@@ -4,10 +4,8 @@ import { Title } from "../Title/Title";
 import { Text } from "../Text/Text";
 
 const CardContainer = styled.div`
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
   padding: 4rem 4rem;
+  border-bottom: 8px solid #222222;
 `;
 
 const CardWrapper = styled.div`
@@ -30,14 +28,11 @@ const StoryCard = ({ title, body, renderImage }) => {
       <CardWrapper>
         <TextWrapper>
           <Title type="primary" center>
-            Enjoy on your TV.
+            {title}
           </Title>
-          <Text type="primary">
-            Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
-            players, and more.
-          </Text>
+          <Text type="primary">{body}</Text>
         </TextWrapper>
-        <ImageWrapper>{renderImage()}</ImageWrapper>
+        {renderImage && <ImageWrapper>{renderImage()}</ImageWrapper>}
       </CardWrapper>
     </CardContainer>
   );
