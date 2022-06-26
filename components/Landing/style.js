@@ -18,10 +18,10 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-export const Main = styled.section`
-  height: 76vh;
+export const Main = styled.div`
+  height: 91.5vh;
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    height: 50vh;
+    height: 70vh;
   }
   width: 100vw;
   background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/c732cb00-be61-4d64-b8c3-99f022e7a123/34898001-4eca-456d-b768-b579b8eca1bd/LK-en-20220620-popsignuptwoweeks-perspective_alpha_website_large.jpg);
