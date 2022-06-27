@@ -6,10 +6,10 @@ import ReactPlayer from "react-player";
 import { TVPreviewWrapper, ImageWrapper, VideoPreviewWrapper } from "./style";
 
 const OurStorySection = () => {
-  const imageDimensions = {
-    width: "400",
-    height: "300",
-  };
+  // const imageDimensions = {
+  //   width: "400",
+  //   height: "300",
+  // };
   const renderTvPreview = () => (
     <TVPreviewWrapper>
       <ImageWrapper>
@@ -17,8 +17,9 @@ const OurStorySection = () => {
           alt="A Logo of Netflix"
           placeholder="Netflix"
           src={TV}
-          width={`${imageDimensions.width}px`}
-          height={`${imageDimensions.height}px`}
+          layout="intrinsic"
+          width="400px"
+          height="300px"
         />
       </ImageWrapper>
       <VideoPreviewWrapper>
@@ -27,8 +28,8 @@ const OurStorySection = () => {
           playing={true}
           loop={true}
           muted={true}
-          width={`${(imageDimensions.width * 72.5) / 100}px`}
-          height={`${(imageDimensions.height * 80) / 100}px`}
+          width="83%"
+          height="18rem"
           // onReady={() => console.log("ready now")}
         />
       </VideoPreviewWrapper>
