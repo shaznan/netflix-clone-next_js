@@ -3,64 +3,59 @@ import StoryCard from "../../common/StoryCard";
 import Image from "next/image";
 import TV from "../../../public/images/ourStory_tv.png";
 import ReactPlayer from "react-player";
+import { TVPreviewWrapper, ImageWrapper, VideoPreviewWrapper } from "./style";
 
 const OurStorySection = () => {
-  const renderImage = () => (
-    <div>
-      <Image
-        alt="A Logo of Netflix"
-        placeholder="Netflix"
-        src={TV}
-        width="400px"
-        height="300px"
-      />
-      {/* <ReactPlayer
-        url="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
-        playing={true}
-        volume={1}
-        width="50vw"
-        height="50vh"
-        onReady={() => console.log("ready now")}
-      /> */}
-      {/* <video width="320" height="240" autoPlay controls>
-        <source
-          src="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
-          type="video/mp4"
-        /> */}
-      {/* </video> */}
-      <ReactPlayer
-        url="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
-        playing={true}
-        loop={true}
-        volume={1}
-        width="50vw"
-        height="50vh"
-        onReady={() => console.log("ready now")}
-      />
-    </div>
+  const imageDimensions = {
+    width: "400",
+    height: "300",
+  };
+  const renderTvPreview = () => (
+    <TVPreviewWrapper>
+      <ImageWrapper>
+        <Image
+          alt="A Logo of Netflix"
+          placeholder="Netflix"
+          src={TV}
+          width={`${imageDimensions.width}px`}
+          height={`${imageDimensions.height}px`}
+        />
+      </ImageWrapper>
+      <VideoPreviewWrapper>
+        <ReactPlayer
+          url="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
+          playing={true}
+          loop={true}
+          muted={true}
+          width={`${(imageDimensions.width * 72.5) / 100}px`}
+          height={`${(imageDimensions.height * 80) / 100}px`}
+          // onReady={() => console.log("ready now")}
+        />
+      </VideoPreviewWrapper>
+    </TVPreviewWrapper>
   );
 
   const storyCardData = [
     {
       title: "Enjoy on your TV.",
       body: "Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.",
-      image: renderImage,
+      image: renderTvPreview,
     },
-    {
-      title: "Download your shows to watch offline.",
-      body: "Save your favorites easily and always have something to watch.",
-      image: renderImage,
-    },
-    {
-      title: "Watch everywhere.",
-      body: "Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.",
-      image: null,
-    },
-    {
-      title: "Create profiles for kids.",
-      body: "Send kids on adventures with their favorite characters in a space made just for them—free with your membership.",
-      image: renderImage,
-    },
+    // {
+    //   title: "Download your shows to watch offline.",
+    //   body: "Save your favorites easily and always have something to watch.",
+    //   image: renderImage,
+    // },
+    // {
+    //   title: "Watch everywhere.",
+    //   body: "Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.",
+    //   image: null,
+    // },
+    // {
+    //   title: "Create profiles for kids.",
+    //   body: "Send kids on adventures with their favorite characters in a space made just for them—free with your membership.",
+    //   image: renderImage,
+    // },
   ];
 
   return (
