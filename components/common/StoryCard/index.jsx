@@ -20,7 +20,6 @@ const TextWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-const ImageWrapper = styled.div``;
 
 const StoryCard = ({ title, body, renderImage }) => {
   return (
@@ -32,7 +31,7 @@ const StoryCard = ({ title, body, renderImage }) => {
           </Title>
           <Text type="primary">{body}</Text>
         </TextWrapper>
-        {renderImage && <ImageWrapper>{renderImage()}</ImageWrapper>}
+        {renderImage && renderImage()}
       </CardWrapper>
     </CardContainer>
   );

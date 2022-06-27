@@ -9,10 +9,10 @@ export const TVPreviewWrapper = styled.div`
   position: relative;
 `;
 
-export const ImageWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+  position: absolute;
+`;
 
 export const VideoPreviewWrapper = styled.div`
-  position: absolute;
-  top: 1.6rem;
-  left: 3.3rem;
+  margin: 1rem 0rem 0rem 3.2rem;
 `;

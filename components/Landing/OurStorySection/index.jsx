@@ -17,7 +17,7 @@ const OurStorySection = () => {
           alt="A Logo of Netflix"
           placeholder="Netflix"
           src={TV}
-          layout="intrinsic"
+          layout="fixed"
           width="400px"
           height="300px"
         />
@@ -28,8 +28,8 @@ const OurStorySection = () => {
           playing={true}
           loop={true}
           muted={true}
-          width="83%"
-          height="18rem"
+          width="340px"
+          height="280px"
           // onReady={() => console.log("ready now")}
         />
       </VideoPreviewWrapper>
