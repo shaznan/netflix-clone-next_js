@@ -12,6 +12,14 @@ export const TVPreviewWrapper = styled.div`
 `;
 
 export const VideoPlayer = styled.video`
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN_SMALL}) {
+    width: 200px;
+    height: 300px;
+  }
+  @media (max-width: ${breakPoints_px.MOBILE}) {
+    width: 260px;
+    height: 270px;
+  }
   position: absolute;
   top: -5px;
   left: 53px;
