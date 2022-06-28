@@ -20,9 +20,7 @@ const TextWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-const ImageWrapper = styled.div`
-  // max-width: 80vw;
-`;
+const ImageWrapper = styled.div``;
 
 const StoryCard = ({ title, body, renderImage }) => {
   return (

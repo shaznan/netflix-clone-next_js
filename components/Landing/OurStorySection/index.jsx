@@ -1,35 +1,37 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import StoryCard from "../../common/StoryCard";
 import Image from "next/image";
 import TV from "../../../public/images/ourStory_tv.png";
 import ReactPlayer from "react-player";
-import { TVPreviewWrapper, ImageWrapper, VideoPreviewWrapper } from "./style";
+import { TVPreviewWrapper, VideoPlayer, TVImage } from "./style";
 import { breakPoints } from "../../../constants/index";
 import useScreenSize from "../../../hooks/useScreenSize";
 
 const OurStorySection = () => {
+  const videoRef = useRef();
   const { width } = useScreenSize();
   const isScreenMobile = width < breakPoints.MOBILE_SCREEN;
+
+  useEffect(() => {
+    videoRef.current.play();
+  }, []);
+
   const renderTvPreview = () => (
     <TVPreviewWrapper>
-      <ImageWrapper>
-        <img
-          src="https://netflix-clone-project.s3.amazonaws.com/public-directory/ourStory_tv.png"
-          alt="A Logo of Netflix"
-          placeholder="Netflix"
-        />
-      </ImageWrapper>
-      <VideoPreviewWrapper>
-        <ReactPlayer
-          url="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
-          playing={true}
-          loop={true}
-          muted={true}
-          width={isScreenMobile ? "220px" : "340px"}
-          height={isScreenMobile ? "140px" : "280px"}
-          // onReady={() => console.log("ready now")}
-        />
-      </VideoPreviewWrapper>
+      <TVImage
+        src="https://netflix-clone-project.s3.amazonaws.com/public-directory/ourStory_tv.png"
+        alt="A Logo of Netflix"
+        placeholder="Netflix"
+      />
+      <VideoPlayer
+        ref={videoRef}
+        width="500"
+        height="240"
+        autoplay={true}
+        muted
+        loop
+        src="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
+      ></VideoPlayer>
     </TVPreviewWrapper>
   );
 
