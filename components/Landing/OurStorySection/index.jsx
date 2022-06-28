@@ -4,22 +4,19 @@ import Image from "next/image";
 import TV from "../../../public/images/ourStory_tv.png";
 import ReactPlayer from "react-player";
 import { TVPreviewWrapper, ImageWrapper, VideoPreviewWrapper } from "./style";
+import { breakPoints } from "../../../constants/index";
+import useScreenSize from "../../../hooks/useScreenSize";
 
 const OurStorySection = () => {
-  // const imageDimensions = {
-  //   width: "400",
-  //   height: "300",
-  // };
+  const { width } = useScreenSize();
+  const isScreenMobile = width < breakPoints.MOBILE_SCREEN;
   const renderTvPreview = () => (
     <TVPreviewWrapper>
       <ImageWrapper>
-        <Image
+        <img
+          src="https://netflix-clone-project.s3.amazonaws.com/public-directory/ourStory_tv.png"
           alt="A Logo of Netflix"
           placeholder="Netflix"
-          src={TV}
-          layout="fixed"
-          width="400px"
-          height="300px"
         />
       </ImageWrapper>
       <VideoPreviewWrapper>
@@ -28,8 +25,8 @@ const OurStorySection = () => {
           playing={true}
           loop={true}
           muted={true}
-          width="340px"
-          height="280px"
+          width={isScreenMobile ? "220px" : "340px"}
+          height={isScreenMobile ? "140px" : "280px"}
           // onReady={() => console.log("ready now")}
         />
       </VideoPreviewWrapper>
