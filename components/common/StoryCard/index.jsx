@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Title } from "../Title/Title";
 import { Text } from "../Text/Text";
+import { breakPoints_px } from "../../../constants";
 
 const CardContainer = styled.div`
   padding: 4rem 4rem;
   border-bottom: 8px solid #222222;
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    padding: 4rem 2rem;
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -32,7 +36,7 @@ const StoryCard = ({ title, body, renderImage }) => {
           </Title>
           <Text type="primary">{body}</Text>
         </TextWrapper>
-        {renderImage && <ImageWrapper>{renderImage()}</ImageWrapper>}
+        {renderImage && renderImage()}
       </CardWrapper>
     </CardContainer>
   );
