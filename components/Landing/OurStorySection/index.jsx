@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import StoryCard from "../../common/StoryCard";
-import Image from "next/image";
-import TV from "../../../public/images/ourStory_tv.png";
 import {
   TVPreviewWrapper,
   VideoPlayer,
@@ -14,7 +12,6 @@ import useScreenSize from "../../../hooks/useScreenSize";
 const OurStorySection = () => {
   const videoRef = useRef();
   const { width } = useScreenSize();
-  const isScreenMobile = width < breakPoints.MOBILE_SCREEN;
 
   useEffect(() => {
     videoRef.current.play();
