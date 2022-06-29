@@ -3,7 +3,12 @@ import StoryCard from "../../common/StoryCard";
 import Image from "next/image";
 import TV from "../../../public/images/ourStory_tv.png";
 import ReactPlayer from "react-player";
-import { TVPreviewWrapper, VideoPlayer, TVImage } from "./style";
+import {
+  TVPreviewWrapper,
+  VideoPlayer,
+  TVImage,
+  CardSectionWrapper,
+} from "./style";
 import { breakPoints } from "../../../constants/index";
 import useScreenSize from "../../../hooks/useScreenSize";
 
@@ -59,12 +64,12 @@ const OurStorySection = () => {
   ];
 
   return (
-    <div>
+    <CardSectionWrapper>
       {storyCardData.map((item) => {
         const { title, body, image } = item;
         return <StoryCard title={title} body={body} renderImage={image} />;
       })}
-    </div>
+    </CardSectionWrapper>
   );
 };
 
