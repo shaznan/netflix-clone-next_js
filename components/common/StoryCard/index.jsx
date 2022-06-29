@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Title } from "../Title/Title";
 import { Text } from "../Text/Text";
-import { breakPoints_px } from "../../../constants";
+import { breakPoints_px, breakPoints } from "../../../constants";
+import useScreenSize from "../../../hooks/useScreenSize";
 
 const CardContainer = styled.div`
   padding: 2.5rem 4rem;
@@ -27,23 +28,35 @@ const TextWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
+  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
+    justify-content: flex-start;
+    width: 50%;
+  }
 `;
 const ImageWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
+    justify-content: flex-end;
+    width: 50%;
+  }
 `;
 
 const StoryCard = ({ title, body, renderImage }) => {
+  const { width } = useScreenSize();
   return (
     <CardContainer>
       <CardWrapper>
         <TextWrapper>
-          <Title type="primary" center>
+          <Title type="primary" center={width < breakPoints.TAB_SCREEN}>
             {title}
           </Title>
-          <Text type="primary">{body}</Text>
+          <br />
+          <Text type="primary" center={width < breakPoints.TAB_SCREEN}>
+            {body}
+          </Text>
         </TextWrapper>
         <ImageWrapper>{renderImage && renderImage()}</ImageWrapper>
       </CardWrapper>

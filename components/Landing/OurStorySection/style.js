@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
 
 export const CardSectionWrapper = styled.div`
-  @media (min-width: ${breakPoints_px.STANDARD_DESKTOP_SCREEN}) {
+  @media (min-width: ${breakPoints_px.DESKTOP_SMALL}) {
     max-width: 65vw;
     margin: auto;
   }
@@ -15,12 +15,12 @@ export const TVPreviewWrapper = styled.div`
     height: 43vw;
   }
   @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
-    min-width: 380px;
-    max-height: 350px;
+    max-width: 420px;
+    max-height: 320px;
   }
   @media (min-width: ${breakPoints_px.DESKTOP_SMALL}) {
-    // height: 900px;
-    // width: 400px;
+    width: 420px;
+    height: 320px;
   }
   position: relative;
   width: 100%;

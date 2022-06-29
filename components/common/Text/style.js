@@ -2,18 +2,17 @@ import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
 
 export const LevelOne = styled.p`
-  font-size: 1.65rem;
+  font-size: 1.2rem;
   color: white;
   font-weight: regular;
-  text-align: center;
+  text-align: ${(props) => (props.center ? "center" : "left")};
 
-  @media (max-width: ${breakPoints_px.STANDARD_DESKTOP_SCREEN}) {
-    font-size: 1.4rem;
+  @media (min-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 1.5rem;
   }
-  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
-  }
-  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    font-size: 1.1rem;
+
+  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
+    font-size: 1.6rem;
   }
 `;
 
