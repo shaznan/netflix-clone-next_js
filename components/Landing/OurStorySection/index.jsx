@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import StoryCard from "../../common/StoryCard";
 import Image from "next/image";
 import TV from "../../../public/images/ourStory_tv.png";
-import ReactPlayer from "react-player";
 import {
   TVPreviewWrapper,
   VideoPlayer,
