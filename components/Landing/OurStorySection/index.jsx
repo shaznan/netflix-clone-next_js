@@ -39,17 +39,21 @@ const OurStorySection = () => {
     </TVPreviewWrapper>
   );
 
+  const renderOfflineShows = () => {};
+
   const storyCardData = [
     {
       title: "Enjoy on your TV.",
       body: "Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.",
       image: renderTvPreview,
+      invert: false,
     },
-    // {
-    //   title: "Download your shows to watch offline.",
-    //   body: "Save your favorites easily and always have something to watch.",
-    //   image: renderImage,
-    // },
+    {
+      title: "Download your shows to watch offline.",
+      body: "Save your favorites easily and always have something to watch.",
+      image: renderOfflineShows,
+      invert: true,
+    },
     // {
     //   title: "Watch everywhere.",
     //   body: "Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.",
@@ -65,9 +69,16 @@ const OurStorySection = () => {
   return (
     <CardSectionWrapper>
       {storyCardData.map((item, key) => {
-        const { title, body, image } = item;
+        const { title, body, image, invert } = item;
+        //TODO: NEED to refactor items into spread operator when passing as props
         return (
-          <StoryCard key={key} title={title} body={body} renderImage={image} />
+          <StoryCard
+            key={key}
+            title={title}
+            body={body}
+            renderImage={image}
+            invert={invert}
+          />
         );
       })}
     </CardSectionWrapper>

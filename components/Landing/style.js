@@ -117,3 +117,11 @@ export const HeroSlogan = styled.div`
     margin-top: 1rem;
   }
 `;
+
+export const Container = styled.div`
+  @media (min-width: ${breakPoints_px.DESKTOP_SMALL}) {
+    max-width: 1200px;
+    margin: auto;
+  }
+  width: 100%;
+`;

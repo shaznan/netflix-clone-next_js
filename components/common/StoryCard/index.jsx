@@ -4,6 +4,7 @@ import { Title } from "../Title/Title";
 import { Text } from "../Text/Text";
 import { breakPoints_px, breakPoints } from "../../../constants";
 import useScreenSize from "../../../hooks/useScreenSize";
+import { Container } from "../../Landing/style";
 
 const CardContainer = styled.div`
   padding: 2.5rem 4rem;
@@ -25,10 +26,9 @@ const CardWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   width: 100%;
+  order: ${(props) => (props.invert ? 1 : 0)};
+
   @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
     justify-content: flex-start;
     width: 50%;
@@ -44,22 +44,24 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const StoryCard = ({ title, body, renderImage }) => {
+const StoryCard = ({ title, body, renderImage, invert }) => {
   const { width } = useScreenSize();
   return (
     <CardContainer>
-      <CardWrapper>
-        <TextWrapper>
-          <Title type="primary" center={width < breakPoints.TAB_SCREEN}>
-            {title}
-          </Title>
-          <br />
-          <Text type="primary" center={width < breakPoints.TAB_SCREEN}>
-            {body}
-          </Text>
-        </TextWrapper>
-        <ImageWrapper>{renderImage && renderImage()}</ImageWrapper>
-      </CardWrapper>
+      <Container>
+        <CardWrapper>
+          <TextWrapper invert={invert}>
+            <Title type="primary" center={width < breakPoints.TAB_SCREEN}>
+              {title}
+            </Title>
+            <br />
+            <Text type="primary" center={width < breakPoints.TAB_SCREEN}>
+              {body}
+            </Text>
+          </TextWrapper>
+          <ImageWrapper>{renderImage && renderImage()}</ImageWrapper>
+        </CardWrapper>
+      </Container>
     </CardContainer>
   );
 };

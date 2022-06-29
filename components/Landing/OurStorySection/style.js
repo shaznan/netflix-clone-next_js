@@ -1,13 +1,7 @@
 import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
 
-export const CardSectionWrapper = styled.div`
-  @media (min-width: ${breakPoints_px.DESKTOP_SMALL}) {
-    max-width: 1200px;
-    margin: auto;
-  }
-  width: 100%;
-`;
+export const CardSectionWrapper = styled.div``;
 
 export const TVPreviewWrapper = styled.div`
   @media (min-width: ${breakPoints_px.MOBILE_SCREEN}) {
