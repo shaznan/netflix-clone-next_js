@@ -64,9 +64,11 @@ const OurStorySection = () => {
 
   return (
     <CardSectionWrapper>
-      {storyCardData.map((item) => {
+      {storyCardData.map((item, key) => {
         const { title, body, image } = item;
-        return <StoryCard title={title} body={body} renderImage={image} />;
+        return (
+          <StoryCard key={key} title={title} body={body} renderImage={image} />
+        );
       })}
     </CardSectionWrapper>
   );
