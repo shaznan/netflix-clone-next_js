@@ -19,12 +19,12 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Main = styled.section`
-  height: 76vh;
+  height: 100vh;
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    height: 50vh;
+    height: 70vh;
   }
   width: 100vw;
-  background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/c732cb00-be61-4d64-b8c3-99f022e7a123/34898001-4eca-456d-b768-b579b8eca1bd/LK-en-20220620-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+  background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/271ac55e-7228-438e-824e-92db37981e59/4955baed-5231-4ba5-9914-6da946124c97/LK-en-20220627-popsignuptwoweeks-perspective_alpha_website_large.jpg);
   position: relative;
   z-index: 0;
   &:before {
@@ -59,7 +59,7 @@ export const Main = styled.section`
 `;
 
 export const HeroContainer = styled.div`
-  height: 100%;
+  height: 92%;
   display: flex;
   justify-content: center;
   align-items: center;

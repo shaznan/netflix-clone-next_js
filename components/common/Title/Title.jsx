@@ -1,13 +1,13 @@
 import React from "react";
 import { HeadingOne, HeadingTwo } from "./style";
 
-export const Title = ({ children, type }) => {
+export const Title = ({ children, type, ...props }) => {
   switch (type) {
     case "main":
-      return <HeadingOne>{children}</HeadingOne>;
+      return <HeadingOne {...props}>{children}</HeadingOne>;
     case "primary":
-      return <HeadingTwo>{children}</HeadingTwo>;
+      return <HeadingTwo {...props}>{children}</HeadingTwo>;
     default:
-      return <HeadingTwo>{children}</HeadingTwo>;
+      return <HeadingTwo {...props}>{children}</HeadingTwo>;
   }
 };

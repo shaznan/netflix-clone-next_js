@@ -1,15 +1,15 @@
 import React from "react";
 import { LevelOne, LevelTwo, LevelTwoSmall } from "./style";
 
-export const Text = ({ children, type }) => {
+export const Text = ({ children, type, ...props }) => {
   switch (type) {
     case "primary":
-      return <LevelOne>{children}</LevelOne>;
+      return <LevelOne {...props}>{children}</LevelOne>;
     case "secondary":
-      return <LevelTwo>{children}</LevelTwo>;
+      return <LevelTwo {...props}>{children}</LevelTwo>;
     case "secondary-small":
-      return <LevelTwoSmall>{children}</LevelTwoSmall>;
+      return <LevelTwoSmall {...props}>{children}</LevelTwoSmall>;
     default:
-      return <LevelTwo>{children}</LevelTwo>;
+      return <LevelTwo {...props}>{children}</LevelTwo>;
   }
 };
