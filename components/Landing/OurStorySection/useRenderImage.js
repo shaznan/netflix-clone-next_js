@@ -33,10 +33,10 @@ const useRenderImage = () => {
         />
       </DownloadWrapperLeft>
       <DownloadWrapperCenter>
-        <Text type="small" bold>
+        <Text type="small" bold mb={0.3}>
           Stranger Things
         </Text>
-        <Text type="small" color="#0071eb">
+        <Text type="extra-small" color="#0071eb">
           Downloading...
         </Text>
       </DownloadWrapperCenter>

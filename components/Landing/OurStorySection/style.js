@@ -68,30 +68,36 @@ export const MobileImage = styled(TVImage)``;
 
 export const DownloadWrapper = styled.div`
   display: flex;
-  width: 100%;
+  align-items: center;
+  background-color: black;
+  padding: 0.7rem;
+  width: 60%;
   position: absolute;
   z-index: +1;
-  top: 0;
-  left: 0;
+  top: 16rem;
+  left: 6rem;
+  border: 2px solid hsla(0, 0%, 100%, 0.25);
+  border-radius: 0.8rem;
 `;
 
 export const DownloadWrapperLeft = styled.div`
-  width: 30%;
+  width: 20%;
 `;
 
 export const DownloadWrapperCenter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 60%;
+  width: 70%;
 `;
 export const DownloadWrapperRight = styled.div`
-  width: 10%;
+  width: 15%;
 `;
 
 export const ImageThumbnail = styled.img`
-  width: 35%;
-  // height: 100%;
+  width: 80%;
 `;
 
-export const DownloadThumbnail = styled.img``;
+export const DownloadThumbnail = styled.img`
+  width: 100%;
+`;

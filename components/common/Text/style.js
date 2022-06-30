@@ -31,4 +31,9 @@ export const LevelThree = styled(LevelTwo)`
   font-size: 1rem;
   font-weight: ${({ bold }) => (bold ? "bold" : "normal")};
   color: ${({ color }) => (color ? color : "white")};
+  margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
+`;
+
+export const LevelFour = styled(LevelThree)`
+  font-size: 0.9rem;
 `;
