@@ -34,15 +34,6 @@ const TextWrapper = styled.div`
     width: 50%;
   }
 `;
-const ImageWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
-    justify-content: flex-end;
-    width: 50%;
-  }
-`;
 
 const StoryCard = ({ title, body, renderImage, invert }) => {
   const { width } = useScreenSize();
@@ -59,7 +50,7 @@ const StoryCard = ({ title, body, renderImage, invert }) => {
               {body}
             </Text>
           </TextWrapper>
-          <ImageWrapper>{renderImage && renderImage()}</ImageWrapper>
+          {renderImage && renderImage()}
         </CardWrapper>
       </Container>
     </CardContainer>
