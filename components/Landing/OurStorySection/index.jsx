@@ -6,9 +6,6 @@ import useRenderImage from "./useRenderImage";
 const OurStorySection = () => {
   const { renderTvPreview, renderOfflineShows } = useRenderImage();
 
-  console.log(renderOfflineShows());
-  console.log("hello");
-
   const storyCardData = [
     {
       title: "Enjoy on your TV.",
