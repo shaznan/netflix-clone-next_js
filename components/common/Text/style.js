@@ -24,5 +24,11 @@ export const LevelTwo = styled.p`
 `;
 
 export const LevelTwoSmall = styled(LevelTwo)`
+  font-size: 1.2rem;
+`;
+
+export const LevelThree = styled(LevelTwo)`
   font-size: 1rem;
+  font-weight: ${({ bold }) => (bold ? "bold" : "normal")};
+  color: ${({ color }) => (color ? color : "white")};
 `;

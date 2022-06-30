@@ -33,7 +33,7 @@ export const VideoPlayer = styled.video`
   height: 100%;
 `;
 
-export const ImagePreview = styled.img`
+export const TVImage = styled.img`
   position: absolute;
   z-index: +1;
   top: 0;
@@ -63,3 +63,35 @@ export const PreviewMainWrapper = styled.div`
     margin-bottom: 0;
   }
 `;
+
+export const MobileImage = styled(TVImage)``;
+
+export const DownloadWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  position: absolute;
+  z-index: +1;
+  top: 0;
+  left: 0;
+`;
+
+export const DownloadWrapperLeft = styled.div`
+  width: 30%;
+`;
+
+export const DownloadWrapperCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 60%;
+`;
+export const DownloadWrapperRight = styled.div`
+  width: 10%;
+`;
+
+export const ImageThumbnail = styled.img`
+  width: 35%;
+  // height: 100%;
+`;
+
+export const DownloadThumbnail = styled.img``;

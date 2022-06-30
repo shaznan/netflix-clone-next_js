@@ -2,10 +2,19 @@ import React, { useRef, useEffect } from "react";
 import {
   TVPreviewWrapper,
   VideoPlayer,
-  ImagePreview,
+  TVImage,
   MobilePreviewWrapper,
   PreviewMainWrapper,
+  MobileImage,
+  DownloadWrapper,
+  DownloadWrapperLeft,
+  DownloadWrapperRight,
+  DownloadWrapperCenter,
+  ImageThumbnail,
+  DownloadThumbnail,
 } from "./style";
+
+import { Text } from "../../common/Text/Text";
 
 const useRenderImage = () => {
   const videoRef = useRef();
@@ -14,10 +23,37 @@ const useRenderImage = () => {
     videoRef.current.play();
   }, []);
 
+  const renderDownloading = () => (
+    <DownloadWrapper>
+      <DownloadWrapperLeft>
+        <ImageThumbnail
+          src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png"
+          alt="Download thumbnail"
+          placeholder="Download Thumbnail"
+        />
+      </DownloadWrapperLeft>
+      <DownloadWrapperCenter>
+        <Text type="small" bold>
+          Stranger Things
+        </Text>
+        <Text type="small" color="#0071eb">
+          Downloading...
+        </Text>
+      </DownloadWrapperCenter>
+      <DownloadWrapperRight>
+        <DownloadThumbnail
+          src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif"
+          alt="Download Thumbnail"
+          placeholder="Download Thumbnail"
+        />
+      </DownloadWrapperRight>
+    </DownloadWrapper>
+  );
+
   const renderTvPreview = () => (
     <PreviewMainWrapper position="flex-end">
       <TVPreviewWrapper>
-        <ImagePreview
+        <TVImage
           src="https://netflix-clone-project.s3.amazonaws.com/public-directory/ourStory_tv.png"
           alt="A Logo of Netflix"
           placeholder="Netflix"
@@ -38,11 +74,12 @@ const useRenderImage = () => {
   const renderOfflineShows = () => (
     <PreviewMainWrapper position="flex-start" mb="2">
       <MobilePreviewWrapper>
-        <ImagePreview
+        <MobileImage
           src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg"
-          alt="A Logo of Netflix"
-          placeholder="Netflix"
+          alt="Mobile download preview"
+          placeholder="Mobile download preview"
         />
+        {renderDownloading()}
       </MobilePreviewWrapper>
     </PreviewMainWrapper>
   );
