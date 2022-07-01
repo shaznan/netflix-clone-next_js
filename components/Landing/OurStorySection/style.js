@@ -74,10 +74,15 @@ export const DownloadWrapper = styled.div`
   width: 60%;
   position: absolute;
   z-index: +1;
-  top: 16rem;
-  left: 6rem;
+  top: 70%;
+  left: 20%;
   border: 2px solid hsla(0, 0%, 100%, 0.25);
   border-radius: 0.8rem;
+
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    width: 90%;
+    left: 5%;
+  }
 `;
 
 export const DownloadWrapperLeft = styled.div`
