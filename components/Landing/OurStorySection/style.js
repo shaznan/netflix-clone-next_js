@@ -64,7 +64,7 @@ export const PreviewMainWrapper = styled.div`
   }
 `;
 
-export const MobileImage = styled(TVImage)``;
+export const StyledImage = styled(TVImage)``;
 
 export const DownloadWrapper = styled.div`
   display: flex;

@@ -5,7 +5,7 @@ import {
   TVImage,
   MobilePreviewWrapper,
   PreviewMainWrapper,
-  MobileImage,
+  StyledImage,
   DownloadWrapper,
   DownloadWrapperLeft,
   DownloadWrapperRight,
@@ -74,7 +74,7 @@ const useRenderImage = () => {
   const renderOfflineShows = () => (
     <PreviewMainWrapper position="flex-start" mb="2">
       <MobilePreviewWrapper>
-        <MobileImage
+        <StyledImage
           src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg"
           alt="Mobile download preview"
           placeholder="Mobile download preview"
@@ -83,9 +83,22 @@ const useRenderImage = () => {
       </MobilePreviewWrapper>
     </PreviewMainWrapper>
   );
+
+  const renderKidsShow = () => (
+    <PreviewMainWrapper position="flex-start" mb="2">
+      <MobilePreviewWrapper>
+        <StyledImage
+          src="https://occ-0-2477-2773.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABfpnX3dbgjZ-Je8Ax3xn0kXehZm_5L6-xe6YSTq_ucht9TI5jwDMqusWZKNYT8DfGudD0_wWVVTFLiN2_kaQJumz2iivUWbIbAtF.png?r=11f"
+          alt="Mobile download preview"
+          placeholder="Mobile download preview"
+        />
+      </MobilePreviewWrapper>
+    </PreviewMainWrapper>
+  );
   return {
     renderTvPreview,
     renderOfflineShows,
+    renderKidsShow,
   };
 };
 
