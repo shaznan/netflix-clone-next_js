@@ -24,5 +24,32 @@ export const LevelTwo = styled.p`
 `;
 
 export const LevelTwoSmall = styled(LevelTwo)`
+  font-size: 1.2rem;
+`;
+
+export const LevelThree = styled(LevelTwo)`
   font-size: 1rem;
+  font-weight: ${({ bold }) => (bold ? "bold" : "normal")};
+  color: ${({ color }) => (color ? color : "white")};
+  margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
+
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    font-size: 0.8rem;
+  }
+`;
+
+export const LevelFour = styled(LevelThree)`
+  font-size: 0.9rem;
+
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    font-size: 0.7rem;
+  }
 `;
