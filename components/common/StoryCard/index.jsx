@@ -16,7 +16,6 @@ const CardContainer = styled.div`
 
 const CardWrapper = styled.div`
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
   @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
@@ -27,11 +26,12 @@ const CardWrapper = styled.div`
 
 const TextWrapper = styled.div`
   width: 100%;
-  order: ${(props) => (props.invert ? 1 : 0)};
+  order: ${(props) => (props.invert ? -1 : 0)};
 
   @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
     justify-content: flex-start;
     width: 50%;
+    order: ${(props) => (props.invert ? 1 : 0)};
   }
 `;
 
