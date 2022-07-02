@@ -4,6 +4,7 @@ import { Text } from "../Text/Text";
 import { AiOutlinePlus } from "react-icons/Ai";
 import { breakPoints_px } from "../../../constants";
 import AnimateHeight from "react-animate-height";
+import GetStarted from "../../Landing/GetStarted";
 
 const CardContainer = styled.div`
   display: flex;
@@ -29,23 +30,7 @@ const StyledPlusIcon = styled(AiOutlinePlus)`
   color: white;
   transform: ${({ isCardOpen }) =>
     isCardOpen ? "rotate(45deg)" : "rotate(0deg)"};
-
-  //   @media (min-width: ${breakPoints_px.MOBILE_SCREEN}) {
-  //     font-size: 2em;
-  //   }
 `;
-
-// #menu #list {
-//     max-height: 0;
-//     transition: max-height 0.15s ease-out;
-//     overflow: hidden;
-//     background: #d5d5d5;
-// }
-
-// #menu:hover #list {
-//     max-height: 500px;
-//     transition: max-height 0.25s ease-in;
-// }
 
 const ExpandCardWrapper = styled(CardContainer)`
   display: ${({ open }) => (open ? "block" : "none")};

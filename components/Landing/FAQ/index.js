@@ -8,6 +8,7 @@ import {
 } from "../style";
 import { Title } from "../../common/Title/Title";
 import FAQCard from "../../common/FAQCard/index";
+import GetStarted from "../GetStarted";
 
 const FAQData = [
   {
@@ -62,6 +63,7 @@ const FAQ = () => {
           {FAQData.map((data, key) => (
             <FAQCard key={key} data={data} />
           ))}
+          <GetStarted />
         </SectionWrapper>
       </Container>
     </SectionContainer>
