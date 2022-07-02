@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Text } from "../Text/Text";
-import { AiOutlinePlus } from "react-icons/Ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import { breakPoints_px } from "../../../constants";
 import AnimateHeight from "react-animate-height";
 import GetStarted from "../../Landing/GetStarted";
