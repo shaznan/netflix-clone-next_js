@@ -18,7 +18,7 @@ export const HeadingOne = styled.h1`
 export const HeadingTwo = styled.h1`
   color: white;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-align: ${(props) => (props?.center ? "center" : "left")};
   margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
 

@@ -5,6 +5,7 @@ import {
   SectionContainer,
   SectionWrapper,
   Container,
+  FAQCardWrapper,
 } from "../style";
 import { Title } from "../../common/Title/Title";
 import FAQCard from "../../common/FAQCard/index";
@@ -54,16 +55,16 @@ const FAQData = [
 
 const FAQ = () => {
   return (
-    <SectionContainer>
+    <SectionContainer padding="5">
       <Container>
         <SectionWrapper center flexDirection="column">
-          <Title type="primary" mb="2">
+          <Title type="primary" mb="4">
             Frequently asked questions
           </Title>
           {FAQData.map((data, key) => (
             <FAQCard key={key} data={data} />
           ))}
-          <GetStarted />
+          <GetStarted mt="3" />
         </SectionWrapper>
       </Container>
     </SectionContainer>

@@ -127,7 +127,7 @@ export const Container = styled.div`
 `;
 
 export const SectionContainer = styled.div`
-  padding: 2.5rem 4rem;
+  padding: ${({ padding }) => (padding ? `${padding}rem 4rem` : "2.5rem 4rem")};
   border-bottom: 8px solid #222222;
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
     padding: 4rem 2rem;
@@ -155,4 +155,8 @@ export const TextWrapper = styled.div`
     width: 50%;
     order: ${(props) => (props.invert ? 1 : 0)};
   }
+`;
+
+export const GetStartedContainer = styled.div`
+  margin-top: ${({ mt }) => (mt ? `${mt}rem` : 0)};
 `;
