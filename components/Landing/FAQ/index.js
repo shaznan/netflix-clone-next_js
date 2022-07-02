@@ -1,15 +1,26 @@
 import React from "react";
-import { HeroContainer, HeroWrapper } from "../style";
+import {
+  HeroContainer,
+  HeroWrapper,
+  SectionContainer,
+  SectionWrapper,
+  Container,
+} from "../style";
 import { Title } from "../../common/Title/Title";
+import FAQCard from "../../common/FAQCard/index";
 
 const FAQ = () => {
   return (
-    <HeroContainer>
-      .
-      <HeroWrapper>
-        <Title type="primary">Frequently asked questions</Title>
-      </HeroWrapper>
-    </HeroContainer>
+    <SectionContainer>
+      <Container>
+        <SectionWrapper center flexDirection="column">
+          <Title type="primary" mb="2">
+            Frequently asked questions
+          </Title>
+          <FAQCard />
+        </SectionWrapper>
+      </Container>
+    </SectionContainer>
   );
 };
 
