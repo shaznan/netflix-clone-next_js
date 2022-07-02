@@ -11,6 +11,7 @@ const CardContainer = styled.div`
   background-color: #303030;
   padding: 1.5rem 2rem;
   width: 70%;
+  margin-bottom: 0.6rem;
 `;
 
 const StyledPlusIcon = styled(AiOutlinePlus)`
@@ -24,11 +25,12 @@ const StyledPlusIcon = styled(AiOutlinePlus)`
   //   }
 `;
 
-const FAQCard = () => {
+const FAQCard = ({ data }) => {
+  const { title, body } = data || {};
   const [isCardOpen, setIsCardOpen] = useState(false);
   return (
     <CardContainer>
-      <Text type="primary">What is Netflix?</Text>
+      <Text type="primary">{title}</Text>
       <StyledPlusIcon
         onClick={() => {
           setIsCardOpen(!isCardOpen);
