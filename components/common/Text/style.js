@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
 
 export const LevelOne = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: white;
   font-weight: regular;
   text-align: ${(props) => (props.center ? "center" : "left")};

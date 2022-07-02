@@ -125,3 +125,38 @@ export const Container = styled.div`
   }
   width: 100%;
 `;
+
+export const SectionContainer = styled.div`
+  padding: ${({ padding }) => (padding ? `${padding}rem 4rem` : "2.5rem 4rem")};
+  border-bottom: 8px solid #222222;
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    padding: 4rem 2rem;
+  }
+`;
+
+export const SectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: ${({ center }) => (center ? "center" : "flex-start")};
+  align-items: center;
+  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
+    flex-direction: ${({ flexDirection }) =>
+      flexDirection ? flexDirection : "row"};
+  }
+  width: 100%;
+`;
+
+export const TextWrapper = styled.div`
+  width: 100%;
+  order: ${(props) => (props.invert ? -1 : 0)};
+
+  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
+    justify-content: flex-start;
+    width: 50%;
+    order: ${(props) => (props.invert ? 1 : 0)};
+  }
+`;
+
+export const GetStartedContainer = styled.div`
+  margin-top: ${({ mt }) => (mt ? `${mt}rem` : 0)};
+`;

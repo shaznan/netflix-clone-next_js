@@ -20,16 +20,6 @@ const MainSection = () => {
           <HeroSlogan>
             <Text type="primary">Watch anywhere. Cancel anytime.</Text>
           </HeroSlogan>
-          <Text
-            type={
-              width < breakPoints.TAB_SCREEN_SMALL
-                ? "secondary-small"
-                : "secondary"
-            }
-          >
-            Ready to watch? Enter your email to create or restart your
-            membership..
-          </Text>
           <GetStarted />
         </HeroWrapper>
       </HeroContainer>
