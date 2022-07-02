@@ -23,7 +23,7 @@ export const HeadingTwo = styled.h1`
   margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
 
   @media (min-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
   }
   @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
     font-size: 3rem;
