@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  HeroContainer,
-  HeroWrapper,
-  SectionContainer,
-  SectionWrapper,
-  Container,
-  FAQCardWrapper,
-} from "../style";
+import { SectionContainer, SectionWrapper, Container } from "../style";
 import { Title } from "../../common/Title/Title";
 import FAQCard from "../../common/FAQCard/index";
 import GetStarted from "../GetStarted";
