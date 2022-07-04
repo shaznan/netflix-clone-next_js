@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
 
-export const StyledBtn = styled.a`
+export const StyledBtn = styled.button`
   background-color: #e50914;
   color: white;
   padding: 0.4rem 1rem;

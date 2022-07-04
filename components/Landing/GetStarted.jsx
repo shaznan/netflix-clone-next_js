@@ -10,16 +10,19 @@ import { BsChevronRight } from "react-icons/bs";
 import useScreenSize from "../../hooks/useScreenSize";
 import { breakPoints } from "../../constants";
 import { Text } from "../common/Text/Text";
+import { useFormik } from "formik";
 
 const GetStarted = ({ mt }) => {
   const { width } = useScreenSize();
-  const [emailAddress, setEmailAddress] = useState("");
-
-  const onChangeHandler = (e) => {
-    setEmailAddress(e.target.value);
-  };
-
-  console.log(emailAddress);
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      // alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <GetStartedContainer mt={mt}>
@@ -33,10 +36,11 @@ const GetStarted = ({ mt }) => {
       <GetStartedWrapper>
         <EmailBar
           width={width}
-          value={emailAddress}
-          onChange={onChangeHandler}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          name="email"
         />
-        <ButtonWrapper width={width}>
+        <ButtonWrapper width={width} onClick={formik.handleSubmit}>
           <Button
             type={width < breakPoints.TAB_SCREEN ? "simplePrimary" : "heroBtn"}
           >
