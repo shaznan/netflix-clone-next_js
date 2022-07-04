@@ -11,6 +11,7 @@ import useScreenSize from "../../hooks/useScreenSize";
 import { breakPoints } from "../../constants";
 import { Text } from "../common/Text/Text";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const GetStarted = ({ mt }) => {
   const { width } = useScreenSize();
@@ -18,6 +19,9 @@ const GetStarted = ({ mt }) => {
     initialValues: {
       email: "",
     },
+    validationSchema: Yup.object({
+      email: Yup.string().email("Invalid email address").required("Required"),
+    }),
     onSubmit: (values) => {
       console.log(values);
       // alert(JSON.stringify(values, null, 2));
@@ -38,16 +42,20 @@ const GetStarted = ({ mt }) => {
           width={width}
           value={formik.values.email}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           name="email"
         />
         <ButtonWrapper width={width} onClick={formik.handleSubmit}>
           <Button
-            type={width < breakPoints.TAB_SCREEN ? "simplePrimary" : "heroBtn"}
+            customType={
+              width < breakPoints.TAB_SCREEN ? "simplePrimary" : "heroBtn"
+            }
           >
             Get Started
             <BsChevronRight />
           </Button>
         </ButtonWrapper>
+        <p>{formik.errors.email}</p>
       </GetStartedWrapper>
     </GetStartedContainer>
   );

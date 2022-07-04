@@ -9,7 +9,7 @@ const Header = () => {
     <HeaderContainer>
       <HeaderWrapper>
         <Logo />
-        <Button href="/signIn" type="primary">
+        <Button href="/signIn" customType="primary">
           Sign In
         </Button>
       </HeaderWrapper>
