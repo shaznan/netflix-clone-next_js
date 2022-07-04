@@ -11,25 +11,17 @@ import { BsChevronRight } from "react-icons/bs";
 import useScreenSize from "../../hooks/useScreenSize";
 import { breakPoints } from "../../constants";
 import { Text } from "../common/Text/Text";
-import { useFormik } from "formik";
 import * as Yup from "yup";
 import Router from "next/router";
+import { Formik } from "formik";
 
 const GetStarted = ({ mt }) => {
   const { width } = useScreenSize();
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-    },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Please enter a valid email address")
-        .required("Required"),
-    }),
-    onSubmit: (values) => {
-      Router.push("/hello-nextjs");
-    },
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Please enter a valid email address")
+      .required("Required"),
   });
 
   return (
@@ -41,26 +33,49 @@ const GetStarted = ({ mt }) => {
       >
         Ready to watch? Enter your email to create or restart your membership..
       </Text>
-      <GetStartedWrapper>
-        <EmailBar
-          width={width}
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          name="email"
-        />
-        <ButtonWrapper width={width} onClick={formik.handleSubmit}>
-          <Button
-            customType={
-              width < breakPoints.TAB_SCREEN ? "simplePrimary" : "heroBtn"
-            }
-          >
-            Get Started
-            <BsChevronRight />
-          </Button>
-        </ButtonWrapper>
-      </GetStartedWrapper>
-      <Error>{formik.errors.email}</Error>
+      <Formik
+        initialValues={{
+          email: "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(values) => {
+          Router.push("/hello-nextjs");
+        }}
+      >
+        {({ values, handleChange, handleBlur, handleSubmit, errors }) => {
+          return (
+            <>
+              <GetStartedWrapper>
+                <EmailBar
+                  width={width}
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  name="email"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSubmit();
+                    }
+                  }}
+                />
+                <ButtonWrapper width={width} onClick={handleSubmit}>
+                  <Button
+                    customType={
+                      width < breakPoints.TAB_SCREEN
+                        ? "simplePrimary"
+                        : "heroBtn"
+                    }
+                  >
+                    Get Started
+                    <BsChevronRight />
+                  </Button>
+                </ButtonWrapper>
+              </GetStartedWrapper>
+              <Error>{errors.email}</Error>
+            </>
+          );
+        }}
+      </Formik>
     </GetStartedContainer>
   );
 };
