@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { breakPoints, breakPoints_px } from "../../constants";
 
+export const LandingWrapper = styled.div`
+  background-color: black;
+`;
+
 export const HeaderContainer = styled.div`
   width: 100vw;
   display: flex;
@@ -77,9 +81,11 @@ export const HeroWrapper = styled.div`
 export const GetStartedWrapper = styled.div`
   display: flex;
   margin-top: 1.2rem;
+  cursor: pointer;
 
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -159,4 +165,10 @@ export const TextWrapper = styled.div`
 
 export const GetStartedContainer = styled.div`
   margin-top: ${({ mt }) => (mt ? `${mt}rem` : 0)};
+`;
+
+export const Error = styled.p`
+  color: #ffa00a;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
 `;
