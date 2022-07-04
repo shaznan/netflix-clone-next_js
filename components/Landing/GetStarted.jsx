@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   GetStartedWrapper,
   EmailBar,
   ButtonWrapper,
   GetStartedContainer,
+  Error,
 } from "./style";
 import { Button } from "../common/Button/Button";
 import { BsChevronRight } from "react-icons/bs";
@@ -12,19 +13,22 @@ import { breakPoints } from "../../constants";
 import { Text } from "../common/Text/Text";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Router from "next/router";
 
 const GetStarted = ({ mt }) => {
   const { width } = useScreenSize();
+
   const formik = useFormik({
     initialValues: {
       email: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
+      email: Yup.string()
+        .email("Please enter a valid email address")
+        .required("Required"),
     }),
     onSubmit: (values) => {
-      console.log(values);
-      // alert(JSON.stringify(values, null, 2));
+      Router.push("/hello-nextjs");
     },
   });
 
@@ -55,8 +59,8 @@ const GetStarted = ({ mt }) => {
             <BsChevronRight />
           </Button>
         </ButtonWrapper>
-        <p>{formik.errors.email}</p>
       </GetStartedWrapper>
+      <Error>{formik.errors.email}</Error>
     </GetStartedContainer>
   );
 };
