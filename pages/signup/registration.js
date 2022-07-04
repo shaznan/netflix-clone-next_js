@@ -1,11 +1,16 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Header from "../../components/common/Header/Header";
 
-const registration = () => {
+const Registration = () => {
   const router = useRouter();
 
   console.log(router.query, "HOHO");
-  return <div style={{ color: "white" }}>registration</div>;
+  return (
+    <div>
+      <Header theme="light" />
+    </div>
+  );
 };
 
-export default registration;
+export default Registration;

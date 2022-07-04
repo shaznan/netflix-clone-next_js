@@ -1,8 +1,9 @@
 import React from "react";
-import { StyledBtn, HeroBtn, StyledBtnWithoutRadius } from "./style";
+import { StyledBtn, HeroBtn, StyledBtnWithoutRadius, SimpleBtn } from "./style";
 import Link from "next/link";
 
 export const Button = ({ children, href = "", customType }) => {
+  console.log(customType, "CHECK");
   switch (customType) {
     case "primary":
       return (
@@ -20,6 +21,12 @@ export const Button = ({ children, href = "", customType }) => {
       return (
         <Link href={href}>
           <StyledBtnWithoutRadius>{children}</StyledBtnWithoutRadius>
+        </Link>
+      );
+    case "simple":
+      return (
+        <Link href={href}>
+          <SimpleBtn>{children}</SimpleBtn>
         </Link>
       );
   }

@@ -9,6 +9,9 @@ export const HeaderContainer = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
+  padding-bottom: 2rem;
+  border-bottom: ${({ borderBottom }) =>
+    borderBottom ? borderBottom : "none"}; ;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -16,10 +19,13 @@ export const HeaderWrapper = styled.div`
   width: 92.5vw;
   display: flex;
   justify-content: space-between;
-
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
     width: 90vw;
   }
+`;
+
+export const HeaderBtnWrapper = styled.div`
+  margin-top: auto;
 `;
 
 export const Main = styled.section`

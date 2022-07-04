@@ -4,7 +4,6 @@ import { Main, HeroWrapper, HeroContainer, HeroSlogan } from "../style";
 import { Title } from "../../common/Title/Title";
 import { Text } from "../../common/Text/Text";
 import GetStarted from "../GetStarted";
-import useScreenSize from "../../../hooks/useScreenSize";
 
 const MainSection = () => {
   return (

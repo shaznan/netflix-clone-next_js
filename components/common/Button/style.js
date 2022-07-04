@@ -8,7 +8,7 @@ export const StyledBtn = styled.a`
   border-radius: 5px;
   display: flex;
   align-items: center;
-
+  cursor: pointer;
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     padding: 0.1rem 1rem;
     background-color: #e50914;
@@ -27,4 +27,11 @@ export const HeroBtn = styled(StyledBtn)`
 export const StyledBtnWithoutRadius = styled(StyledBtn)`
   border-radius: 0;
   padding: 0.7rem 1rem;
+`;
+
+export const SimpleBtn = styled.a`
+  color: #333;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
 `;
