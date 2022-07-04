@@ -12,11 +12,12 @@ import useScreenSize from "../../hooks/useScreenSize";
 import { breakPoints } from "../../constants";
 import { Text } from "../common/Text/Text";
 import * as Yup from "yup";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { Formik } from "formik";
 
 const GetStarted = ({ mt }) => {
   const { width } = useScreenSize();
+  const router = useRouter();
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -38,8 +39,15 @@ const GetStarted = ({ mt }) => {
           email: "",
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-          Router.push("/hello-nextjs");
+        onSubmit={({ email }) => {
+          const redirectPath = "/signup/registration";
+          router.push(
+            {
+              pathname: redirectPath,
+              query: { email },
+            },
+            redirectPath
+          );
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit, errors }) => {
