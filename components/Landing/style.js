@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { breakPoints, breakPoints_px } from "../../constants";
 
+export const LandingWrapper = styled.div`
+  background-color: black;
+`;
+
 export const HeaderContainer = styled.div`
   width: 100vw;
   display: flex;
@@ -81,6 +85,7 @@ export const GetStartedWrapper = styled.div`
 
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 

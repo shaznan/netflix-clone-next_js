@@ -1,15 +1,12 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../../common/Header/Header";
 import { Main, HeroWrapper, HeroContainer, HeroSlogan } from "../style";
 import { Title } from "../../common/Title/Title";
 import { Text } from "../../common/Text/Text";
 import GetStarted from "../GetStarted";
 import useScreenSize from "../../../hooks/useScreenSize";
-import { breakPoints } from "../../../constants/index";
 
 const MainSection = () => {
-  const { width } = useScreenSize();
-
   return (
     <Main>
       <Header />

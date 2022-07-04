@@ -45,18 +45,25 @@ const GetStarted = ({ mt }) => {
             {
               pathname: redirectPath,
               query: { email },
+              // shallow: true,
             },
             redirectPath
           );
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit, errors }) => {
+        {({
+          values: { email },
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          errors,
+        }) => {
           return (
             <>
               <GetStartedWrapper>
                 <EmailBar
                   width={width}
-                  value={values.email}
+                  value={email}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   name="email"

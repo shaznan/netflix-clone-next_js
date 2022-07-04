@@ -2,14 +2,15 @@ import MainSection from "../components/Landing/MainSection";
 import OurStorySection from "../components/Landing/OurStorySection";
 import FAQ from "../components/Landing/FAQ";
 import axios from "axios";
+import { LandingWrapper } from "../components/Landing/style";
 
 export default function Landing({ data }) {
   return (
-    <div>
+    <LandingWrapper>
       <MainSection />
       <OurStorySection />
       <FAQ data={data} />
-    </div>
+    </LandingWrapper>
   );
 }
 

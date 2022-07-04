@@ -15,3 +15,8 @@ export const breakPoints = {
   DESKTOP_SMALL: 1280,
   STANDARD_DESKTOP_SCREEN: 1450,
 };
+
+export const headerTheme = {
+  LIGHT: "light",
+  DARK: "dark",
+};
