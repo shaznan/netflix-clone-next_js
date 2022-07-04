@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   GetStartedWrapper,
   EmailBar,
@@ -13,6 +13,14 @@ import { Text } from "../common/Text/Text";
 
 const GetStarted = ({ mt }) => {
   const { width } = useScreenSize();
+  const [emailAddress, setEmailAddress] = useState("");
+
+  const onChangeHandler = (e) => {
+    setEmailAddress(e.target.value);
+  };
+
+  console.log(emailAddress);
+
   return (
     <GetStartedContainer mt={mt}>
       <Text
@@ -23,7 +31,11 @@ const GetStarted = ({ mt }) => {
         Ready to watch? Enter your email to create or restart your membership..
       </Text>
       <GetStartedWrapper>
-        <EmailBar width={width} />
+        <EmailBar
+          width={width}
+          value={emailAddress}
+          onChange={onChangeHandler}
+        />
         <ButtonWrapper width={width}>
           <Button
             type={width < breakPoints.TAB_SCREEN ? "simplePrimary" : "heroBtn"}
