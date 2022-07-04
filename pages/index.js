@@ -8,7 +8,7 @@ export default function Landing({ data }) {
     <div>
       <MainSection />
       <OurStorySection />
-      {/* <FAQ data={data} /> */}
+      <FAQ data={data} />
     </div>
   );
 }
@@ -17,8 +17,10 @@ export async function getStaticProps() {
   let faqData = [];
 
   try {
-    let { data } = await axios.get(
-      "https://aqakub0ie3.execute-api.us-east-1.amazonaws.com/api/v1/landing/faq"
+    let {
+      data: { data },
+    } = await axios.get(
+      "https://aqakub0ie3.execute-api.us-east-1.amazonaws.com/serveLandingPage"
     );
     faqData = data;
   } catch (error) {
