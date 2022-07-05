@@ -1,5 +1,11 @@
 import React from "react";
-import { StyledBtn, HeroBtn, StyledBtnWithoutRadius, SimpleBtn } from "./style";
+import {
+  StyledBtn,
+  HeroBtn,
+  StyledBtnWithoutRadius,
+  SimpleBtn,
+  WideBtn,
+} from "./style";
 import Link from "next/link";
 
 export const Button = ({ children, href = "", customType }) => {
@@ -27,6 +33,12 @@ export const Button = ({ children, href = "", customType }) => {
       return (
         <Link href={href}>
           <SimpleBtn>{children}</SimpleBtn>
+        </Link>
+      );
+    case "wide":
+      return (
+        <Link href={href}>
+          <WideBtn>{children}</WideBtn>
         </Link>
       );
   }

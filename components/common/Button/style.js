@@ -16,7 +16,7 @@ export const StyledBtn = styled.a`
 `;
 
 export const HeroBtn = styled(StyledBtn)`
-  padding: 1.1rem 2rem 1.1rem 2rem;
+  padding: 1.1rem 2rem;
   border-radius: 0px;
   font-weight: 400;
   font-size: 1.8rem;
@@ -34,4 +34,13 @@ export const SimpleBtn = styled.a`
   font-weight: bold;
   font-size: 1.1rem;
   cursor: pointer;
+`;
+
+export const WideBtn = styled(HeroBtn)`
+  padding: 1.1rem 9rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    padding: 1.1rem 35vw;
+  }
 `;
