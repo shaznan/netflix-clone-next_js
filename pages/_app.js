@@ -1,5 +1,8 @@
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor, store } from "../store/store";
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
@@ -14,7 +17,13 @@ function MyApp({ Component, pageProps }) {
   if (typeof window === "undefined") {
     return <></>;
   } else {
-    return <Component {...pageProps} />;
+    return (
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
+      </Provider>
+    );
   }
 }
 
