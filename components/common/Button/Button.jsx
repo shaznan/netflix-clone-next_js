@@ -8,37 +8,44 @@ import {
 } from "./style";
 import Link from "next/link";
 
-export const Button = ({ children, href = "", customType }) => {
+export const Button = ({
+  children,
+  href = "",
+  customType,
+  onClick = () => {},
+}) => {
   console.log(customType, "CHECK");
   switch (customType) {
     case "primary":
       return (
         <Link href={href}>
-          <StyledBtn>{children}</StyledBtn>
+          <StyledBtn onClick={onClick}>{children}</StyledBtn>
         </Link>
       );
     case "heroBtn":
       return (
         <Link href={href}>
-          <HeroBtn>{children}</HeroBtn>
+          <HeroBtn onClick={onClick}>{children}</HeroBtn>
         </Link>
       );
     case "simplePrimary":
       return (
         <Link href={href}>
-          <StyledBtnWithoutRadius>{children}</StyledBtnWithoutRadius>
+          <StyledBtnWithoutRadius onClick={onClick}>
+            {children}
+          </StyledBtnWithoutRadius>
         </Link>
       );
     case "simple":
       return (
         <Link href={href}>
-          <SimpleBtn>{children}</SimpleBtn>
+          <SimpleBtn onClick={onClick}>{children}</SimpleBtn>
         </Link>
       );
     case "wide":
       return (
         <Link href={href}>
-          <WideBtn>{children}</WideBtn>
+          <WideBtn onClick={onClick}>{children}</WideBtn>
         </Link>
       );
   }
