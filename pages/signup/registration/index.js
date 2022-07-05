@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import StepOne from "../../../components/Registration/StepOne";
 import wrapper from "../../../HOC/registration/wrapper";
@@ -22,7 +22,7 @@ const Registration = () => {
       });
   }, [router]);
 
-  console.log(router.query, "HOHO");
+  console.log(stepCount, "SHIT");
 
   const WrappedComponent = wrapper(StepOne);
 
