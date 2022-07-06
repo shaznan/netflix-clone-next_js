@@ -4,6 +4,7 @@ import StepOne from "../../../components/Registration/StepOne";
 import wrapper from "../../../HOC/registration/wrapper";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_INPUT_EMAIL_ADDRESS } from "../../../store/actionTypes/signup/signupTypes";
+import StepTwo from "../../../components/Registration/StepTwo";
 
 const Registration = () => {
   const router = useRouter();
@@ -22,9 +23,8 @@ const Registration = () => {
       });
   }, [router]);
 
-  console.log(stepCount, "SHIT");
-
-  const WrappedComponent = wrapper(StepOne);
+  // const WrappedComponent = wrapper(StepOne);
+  const WrappedComponent = wrapper(StepTwo);
 
   return <>{stepCount === 1 && <WrappedComponent />}</>;
 };

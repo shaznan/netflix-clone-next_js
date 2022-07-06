@@ -18,10 +18,7 @@ if (typeof window !== "undefined") {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(...middleware))
-);
+const store = createStore(persistedReducer, composeEnhancers());
 
 const persistor = persistStore(store);
 
