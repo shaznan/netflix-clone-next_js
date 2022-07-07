@@ -14,29 +14,29 @@ const InputLabel = styled.label`
   background: #ffffff;
   transition: 300ms;
   transform: translate(-50%, -50%);
+  pointer-events: none;
 `;
 
 const InputField = styled.input`
   outline: none;
   padding: 25px 12px 16px 12px;
   border: 1px solid #dadce0;
-  font-size: 12px;
+  font-size: 16px;
 
   &:focus {
     border: 2px solid royalblue;
   }
 
-  &:focus ~ ${InputLabel} {
-    top: +11px;
-    padding: 0 3px;
-    font-size: 12px;
-    color: grey;
-
-    transition: 300ms;
-  }
+  // &:focus + ${InputLabel} {
+  //   top: +11px;
+  //   padding: 0 3px;
+  //   color: grey;
+  //   font-size: 10px;
+  //   transition: 100ms;
+  // }
 
   &:valid ~ ${InputLabel} {
-    // top: +11px;
+    top: +11px;
     padding: 0 3px;
     font-size: 12px;
     color: grey;
