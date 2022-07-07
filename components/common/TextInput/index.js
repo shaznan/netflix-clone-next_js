@@ -8,7 +8,7 @@ const InputGroup = styled.div`
 const InputLabel = styled.label`
   color: #8d8d8d;
   position: absolute;
-  top: +10px;
+  top: +20px;
   left: 30px;
   background: #ffffff;
   transition: 300ms;
@@ -17,35 +17,51 @@ const InputLabel = styled.label`
 
 const InputField = styled.input`
   outline: none;
-  padding: 16px 22px;
+  padding: 20px 12px 16px 12px;
   border: 1px solid #dadce0;
-  font-size: 18px;
+  font-size: 16px;
 
   &:focus {
     border: 2px solid royalblue;
   }
 
-  &:valid + ${InputLabel} {
-    padding: 0 3px;
-    font-size: 14px;
-    color: #8d8d8d;
-    top: +25px;
-  }
+  //   &:valid ~ ${InputLabel} {
+  //     border: 1px solid red;
+  //     top: +11px;
+  //     padding: 0 3px;
+  //     font-size: 12px;
+  //     color: royalblue;
+  //     transition: 300ms;
+  //   }
 
-  &:focus + ${InputLabel} {
-    top: +0px;
+  &:focus ~ ${InputLabel} {
+    top: +11px;
     padding: 0 3px;
-    font-size: 14px;
+    font-size: 12px;
     color: royalblue;
     transition: 300ms;
+    background-color: pink;
   }
+
+  &:placeholder-shown ~ ${InputLabel} {
+    top: +2px;
+    padding: 0 3px;
+    font-size: 12px;
+    color: royalblue;
+    transition: 300ms;
+    background-color: yellow;
+  }
+
+  //   &:placeholder {
+  //     color: transparent;
+  //   }
 `;
 
 const TextInput = () => {
   return (
     <>
       <InputGroup>
-        <InputField />
+        <InputField placeholder="Emails" />
         <InputLabel>Email</InputLabel>
       </InputGroup>
     </>
