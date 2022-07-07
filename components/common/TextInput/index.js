@@ -6,7 +6,8 @@ const InputGroup = styled.div`
 `;
 
 const InputLabel = styled.label`
-  color: #8d8d8d;
+  color: grey;
+
   position: absolute;
   top: +20px;
   left: 30px;
@@ -29,24 +30,24 @@ const InputField = styled.input`
     top: +11px;
     padding: 0 3px;
     font-size: 12px;
-    color: royalblue;
+    color: grey;
+
     transition: 300ms;
-    background-color: pink;
   }
 
   &:valid ~ ${InputLabel} {
-    top: +11px;
+    // top: +11px;
     padding: 0 3px;
     font-size: 12px;
-    color: royalblue;
+    color: grey;
+
     transition: 300ms;
   }
 
   &:placeholder-shown ~ ${InputLabel} {
-    top: +25px;
+    // top: +20px;
     padding: 0 3px;
     font-size: 12px;
-    color: grey;
     transition: 300ms;
     font-size: 16px;
   }
