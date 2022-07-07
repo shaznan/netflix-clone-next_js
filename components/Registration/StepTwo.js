@@ -2,6 +2,7 @@ import React from "react";
 import Steps from "../common/Steps";
 import { Text } from "../common/Text/Text";
 import { Title } from "../common/Title/Title";
+import TextInput from "../common/TextInput/index";
 
 const StepTwo = ({ stepCount, setStepCount }) => {
   return (
@@ -14,6 +15,7 @@ const StepTwo = ({ stepCount, setStepCount }) => {
         Netflix is personalized for you. Create a password to watch on any
         device at any time.
       </Text>
+      <TextInput />
     </div>
   );
 };
