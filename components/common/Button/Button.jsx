@@ -14,7 +14,6 @@ export const Button = ({
   customType,
   onClick = () => {},
 }) => {
-  console.log(customType, "CHECK");
   switch (customType) {
     case "primary":
       return (

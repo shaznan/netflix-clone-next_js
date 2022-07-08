@@ -1,12 +1,16 @@
 import React from "react";
 import { InputGroup, InputLabel, InputField } from "./styles";
 
-const TextInput = ({ value, onChangeHandler }) => {
+const TextInput = ({ value, onChange, label, mb = 0 }) => {
   return (
     <>
-      <InputGroup>
-        <InputField placeholder=" " value={value} onChange={onChangeHandler} />
-        <InputLabel>Email</InputLabel>
+      <InputGroup mb={mb}>
+        <InputField
+          placeholder=" "
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
+        <InputLabel>{label}</InputLabel>
       </InputGroup>
     </>
   );

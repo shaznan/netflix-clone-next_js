@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { breakPoints_px } from "../../../constants";
 
 export const InputGroup = styled.div`
   position: relative;
+  margin-bottom: ${({ mb }) => `${mb}rem`};
 `;
 
 export const InputLabel = styled.label`
@@ -19,15 +21,21 @@ export const InputField = styled.input`
   padding: 25px 12px 16px 12px;
   border: 1px solid #dadce0;
   font-size: 16px;
-
+  width: 100%;
   & + ${InputLabel} {
     top: ${({ value }) => (value?.length ? "14px" : "30px")};
 
-    left: ${({ value }) => (value?.length ? "25px" : "30px")};
+    left: 18%;
+    right: 50%;
 
     font-size: ${({ value }) => (value?.length ? "12px" : "16px")};
 
     font-weight: ${({ value }) => (value?.length ? "bold" : "normal")};
+
+    @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+      left: 28%;
+      right: 25%;
+    }
   }
 
   &:focus {
@@ -36,11 +44,12 @@ export const InputField = styled.input`
 
   &:focus + ${InputLabel} {
     top: +14px;
+    left: 17.73%;
+    right: 50%;
     padding: 0 3px;
     color: grey;
     font-size: 12px;
     font-weight: bold;
     transition: 100ms;
-    left: 25px;
   }
 `;
