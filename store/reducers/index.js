@@ -1,5 +1,5 @@
 import signUp from "../reducers/signup/signupReducer";
-import { combineReducers } from "redux";
+import { combineReducers } from "react-redux";
 
 const appReducer = combineReducers({
   signUp,
