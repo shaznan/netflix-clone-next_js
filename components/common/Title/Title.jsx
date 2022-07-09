@@ -1,5 +1,5 @@
 import React from "react";
-import { HeadingOne, HeadingTwo } from "./style";
+import { HeadingOne, HeadingTwo, HeadingThree } from "./style";
 
 export const Title = ({ children, type, ...props }) => {
   switch (type) {
@@ -7,6 +7,8 @@ export const Title = ({ children, type, ...props }) => {
       return <HeadingOne {...props}>{children}</HeadingOne>;
     case "primary":
       return <HeadingTwo {...props}>{children}</HeadingTwo>;
+    case "secondary":
+      return <HeadingThree {...props}>{children}</HeadingThree>;
     default:
       return <HeadingTwo {...props}>{children}</HeadingTwo>;
   }

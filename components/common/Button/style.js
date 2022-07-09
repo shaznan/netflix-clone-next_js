@@ -8,7 +8,7 @@ export const StyledBtn = styled.a`
   border-radius: 5px;
   display: flex;
   align-items: center;
-
+  cursor: pointer;
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     padding: 0.1rem 1rem;
     background-color: #e50914;
@@ -16,7 +16,7 @@ export const StyledBtn = styled.a`
 `;
 
 export const HeroBtn = styled(StyledBtn)`
-  padding: 1.1rem 2rem 1.1rem 2rem;
+  padding: 1.1rem 2rem;
   border-radius: 0px;
   font-weight: 400;
   font-size: 1.8rem;
@@ -27,4 +27,22 @@ export const HeroBtn = styled(StyledBtn)`
 export const StyledBtnWithoutRadius = styled(StyledBtn)`
   border-radius: 0;
   padding: 0.7rem 1rem;
+`;
+
+export const SimpleBtn = styled.a`
+  color: #333;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+`;
+
+export const WideBtn = styled(HeroBtn)`
+  padding: 1.1rem 9rem;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    padding: 1.1rem 35vw;
+  }
 `;

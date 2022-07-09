@@ -18,9 +18,10 @@ export const LevelOne = styled.p`
 
 export const LevelTwo = styled.p`
   font-size: 1.2rem;
-  color: white;
+  color: ${({ color }) => (color ? color : "white")};
   font-weight: regular;
-  text-align: center;
+  text-align: ${({ left }) => (left ? "left" : "center")};
+  margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
 `;
 
 export const LevelTwoSmall = styled(LevelTwo)`
