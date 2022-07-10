@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Steps from "../common/Steps";
 import { Text } from "../common/Text/Text";
 import { Title } from "../common/Title/Title";
@@ -6,11 +6,19 @@ import TextInput from "../common/TextInput/index";
 import Checkbox from "../common/Checkbox";
 import { CheckboxWrapper, StepTwoWrapper } from "./styles";
 import { Button } from "../common/Button/Button";
+import { useSelector } from "react-redux";
 
 const StepTwo = ({ stepCount, setStepCount }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setIsChecked] = useState(false);
+  const { inputEmailAddress } = useSelector((state) => state?.signUp);
+
+  useEffect(() => {
+    if (inputEmailAddress?.length) {
+      setEmail(inputEmailAddress);
+    }
+  }, [inputEmailAddress]);
 
   return (
     <StepTwoWrapper>

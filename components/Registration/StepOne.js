@@ -22,6 +22,7 @@ const StepOne = ({ stepCount, setStepCount }) => {
           />
         </DeviceImageWrapper>
         <Steps count={stepCount} total="3" />
+
         <Title type="secondary" center color="#333">
           Finish setting up your account
         </Title>
