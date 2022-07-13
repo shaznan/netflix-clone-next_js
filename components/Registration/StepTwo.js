@@ -24,16 +24,8 @@ const StepTwo = ({ stepCount, setStepCount }) => {
 
   let attributeList = [
     new CognitoUserAttribute({
-      Name: "picture",
-      Value: "www.google.lk",
-    }),
-    new CognitoUserAttribute({
-      Name: "birthdate",
-      Value: "11/11/1997",
-    }),
-    new CognitoUserAttribute({
-      Name: "phone_number",
-      Value: "0729375864",
+      Name: "email",
+      Value: email,
     }),
   ];
 
