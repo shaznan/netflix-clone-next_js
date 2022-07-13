@@ -14,6 +14,7 @@ import ErrorMessage from "../common/ErrorMessage";
 const StepTwo = ({ stepCount, setStepCount }) => {
   const [email, setEmail] = useState("");
   const [isEmailError, setIsEmailError] = useState(false);
+  const [isPasswordError, setIsPasswordError] = useState(false);
   const [password, setPassword] = useState("");
   const [checked, setIsChecked] = useState(false);
   const { inputEmailAddress } = useSelector((state) => state?.signUp);
@@ -32,6 +33,14 @@ const StepTwo = ({ stepCount, setStepCount }) => {
     emailValidation ? setIsEmailError(false) : setIsEmailError(true);
   };
 
+  const validatePassword = (password) => {
+    const passwordValidation = String(password).match(
+      /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
+    );
+
+    passwordValidation ? setIsPasswordError(false) : setIsPasswordError(true);
+  };
+
   let attributeList = [
     new CognitoUserAttribute({
       Name: "email",
@@ -43,7 +52,11 @@ const StepTwo = ({ stepCount, setStepCount }) => {
     isEmailError && validateEmail(email);
   }, [email, isEmailError]);
 
-  const onSubmit = (event) => {
+  useEffect(() => {
+    isPasswordError && validatePassword(password);
+  }, [password, isPasswordError]);
+
+  const onSubmit = () => {
     UserPool.signUp(email, password, attributeList, null, (err, data) => {
       if (err) {
         console.error(err);
@@ -51,6 +64,8 @@ const StepTwo = ({ stepCount, setStepCount }) => {
       console.log(data);
     });
   };
+
+  console.log(isPasswordError, "error");
 
   return (
     <StepTwoWrapper>
@@ -74,17 +89,25 @@ const StepTwo = ({ stepCount, setStepCount }) => {
         <ErrorMessage color="red" fontSize="14px">
           Please enter a valid email
         </ErrorMessage>
-      ) : (
-        <></>
-      )}
+      ) : null}
       <TextInput
         label="Add a password"
         value={password}
         onChange={setPassword}
-        mb="1"
+        mb={isPasswordError ? "0" : "1"}
         mt="1"
-        // onBlur={() => console.log("turst")}
+        onBlur={() => validatePassword(password)}
       />
+
+      {isPasswordError ? (
+        <ErrorMessage
+          color="red"
+          fontSize="14px"
+          mb={isPasswordError ? "1" : "0"}
+        >
+          Please enter a valid Password
+        </ErrorMessage>
+      ) : null}
       <CheckboxWrapper>
         <Checkbox checked={checked} setIsChecked={setIsChecked} />
         <Text type="small" color="#333" left>
