@@ -7,6 +7,8 @@ import Checkbox from "../common/Checkbox";
 import { CheckboxWrapper, StepTwoWrapper } from "./styles";
 import { Button } from "../common/Button/Button";
 import { useSelector } from "react-redux";
+import UserPool from "../../Auth/userPool";
+import { CognitoUserAttribute } from "amazon-cognito-identity-js";
 
 const StepTwo = ({ stepCount, setStepCount }) => {
   const [email, setEmail] = useState("");
@@ -19,6 +21,33 @@ const StepTwo = ({ stepCount, setStepCount }) => {
       setEmail(inputEmailAddress);
     }
   }, [inputEmailAddress]);
+
+  let attributeList = [
+    new CognitoUserAttribute({
+      Name: "picture",
+      Value: "www.google.lk",
+    }),
+    new CognitoUserAttribute({
+      Name: "birthdate",
+      Value: "11/11/1997",
+    }),
+    new CognitoUserAttribute({
+      Name: "phone_number",
+      Value: "0729375864",
+    }),
+  ];
+
+  const onSubmit = (event) => {
+    console.log("clicked");
+    // event.preventDefault();
+
+    UserPool.signUp(email, password, attributeList, null, (err, data) => {
+      if (err) {
+        console.error(err);
+      }
+      console.log(data);
+    });
+  };
 
   return (
     <StepTwoWrapper>
@@ -45,7 +74,9 @@ const StepTwo = ({ stepCount, setStepCount }) => {
           Please do not email me Netflix special offers.
         </Text>
       </CheckboxWrapper>
-      <Button customType="wide">Next</Button>
+      <Button customType="wide" onClick={onSubmit}>
+        Next
+      </Button>
     </StepTwoWrapper>
   );
 };
