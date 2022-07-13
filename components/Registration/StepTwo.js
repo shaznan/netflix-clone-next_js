@@ -9,9 +9,11 @@ import { Button } from "../common/Button/Button";
 import { useSelector } from "react-redux";
 import UserPool from "../../Auth/userPool";
 import { CognitoUserAttribute } from "amazon-cognito-identity-js";
+import ErrorMessage from "../common/ErrorMessage";
 
 const StepTwo = ({ stepCount, setStepCount }) => {
   const [email, setEmail] = useState("");
+  const [isEmailError, setIsEmailError] = useState(false);
   const [password, setPassword] = useState("");
   const [checked, setIsChecked] = useState(false);
   const { inputEmailAddress } = useSelector((state) => state?.signUp);
@@ -22,6 +24,14 @@ const StepTwo = ({ stepCount, setStepCount }) => {
     }
   }, [inputEmailAddress]);
 
+  const validateEmail = (email) => {
+    const emailValidation = String(email)
+      .toLowerCase()
+      .match(/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g);
+
+    emailValidation ? setIsEmailError(false) : setIsEmailError(true);
+  };
+
   let attributeList = [
     new CognitoUserAttribute({
       Name: "email",
@@ -29,10 +39,11 @@ const StepTwo = ({ stepCount, setStepCount }) => {
     }),
   ];
 
-  const onSubmit = (event) => {
-    console.log("clicked");
-    // event.preventDefault();
+  useEffect(() => {
+    isEmailError && validateEmail(email);
+  }, [email, isEmailError]);
 
+  const onSubmit = (event) => {
     UserPool.signUp(email, password, attributeList, null, (err, data) => {
       if (err) {
         console.error(err);
@@ -53,12 +64,26 @@ const StepTwo = ({ stepCount, setStepCount }) => {
       <Text type="secondary-small" left color="#333" mb="1">
         We hate paperwork, too.
       </Text>
-      <TextInput label="Email" value={email} onChange={setEmail} mb="1" />
+      <TextInput
+        label="Email"
+        value={email}
+        onChange={setEmail}
+        onBlur={() => validateEmail(email)}
+      />
+      {isEmailError ? (
+        <ErrorMessage color="red" fontSize="14px">
+          Please enter a valid email
+        </ErrorMessage>
+      ) : (
+        <></>
+      )}
       <TextInput
         label="Add a password"
         value={password}
         onChange={setPassword}
         mb="1"
+        mt="1"
+        // onBlur={() => console.log("turst")}
       />
       <CheckboxWrapper>
         <Checkbox checked={checked} setIsChecked={setIsChecked} />

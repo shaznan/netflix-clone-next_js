@@ -4,6 +4,7 @@ import { breakPoints_px } from "../../../constants";
 export const InputGroup = styled.div`
   position: relative;
   margin-bottom: ${({ mb }) => `${mb}rem`};
+  margin-top: ${({ mt }) => `${mt}rem`};
 `;
 
 export const InputLabel = styled.label`
