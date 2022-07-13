@@ -84,6 +84,7 @@ const StepTwo = ({ stepCount, setStepCount }) => {
         value={email}
         onChange={setEmail}
         onBlur={() => validateEmail(email)}
+        borderColor={isEmailError && "red"}
       />
       {isEmailError ? (
         <ErrorMessage color="red" fontSize="14px">
@@ -96,6 +97,7 @@ const StepTwo = ({ stepCount, setStepCount }) => {
         onChange={setPassword}
         mb={isPasswordError ? "0" : "1"}
         mt="1"
+        borderColor={isPasswordError && "red"}
         onBlur={() => validatePassword(password)}
       />
 
