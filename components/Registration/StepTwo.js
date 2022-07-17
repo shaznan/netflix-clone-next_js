@@ -9,6 +9,7 @@ import { Button } from "../common/Button/Button";
 import { useSelector } from "react-redux";
 import ErrorMessage from "../common/ErrorMessage";
 import useAuth from "../../hooks/useAuth";
+import SnackBar from "../common/SnackBar/index";
 
 const StepTwo = ({ stepCount, setStepCount }) => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   const [password, setPassword] = useState("");
   const [checked, setIsChecked] = useState(false);
   const { inputEmailAddress } = useSelector((state) => state?.signUp);
+  const { isSignUpError, signUpErrorMsg } = useSelector((state) => state?.Auth);
   const { signUp } = useAuth();
 
   useEffect(() => {
@@ -57,58 +59,61 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   };
 
   return (
-    <StepTwoWrapper>
-      <Steps count={stepCount} total="3" mb="0.5" textAlign="left" />
-      <Title type="secondary" color="#333" mb="1">
-        Create a password to start your membership
-      </Title>
-      <Text type="secondary-small" left mb="0.5" color="#333">
-        Just a few more steps and you're done!
-      </Text>
-      <Text type="secondary-small" left color="#333" mb="1">
-        We hate paperwork, too.
-      </Text>
-      <TextInput
-        label="Email"
-        value={email}
-        onChange={setEmail}
-        onBlur={() => validateEmail(email)}
-        borderColor={isEmailError && "red"}
-      />
-      {isEmailError ? (
-        <ErrorMessage color="red" fontSize="14px">
-          Please enter a valid email
-        </ErrorMessage>
-      ) : null}
-      <TextInput
-        label="Add a password"
-        value={password}
-        onChange={setPassword}
-        mb={isPasswordError ? "0" : "1"}
-        mt="1"
-        borderColor={isPasswordError && "red"}
-        onBlur={() => validatePassword(password)}
-      />
-
-      {isPasswordError ? (
-        <ErrorMessage
-          color="red"
-          fontSize="14px"
-          mb={isPasswordError ? "1" : "0"}
-        >
-          Please enter a valid Password
-        </ErrorMessage>
-      ) : null}
-      <CheckboxWrapper>
-        <Checkbox checked={checked} setIsChecked={setIsChecked} />
-        <Text type="small" color="#333" left>
-          Please do not email me Netflix special offers.
+    <>
+      <StepTwoWrapper>
+        {isSignUpError && <SnackBar type="error" message={signUpErrorMsg} />}
+        <Steps count={stepCount} total="3" mb="0.5" textAlign="left" />
+        <Title type="secondary" color="#333" mb="1">
+          Create a password to start your membership
+        </Title>
+        <Text type="secondary-small" left mb="0.5" color="#333">
+          Just a few more steps and you're done!
         </Text>
-      </CheckboxWrapper>
-      <Button customType="wide" onClick={onSubmit}>
-        Next
-      </Button>
-    </StepTwoWrapper>
+        <Text type="secondary-small" left color="#333" mb="1">
+          We hate paperwork, too.
+        </Text>
+        <TextInput
+          label="Email"
+          value={email}
+          onChange={setEmail}
+          onBlur={() => validateEmail(email)}
+          borderColor={isEmailError && "red"}
+        />
+        {isEmailError ? (
+          <ErrorMessage color="red" fontSize="14px">
+            Please enter a valid email
+          </ErrorMessage>
+        ) : null}
+        <TextInput
+          label="Add a password"
+          value={password}
+          onChange={setPassword}
+          mb={isPasswordError ? "0" : "1"}
+          mt="1"
+          borderColor={isPasswordError && "red"}
+          onBlur={() => validatePassword(password)}
+        />
+
+        {isPasswordError ? (
+          <ErrorMessage
+            color="red"
+            fontSize="14px"
+            mb={isPasswordError ? "1" : "0"}
+          >
+            Please enter a valid Password
+          </ErrorMessage>
+        ) : null}
+        <CheckboxWrapper>
+          <Checkbox checked={checked} setIsChecked={setIsChecked} />
+          <Text type="small" color="#333" left>
+            Please do not email me Netflix special offers.
+          </Text>
+        </CheckboxWrapper>
+        <Button customType="wide" onClick={onSubmit}>
+          Next
+        </Button>
+      </StepTwoWrapper>
+    </>
   );
 };
 
