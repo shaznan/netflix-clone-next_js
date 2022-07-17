@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "../store/store";
+import { Amplify } from "aws-amplify";
+import awsconfig from "../src/aws-exports";
+Amplify.configure(awsconfig);
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);

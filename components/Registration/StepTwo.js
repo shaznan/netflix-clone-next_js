@@ -7,9 +7,8 @@ import Checkbox from "../common/Checkbox";
 import { CheckboxWrapper, StepTwoWrapper } from "./styles";
 import { Button } from "../common/Button/Button";
 import { useSelector } from "react-redux";
-import UserPool from "../../Auth/userPool";
-import { CognitoUserAttribute } from "amazon-cognito-identity-js";
 import ErrorMessage from "../common/ErrorMessage";
+import useAuth from "../../hooks/useAuth";
 
 const StepTwo = ({ stepCount, setStepCount }) => {
   const [email, setEmail] = useState("");
@@ -18,6 +17,7 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   const [password, setPassword] = useState("");
   const [checked, setIsChecked] = useState(false);
   const { inputEmailAddress } = useSelector((state) => state?.signUp);
+  const { signUp } = useAuth();
 
   useEffect(() => {
     if (inputEmailAddress?.length) {
@@ -41,13 +41,6 @@ const StepTwo = ({ stepCount, setStepCount }) => {
     passwordValidation ? setIsPasswordError(false) : setIsPasswordError(true);
   };
 
-  let attributeList = [
-    new CognitoUserAttribute({
-      Name: "email",
-      Value: email,
-    }),
-  ];
-
   useEffect(() => {
     isEmailError && validateEmail(email);
   }, [email, isEmailError]);
@@ -56,16 +49,12 @@ const StepTwo = ({ stepCount, setStepCount }) => {
     isPasswordError && validatePassword(password);
   }, [password, isPasswordError]);
 
-  const onSubmit = () => {
-    UserPool.signUp(email, password, attributeList, null, (err, data) => {
-      if (err) {
-        console.error(err);
-      }
-      console.log(data);
-    });
+  const onSubmit = (e) => {
+    if (!isEmailError && !isPasswordError) {
+      e.preventDefault();
+      signUp(email, password);
+    }
   };
-
-  console.log(isPasswordError, "error");
 
   return (
     <StepTwoWrapper>
