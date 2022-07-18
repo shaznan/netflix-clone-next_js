@@ -17,7 +17,7 @@ import {
   SET_IS_INPUT_PASSWORD_ERROR,
 } from "../../store/actionTypes/auth/authTypes";
 
-const StepTwo = ({ stepCount, setStepCount }) => {
+const SignUpForm = ({ stepCount, setStepCount }) => {
   const dispatch = useDispatch();
   const [checked, setIsChecked] = useState(false);
   const {
@@ -86,7 +86,10 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   const onSubmit = (e) => {
     if (!isEmailError && !isPasswordError) {
       e.preventDefault();
-      signUp(inputEmailAddress, password);
+      const { authStatus } = signUp(inputEmailAddress, password);
+      if (authStatus === "success") {
+        setStepCount(3);
+      }
     }
   };
 
@@ -149,4 +152,4 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   );
 };
 
-export default StepTwo;
+export default SignUpForm;

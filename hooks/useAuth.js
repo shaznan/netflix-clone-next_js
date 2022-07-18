@@ -18,6 +18,9 @@ const useAuth = () => {
         type: AUTH_SUCCESS,
         payload: user,
       });
+      if (Object.keys(user)?.length) {
+        return { authStatus: "success" };
+      }
     } catch (error) {
       dispatch({
         type: AUTH_ERROR,
@@ -25,6 +28,7 @@ const useAuth = () => {
           message: error.message,
         },
       });
+
       console.log("error signing up:", error);
     }
   }

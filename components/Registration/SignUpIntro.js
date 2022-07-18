@@ -10,7 +10,7 @@ import { Title } from "../common/Title/Title";
 import { Text } from "../common/Text/Text";
 import { Button } from "../common/Button/Button";
 
-const StepOne = ({ stepCount, setStepCount }) => {
+const SignUpIntro = ({ stepCount, setStepCount }) => {
   return (
     <>
       <StepOneWrapper>
@@ -39,4 +39,4 @@ const StepOne = ({ stepCount, setStepCount }) => {
   );
 };
 
-export default StepOne;
+export default SignUpIntro;
