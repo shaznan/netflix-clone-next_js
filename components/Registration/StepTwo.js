@@ -6,33 +6,70 @@ import TextInput from "../common/TextInput/index";
 import Checkbox from "../common/Checkbox";
 import { CheckboxWrapper, StepTwoWrapper } from "./styles";
 import { Button } from "../common/Button/Button";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ErrorMessage from "../common/ErrorMessage";
 import useAuth from "../../hooks/useAuth";
 import SnackBar from "../common/SnackBar/index";
+import {
+  SET_INPUT_EMAIL_ADDRESS,
+  SET_PASSWORD,
+  SET_IS_INPUT_EMAIL_ERROR,
+  SET_IS_INPUT_PASSWORD_ERROR,
+} from "../../store/actionTypes/auth/authTypes";
 
 const StepTwo = ({ stepCount, setStepCount }) => {
-  const [email, setEmail] = useState("");
-  const [isEmailError, setIsEmailError] = useState(false);
-  const [isPasswordError, setIsPasswordError] = useState(false);
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const [checked, setIsChecked] = useState(false);
-  const { inputEmailAddress } = useSelector((state) => state?.signUp);
-  const { isSignUpError, signUpErrorMsg } = useSelector((state) => state?.Auth);
+  const {
+    isSignUpError,
+    signUpErrorMsg,
+    inputEmailAddress: email,
+    inputPassword: password,
+    isInputPasswordError: isPasswordError,
+    isInputEmailError: isEmailError,
+  } = useSelector((state) => state?.Auth);
   const { signUp } = useAuth();
 
+  const setEmail = (email) => {
+    dispatch({
+      type: SET_INPUT_EMAIL_ADDRESS,
+      payload: email,
+    });
+  };
+
+  const setPassword = (password) => {
+    dispatch({
+      type: SET_PASSWORD,
+      payload: password,
+    });
+  };
+
+  const setisPasswordError = (payload) => {
+    dispatch({
+      type: SET_IS_INPUT_PASSWORD_ERROR,
+      payload,
+    });
+  };
+
+  const setisEmailError = (payload) => {
+    dispatch({
+      type: SET_IS_INPUT_EMAIL_ERROR,
+      payload,
+    });
+  };
+
   useEffect(() => {
-    if (inputEmailAddress?.length) {
-      setEmail(inputEmailAddress);
+    if (email?.length) {
+      setEmail(email);
     }
-  }, [inputEmailAddress]);
+  }, [email]);
 
   const validateEmail = (email) => {
     const emailValidation = String(email)
       .toLowerCase()
       .match(/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g);
 
-    emailValidation ? setIsEmailError(false) : setIsEmailError(true);
+    emailValidation ? setisEmailError(false) : setisEmailError(true);
   };
 
   const validatePassword = (password) => {
@@ -40,7 +77,7 @@ const StepTwo = ({ stepCount, setStepCount }) => {
       /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
     );
 
-    passwordValidation ? setIsPasswordError(false) : setIsPasswordError(true);
+    passwordValidation ? setisPasswordError(false) : setisPasswordError(true);
   };
 
   useEffect(() => {

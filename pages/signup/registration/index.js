@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import StepOne from "../../../components/Registration/StepOne";
 import wrapper from "../../../HOC/registration/wrapper";
 import { useSelector, useDispatch } from "react-redux";
-import { SET_INPUT_EMAIL_ADDRESS } from "../../../store/actionTypes/signup/signupTypes";
+import { SET_INPUT_EMAIL_ADDRESS } from "../../../store/actionTypes/auth/authTypes";
 import StepTwo from "../../../components/Registration/StepTwo";
 
 const Registration = () => {

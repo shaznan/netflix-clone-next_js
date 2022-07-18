@@ -1,4 +1,11 @@
-import { AUTH_SUCCESS, AUTH_ERROR } from "../../actionTypes/auth/authTypes";
+import {
+  AUTH_SUCCESS,
+  AUTH_ERROR,
+  SET_INPUT_EMAIL_ADDRESS,
+  SET_PASSWORD,
+  SET_IS_INPUT_EMAIL_ERROR,
+  SET_IS_INPUT_PASSWORD_ERROR,
+} from "../../actionTypes/auth/authTypes";
 
 const initialState = {
   email: "",
@@ -6,6 +13,10 @@ const initialState = {
   signUpErrorMsg: "",
   isAdmin: false,
   name: "",
+  inputEmailAddress: "",
+  inputPassword: "",
+  isInputPasswordError: false,
+  isInputEmailError: false,
 };
 
 const Auth = (state = initialState, action) => {
@@ -24,6 +35,8 @@ const Auth = (state = initialState, action) => {
         isSignUpError: true,
         signUpErrorMsg: action?.payload?.message,
       };
+    case SET_INPUT_EMAIL_ADDRESS:
+      return { ...state, inputEmailAddress: action?.payload || "" };
     default:
       return state;
   }
