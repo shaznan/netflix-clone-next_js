@@ -42,10 +42,6 @@ export const Button = ({
         </Link>
       );
     case "wide":
-      return (
-        <Link href={href}>
-          <WideBtn onClick={onClick}>{children}</WideBtn>
-        </Link>
-      );
+      return <WideBtn onClick={onClick}>{children}</WideBtn>;
   }
 };

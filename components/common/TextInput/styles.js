@@ -4,6 +4,7 @@ import { breakPoints_px } from "../../../constants";
 export const InputGroup = styled.div`
   position: relative;
   margin-bottom: ${({ mb }) => `${mb}rem`};
+  margin-top: ${({ mt }) => `${mt}rem`};
 `;
 
 export const InputLabel = styled.label`
@@ -19,7 +20,8 @@ export const InputLabel = styled.label`
 export const InputField = styled.input`
   outline: none;
   padding: 25px 12px 16px 12px;
-  border: 1px solid #dadce0;
+  border: 1px solid
+    ${({ borderColor }) => (borderColor ? borderColor : "#dadce0")};
   font-size: 16px;
   width: 100%;
   & + ${InputLabel} {
@@ -39,7 +41,8 @@ export const InputField = styled.input`
   }
 
   &:focus {
-    border: 1px solid royalblue;
+    border: 1px solid
+      ${({ borderColor }) => (borderColor ? borderColor : "royalblue")};
   }
 
   &:focus + ${InputLabel} {

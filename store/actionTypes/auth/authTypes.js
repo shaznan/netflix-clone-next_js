@@ -1,1 +1,2 @@
-export const SET_EMAIL_ADDRESS = "SET_EMAIL_ADDRESS";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_ERROR = "AUTH_ERROR";

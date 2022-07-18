@@ -25,7 +25,7 @@ export const LevelTwo = styled.p`
 `;
 
 export const LevelTwoSmall = styled(LevelTwo)`
-  font-size: 1.2rem;
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.2rem")};
 `;
 
 export const LevelThree = styled(LevelTwo)`

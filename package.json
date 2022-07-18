@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@material/textfield": "^14.0.0",
+    "amazon-cognito-identity-js": "^5.2.10",
+    "aws-amplify": "^4.3.27",
     "axios": "^0.27.2",
     "formik": "^2.2.9",
     "next": "12.1.6",
