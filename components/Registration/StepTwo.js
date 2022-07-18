@@ -23,11 +23,12 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   const {
     isSignUpError,
     signUpErrorMsg,
-    inputEmailAddress: email,
+    inputEmailAddress,
     inputPassword: password,
     isInputPasswordError: isPasswordError,
     isInputEmailError: isEmailError,
   } = useSelector((state) => state?.Auth);
+
   const { signUp } = useAuth();
 
   const setEmail = (email) => {
@@ -58,12 +59,6 @@ const StepTwo = ({ stepCount, setStepCount }) => {
     });
   };
 
-  useEffect(() => {
-    if (email?.length) {
-      setEmail(email);
-    }
-  }, [email]);
-
   const validateEmail = (email) => {
     const emailValidation = String(email)
       .toLowerCase()
@@ -81,8 +76,8 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   };
 
   useEffect(() => {
-    isEmailError && validateEmail(email);
-  }, [email, isEmailError]);
+    isEmailError && validateEmail(inputEmailAddress);
+  }, [inputEmailAddress, isEmailError]);
 
   useEffect(() => {
     isPasswordError && validatePassword(password);
@@ -91,7 +86,7 @@ const StepTwo = ({ stepCount, setStepCount }) => {
   const onSubmit = (e) => {
     if (!isEmailError && !isPasswordError) {
       e.preventDefault();
-      signUp(email, password);
+      signUp(inputEmailAddress, password);
     }
   };
 
@@ -111,9 +106,9 @@ const StepTwo = ({ stepCount, setStepCount }) => {
         </Text>
         <TextInput
           label="Email"
-          value={email}
+          value={inputEmailAddress}
           onChange={setEmail}
-          onBlur={() => validateEmail(email)}
+          onBlur={() => validateEmail(inputEmailAddress)}
           borderColor={isEmailError && "red"}
         />
         {isEmailError ? (

@@ -22,6 +22,12 @@ const initialState = {
 const Auth = (state = initialState, action) => {
   const { data } = action?.payload || {};
   switch (action.type) {
+    case SET_PASSWORD:
+      return { ...state, inputPassword: action?.payload || "" };
+    case SET_IS_INPUT_EMAIL_ERROR:
+      return { ...state, isInputEmailError: action?.payload || false };
+    case SET_IS_INPUT_PASSWORD_ERROR:
+      return { ...state, isInputPasswordError: action?.payload || false };
     case AUTH_SUCCESS:
       return {
         ...state,
