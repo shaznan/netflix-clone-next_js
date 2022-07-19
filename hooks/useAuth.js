@@ -14,13 +14,11 @@ const useAuth = () => {
           email: username,
         },
       });
+      console.log(user, "sj");
       dispatch({
         type: AUTH_SUCCESS,
-        payload: user,
+        payload: user?.username,
       });
-      if (Object.keys(user)?.length) {
-        return { authStatus: "success" };
-      }
     } catch (error) {
       dispatch({
         type: AUTH_ERROR,

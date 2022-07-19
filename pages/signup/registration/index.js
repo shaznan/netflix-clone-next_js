@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { SET_INPUT_EMAIL_ADDRESS } from "../../../store/actionTypes/auth/authTypes";
 import SignUpForm from "../../../components/Registration/SignUpForm";
 import SignUpIntro from "../../../components/Registration/SignUpIntro";
+import ChooseYourPlan from "../../../components/Registration/ChooseYourPlan";
 
 const Registration = () => {
   const router = useRouter();
@@ -26,11 +27,13 @@ const Registration = () => {
   // const WrappedComponent = wrapper(StepOne);
   const WrappedSignUpIntro = wrapper(SignUpIntro);
   const WrappedSignUpForm = wrapper(SignUpForm);
+  const WrappedChooseYourPlan = wrapper(ChooseYourPlan);
 
   return (
     <>
-      {stepCount === 1 && <WrappedSignUpIntro />}
-      {stepCount === 2 && <WrappedSignUpForm />}
+      {/* {stepCount === 1 && <WrappedSignUpIntro />}
+      {stepCount === 2 && <WrappedSignUpForm />} */}
+      {stepCount === 1 && <WrappedChooseYourPlan />}
     </>
   );
 };

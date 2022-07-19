@@ -15,12 +15,14 @@ import {
   SET_PASSWORD,
   SET_IS_INPUT_EMAIL_ERROR,
   SET_IS_INPUT_PASSWORD_ERROR,
+  CLEAR_SIGNUP_STATE,
 } from "../../store/actionTypes/auth/authTypes";
 
 const SignUpForm = ({ stepCount, setStepCount }) => {
   const dispatch = useDispatch();
   const [checked, setIsChecked] = useState(false);
   const {
+    email,
     isSignUpError,
     signUpErrorMsg,
     inputEmailAddress,
@@ -64,7 +66,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
       .toLowerCase()
       .match(/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g);
 
-    emailValidation ? setisEmailError(false) : setisEmailError(true);
+    setisEmailError(emailValidation);
   };
 
   const validatePassword = (password) => {
@@ -72,7 +74,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
       /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
     );
 
-    passwordValidation ? setisPasswordError(false) : setisPasswordError(true);
+    setisPasswordError(passwordValidation);
   };
 
   useEffect(() => {
@@ -86,12 +88,19 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
   const onSubmit = (e) => {
     if (!isEmailError && !isPasswordError) {
       e.preventDefault();
-      const { authStatus } = signUp(inputEmailAddress, password);
-      if (authStatus === "success") {
-        setStepCount(3);
-      }
+      signUp(inputEmailAddress, password);
+      console.log(email, "email");
+      email?.length && setStepCount(3);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: CLEAR_SIGNUP_STATE,
+      });
+    };
+  }, []);
 
   return (
     <>

@@ -5,6 +5,7 @@ import {
   SET_PASSWORD,
   SET_IS_INPUT_EMAIL_ERROR,
   SET_IS_INPUT_PASSWORD_ERROR,
+  CLEAR_SIGNUP_STATE,
 } from "../../actionTypes/auth/authTypes";
 
 const initialState = {
@@ -31,7 +32,7 @@ const Auth = (state = initialState, action) => {
     case AUTH_SUCCESS:
       return {
         ...state,
-        email: data?.username,
+        email: action?.payload,
         isSignUpError: false,
         signUpErrorMsg: "",
       };
@@ -43,6 +44,15 @@ const Auth = (state = initialState, action) => {
       };
     case SET_INPUT_EMAIL_ADDRESS:
       return { ...state, inputEmailAddress: action?.payload || "" };
+    case CLEAR_SIGNUP_STATE:
+      return {
+        ...state,
+        isSignUpError: false,
+        signUpErrorMsg: "",
+        isInputEmailError: false,
+        isInputPasswordError: false,
+        inputPassword: "",
+      };
     default:
       return state;
   }
