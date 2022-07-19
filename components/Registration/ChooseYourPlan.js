@@ -17,8 +17,8 @@ const ChooseYourPlan = ({ stepCount, setStepCount }) => {
     "No ads and no extra fees. Ever.",
   ];
 
-  const renderBenefits = (text) => (
-    <BenefitsWrapper>
+  const renderBenefits = (text, i) => (
+    <BenefitsWrapper key={i}>
       <TickIcon />
       <Text type="secondary-small" left mb="0.5" color="#333">
         {text}
@@ -31,11 +31,11 @@ const ChooseYourPlan = ({ stepCount, setStepCount }) => {
       <CheckIcon />
       <Steps count={stepCount} total="3" mb="0.5" textAlign="left" />
       <Title type="secondary" color="#333" mb="2">
-        Choose your plan.
+        Enjoy your free plan.
       </Title>
-      {benefits.map((item) => renderBenefits(item))}
+      {benefits.map((item, key) => renderBenefits(item, key))}
       <Button customType="wide" onClick={() => setStepCount(4)}>
-        Next
+        Finish
       </Button>
     </ChooseYourPlanWrapper>
   );

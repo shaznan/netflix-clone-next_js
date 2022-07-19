@@ -17,6 +17,7 @@ import {
   SET_IS_INPUT_PASSWORD_ERROR,
   CLEAR_SIGNUP_STATE,
 } from "../../store/actionTypes/auth/authTypes";
+import ActivitySpinner from "../common/ActivitySpinner";
 
 const SignUpForm = ({ stepCount, setStepCount }) => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
     isInputEmailError: isEmailError,
   } = useSelector((state) => state?.Auth);
 
-  const { signUp } = useAuth();
+  const { signUp, isLoading } = useAuth();
 
   const setEmail = (email) => {
     dispatch({
@@ -66,7 +67,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
       .toLowerCase()
       .match(/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g);
 
-    setisEmailError(emailValidation);
+    emailValidation ? setisEmailError(false) : setisEmailError(true);
   };
 
   const validatePassword = (password) => {
@@ -74,7 +75,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
       /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
     );
 
-    setisPasswordError(passwordValidation);
+    passwordValidation ? setisPasswordError(false) : setisPasswordError(true);
   };
 
   useEffect(() => {

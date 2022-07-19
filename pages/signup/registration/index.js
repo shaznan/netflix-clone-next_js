@@ -31,9 +31,9 @@ const Registration = () => {
 
   return (
     <>
-      {/* {stepCount === 1 && <WrappedSignUpIntro />}
-      {stepCount === 2 && <WrappedSignUpForm />} */}
-      {stepCount === 1 && <WrappedChooseYourPlan />}
+      {stepCount === 1 && <WrappedSignUpIntro />}
+      {stepCount === 2 && <WrappedSignUpForm />}
+      {stepCount === 3 && <WrappedChooseYourPlan />}
     </>
   );
 };
