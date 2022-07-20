@@ -39,3 +39,18 @@ z-index: 0;
   width: 100%;
   z-index: -1;
 `;
+
+export const BodyWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: +1;
+`;
+
+export const SignInWrapper = styled.div`
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  min-width: 25vw;
+  min-height: 65vh;
+  padding: 4rem;
+`;
