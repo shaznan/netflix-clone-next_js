@@ -61,10 +61,10 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
   };
 
   const onSubmit = (e) => {
+    e.preventDefault();
+
     if (!isEmailError && !isPasswordError) {
-      e.preventDefault();
       signUp(inputEmailAddress, password);
-      console.log(email, "email");
       email?.length && setStepCount(3);
     }
   };

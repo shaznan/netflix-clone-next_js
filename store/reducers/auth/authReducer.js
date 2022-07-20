@@ -10,8 +10,8 @@ import {
 
 const initialState = {
   email: "",
-  isSignUpError: false,
-  signUpErrorMsg: "",
+  isSubmitError: false,
+  submitErrorMsg: "",
   isAdmin: false,
   name: "",
   inputEmailAddress: "",
@@ -33,22 +33,22 @@ const Auth = (state = initialState, action) => {
       return {
         ...state,
         email: action?.payload,
-        isSignUpError: false,
-        signUpErrorMsg: "",
+        isSubmitError: false,
+        submitErrorMsg: "",
       };
     case AUTH_ERROR:
       return {
         ...state,
-        isSignUpError: true,
-        signUpErrorMsg: action?.payload?.message,
+        isSubmitError: true,
+        submitErrorMsg: action?.payload?.message,
       };
     case SET_INPUT_EMAIL_ADDRESS:
       return { ...state, inputEmailAddress: action?.payload || "" };
     case CLEAR_SIGNUP_STATE:
       return {
         ...state,
-        isSignUpError: false,
-        signUpErrorMsg: "",
+        isSubmitError: false,
+        submitErrorMsg: "",
         isInputEmailError: false,
         isInputPasswordError: false,
         inputPassword: "",
