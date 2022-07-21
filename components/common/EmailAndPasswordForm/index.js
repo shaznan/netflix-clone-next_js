@@ -36,6 +36,7 @@ const EmailAndPasswordForm = ({
   useEffect(() => {
     isPasswordError && validatePassword(password);
   }, [password, isPasswordError]);
+
   return (
     <>
       <TextInput
@@ -44,9 +45,13 @@ const EmailAndPasswordForm = ({
         onChange={setEmail}
         onBlur={() => validateEmail(inputEmailAddress)}
         borderColor={isEmailError && "red"}
+        type={type}
       />
       {isEmailError ? (
-        <ErrorMessage color="red" fontSize="14px">
+        <ErrorMessage
+          color={type === "signin" ? "#e87c03" : "red"}
+          fontSize="14px"
+        >
           Please enter a valid email
         </ErrorMessage>
       ) : null}
@@ -56,13 +61,13 @@ const EmailAndPasswordForm = ({
         onChange={setPassword}
         mb={isPasswordError ? "0" : "1"}
         mt="1"
+        type={type}
         borderColor={isPasswordError && "red"}
         onBlur={() => validatePassword(password)}
       />
-
       {isPasswordError ? (
         <ErrorMessage
-          color="red"
+          color={type === "signin" ? "#e87c03" : "red"}
           fontSize="14px"
           mb={isPasswordError ? "1" : "0"}
         >

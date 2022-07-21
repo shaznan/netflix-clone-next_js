@@ -4,6 +4,7 @@ import {
   MainWrapper,
   BodyWrapper,
   SignInWrapper,
+  CustomTextWrapper,
 } from "../../components/SignIn/styles";
 import { Title } from "../../components/common/Title/Title";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +17,9 @@ import {
 } from "../../store/actionTypes/auth/authTypes";
 import SnackBar from "../../components/common/SnackBar";
 import EmailAndPasswordForm from "../../components/common/EmailAndPasswordForm";
+import { Button } from "../../components/common/Button/Button";
+import { Text } from "../../components/common/Text/Text";
+import Link from "next/link";
 
 const signin = () => {
   const dispatch = useDispatch();
@@ -75,10 +79,43 @@ const signin = () => {
       <BodyWrapper>
         {isSubmitError && <SnackBar type="error" message={submitErrorMsg} />}
         <SignInWrapper>
-          <Title type="secondary" color="white" mb="1">
+          <Title type="secondary" color="white" mb="1.5">
             Sign In
           </Title>
           <EmailAndPasswordForm {...formProps} />
+          <Button customType="wide" onClick={() => {}}>
+            Next
+          </Button>
+          <Text
+            textAlign="end"
+            mt="0.7"
+            type="extra-small"
+            color="rgba(255,255,255,0.7)"
+          >
+            Need help?
+          </Text>
+          <Text
+            textAlign="start"
+            mt="0.7"
+            type="small"
+            color="rgba(255,255,255,0.7)"
+          >
+            New to Netflix?
+            <CustomTextWrapper>
+              <Link href="/registration/signup"> Sign up now.</Link>
+            </CustomTextWrapper>
+          </Text>
+
+          <Text
+            textAlign="start"
+            mt="0.7"
+            type="extra-small"
+            color="rgba(255,255,255,0.7)"
+          >
+            This page is protected by Google reCAPTCHA to ensure you're not a
+            bot.
+            <CustomTextWrapper color="#0071eb"> Learn more.</CustomTextWrapper>
+          </Text>
         </SignInWrapper>
       </BodyWrapper>
     </MainWrapper>

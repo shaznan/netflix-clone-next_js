@@ -22,8 +22,8 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
   const [checked, setIsChecked] = useState(false);
   const {
     email,
-    isSignUpError,
-    signUpErrorMsg,
+    isSubmitError,
+    submitErrorMsg,
     inputEmailAddress,
     inputPassword: password,
     isInputPasswordError: isPasswordError,
@@ -92,7 +92,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
   return (
     <>
       <StepTwoWrapper>
-        {isSignUpError && <SnackBar type="error" message={signUpErrorMsg} />}
+        {isSubmitError && <SnackBar type="error" message={submitErrorMsg} />}
         <Steps count={stepCount} total="3" mb="0.5" textAlign="left" />
         <Title type="secondary" color="#333" mb="1">
           Create a password to start your membership
