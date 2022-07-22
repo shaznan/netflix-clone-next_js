@@ -17,10 +17,18 @@ const useAuth = () => {
           email: username,
         },
       });
+
+      //get aws tokens upon sign up
+      const userSession = Auth.currentSession();
+
       dispatch({
         type: AUTH_SUCCESS,
-        payload: user?.username,
+        payload: {
+          userEmail: user,
+          userSession,
+        },
       });
+      console.log(user, "USER");
       Object.keys(user)?.length && setIsLoading(false);
     } catch (error) {
       dispatch({
@@ -34,7 +42,20 @@ const useAuth = () => {
     }
   }
 
-  return { signUp, isLoading };
+  async function signIn(username, password) {
+    try {
+      const user = await Auth.signIn(username, password);
+      dispatch({
+        type: AUTH_SUCCESS,
+        payload: user?.username,
+      });
+      console.log(user);
+    } catch (error) {
+      console.log("error signing in", error);
+    }
+  }
+
+  return { signUp, signIn, isLoading };
 };
 
 export default useAuth;

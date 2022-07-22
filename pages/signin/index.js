@@ -20,9 +20,11 @@ import EmailAndPasswordForm from "../../components/common/EmailAndPasswordForm";
 import { Button } from "../../components/common/Button/Button";
 import { Text } from "../../components/common/Text/Text";
 import Link from "next/link";
+import useAuth from "../../hooks/useAuth";
 
 const signin = () => {
   const dispatch = useDispatch();
+  const { signIn } = useAuth();
   const {
     email,
     isSubmitError,
@@ -73,6 +75,14 @@ const signin = () => {
     type: "signin",
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!isEmailError && !isPasswordError) {
+      signIn(inputEmailAddress, password);
+      // email?.length && setStepCount(3);
+    }
+  };
+
   return (
     <MainWrapper>
       <Header type="signin" />
@@ -83,7 +93,7 @@ const signin = () => {
             Sign In
           </Title>
           <EmailAndPasswordForm {...formProps} />
-          <Button customType="wide" onClick={() => {}}>
+          <Button customType="wide" onClick={onSubmit}>
             Next
           </Button>
           <Text
