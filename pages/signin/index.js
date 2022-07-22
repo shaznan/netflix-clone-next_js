@@ -22,7 +22,7 @@ import { Text } from "../../components/common/Text/Text";
 import Link from "next/link";
 import useAuth from "../../hooks/useAuth";
 
-const signin = () => {
+const Signin = () => {
   const dispatch = useDispatch();
   const { signIn } = useAuth();
   const {
@@ -132,4 +132,4 @@ const signin = () => {
   );
 };
 
-export default signin;
+export default Signin;
