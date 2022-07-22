@@ -10,7 +10,7 @@ import { Title } from "../common/Title/Title";
 import { Text } from "../common/Text/Text";
 import { Button } from "../common/Button/Button";
 
-const StepOne = ({ stepCount, setStepCount }) => {
+const SignUpIntro = ({ stepCount, setStepCount }) => {
   return (
     <>
       <StepOneWrapper>
@@ -22,7 +22,6 @@ const StepOne = ({ stepCount, setStepCount }) => {
           />
         </DeviceImageWrapper>
         <Steps count={stepCount} total="3" />
-
         <Title type="secondary" center color="#333">
           Finish setting up your account
         </Title>
@@ -40,4 +39,4 @@ const StepOne = ({ stepCount, setStepCount }) => {
   );
 };
 
-export default StepOne;
+export default SignUpIntro;

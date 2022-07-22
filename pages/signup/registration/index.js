@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import StepOne from "../../../components/Registration/StepOne";
 import wrapper from "../../../HOC/registration/wrapper";
 import { useSelector, useDispatch } from "react-redux";
-import { SET_INPUT_EMAIL_ADDRESS } from "../../../store/actionTypes/signup/signupTypes";
-import StepTwo from "../../../components/Registration/StepTwo";
+import { SET_INPUT_EMAIL_ADDRESS } from "../../../store/actionTypes/auth/authTypes";
+import SignUpForm from "../../../components/Registration/SignUpForm";
+import SignUpIntro from "../../../components/Registration/SignUpIntro";
+import ChooseYourPlan from "../../../components/Registration/ChooseYourPlan";
 
 const Registration = () => {
   const router = useRouter();
@@ -24,9 +25,17 @@ const Registration = () => {
   }, [router]);
 
   // const WrappedComponent = wrapper(StepOne);
-  const WrappedComponent = wrapper(StepTwo);
+  const WrappedSignUpIntro = wrapper(SignUpIntro);
+  const WrappedSignUpForm = wrapper(SignUpForm);
+  const WrappedChooseYourPlan = wrapper(ChooseYourPlan);
 
-  return <>{stepCount === 1 && <WrappedComponent />}</>;
+  return (
+    <>
+      {stepCount === 1 && <WrappedSignUpIntro />}
+      {stepCount === 2 && <WrappedSignUpForm />}
+      {stepCount === 3 && <WrappedChooseYourPlan />}
+    </>
+  );
 };
 
 export default Registration;

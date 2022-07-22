@@ -43,6 +43,6 @@ export const WideBtn = styled(HeroBtn)`
   font-size: 1.5rem;
   border-radius: 5px;
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    padding: 1.1rem 35vw;
+    padding: 1.1rem 35%;
   }
 `;

@@ -33,6 +33,8 @@ export const LevelThree = styled(LevelTwo)`
   font-weight: ${({ bold }) => (bold ? "bold" : "normal")};
   color: ${({ color }) => (color ? color : "white")};
   margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
+  margin-top: ${({ mt }) => (mt ? `${mt}rem` : 0)};
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : "center")};
 
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
     font-size: 0.9rem;

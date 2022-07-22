@@ -9,7 +9,7 @@ import { headerTheme } from "../../../constants";
 
 import { Button } from "../Button/Button";
 
-const Header = ({ theme = headerTheme.DARK }) => {
+const Header = ({ theme = headerTheme.DARK, type = "" }) => {
   console.log(theme, "o");
   return (
     <HeaderContainer
@@ -17,14 +17,16 @@ const Header = ({ theme = headerTheme.DARK }) => {
     >
       <HeaderWrapper>
         <Logo />
-        <HeaderBtnWrapper>
-          <Button
-            href="/signIn"
-            customType={theme === headerTheme.LIGHT ? "simple" : "primary"}
-          >
-            Sign In
-          </Button>
-        </HeaderBtnWrapper>
+        {type !== "signin" && (
+          <HeaderBtnWrapper>
+            <Button
+              href="/signin"
+              customType={theme === headerTheme.LIGHT ? "simple" : "primary"}
+            >
+              Sign In
+            </Button>
+          </HeaderBtnWrapper>
+        )}
       </HeaderWrapper>
     </HeaderContainer>
   );

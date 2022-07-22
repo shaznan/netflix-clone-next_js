@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { breakPoints_px } from "../../constants";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import { BsCheck2 } from "react-icons/bs";
 
 export const MainWrapper = styled.div`
   display: flex;
@@ -35,4 +37,30 @@ export const StepTwoWrapper = styled.div`
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
     max-width: 80vw;
   }
+`;
+
+//choose your plan styles
+
+export const ChooseYourPlanWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const CheckIcon = styled(AiOutlineCheckCircle)`
+  color: #e61938;
+  font-size: 3em;
+  margin-bottom: 1.3rem;
+`;
+
+export const TickIcon = styled(BsCheck2)`
+  color: #e61938;
+  font-size: 2em;
+  margin-right: 0.5rem;
+`;
+
+export const BenefitsWrapper = styled.div`
+  display: flex;
+  width: 80%;
+  margin-bottom: 1rem;
 `;

@@ -22,7 +22,7 @@ const wrapper =
     useEffect(() => {
       router.beforePopState(({ as }) => {
         if (as !== router.asPath) {
-          setStepCount(stepCount - 1);
+          setStepCount(0);
         }
         return true;
       });
