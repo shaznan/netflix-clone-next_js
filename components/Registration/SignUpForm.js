@@ -21,7 +21,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
   const dispatch = useDispatch();
   const [checked, setIsChecked] = useState(false);
   const {
-    email,
+    userData,
     isSubmitError,
     submitErrorMsg,
     inputEmailAddress,
@@ -65,7 +65,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
 
     if (!isEmailError && !isPasswordError) {
       signUp(inputEmailAddress, password);
-      email?.length && setStepCount(3);
+      Object.keys(userData)?.length && setStepCount(3);
     }
   };
 

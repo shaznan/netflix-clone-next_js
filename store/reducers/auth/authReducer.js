@@ -9,8 +9,7 @@ import {
 } from "../../actionTypes/auth/authTypes";
 
 const initialState = {
-  email: null,
-  userSession: {},
+  userData: null,
   isSubmitError: false,
   submitErrorMsg: "",
   isAdmin: false,
@@ -33,8 +32,7 @@ const Auth = (state = initialState, action) => {
     case AUTH_SUCCESS:
       return {
         ...state,
-        email: action?.payload?.userEmail || null,
-        userSession: action?.payload?.userSession || {},
+        userData: action?.payload?.userData || null,
         isSubmitError: false,
         submitErrorMsg: "",
       };
