@@ -11,22 +11,22 @@ const RenderImage = ({ className }) => (
 );
 
 const StyledImage = styled(RenderImage)`
-  width: 180px;
-  height: 36px;
+  max-width: ${({ size }) => (size === "medium" ? "100px" : "180px")};
+  height: ${({ size }) => (size === "medium" ? "20px" : "36px")};
 
   @media (max-width: ${breakPoints_px.STANDARD_DESKTOP_SCREEN}) {
-    width: 140px;
+    width: ${({ size }) => (size === "medium" ? "120px" : "140px")};
   }
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
-    width: 110px;
+    width: ${({ size }) => (size === "medium" ? "90px" : "110px")};
   }
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    width: 95px;
-  }
+    width: ${({ size }) => (size === "medium" ? "70px" : "95px")};
+  } ;
 `;
 
-const Logo = () => {
-  return <StyledImage />;
+const Logo = ({ size = "large" }) => {
+  return <StyledImage size={size} />;
 };
 
 export default Logo;

@@ -10,7 +10,6 @@ import { headerTheme } from "../../../constants";
 import { Button } from "../Button/Button";
 
 const Header = ({ theme = headerTheme.DARK, type = "" }) => {
-  console.log(theme, "o");
   return (
     <HeaderContainer
       borderBottom={theme === headerTheme.LIGHT ? "1px solid #e6e6e6" : ""}
