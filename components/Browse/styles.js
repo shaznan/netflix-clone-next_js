@@ -13,12 +13,16 @@ export const HeaderWrapper = styled.div`
 
 export const MenuWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-top: 0.4rem;
   margin-left: 1.8rem;
+  min-width: 550px;
 `;
 
 export const MenuItemWrapper = styled.div`
   color: #e5e5e5;
   font-size: 15px;
-  margin-left: 1rem;
+  cursor: pointer;
+  font-weight: ${({ active }) => (active ? "bold" : "none")};
+  transition: 0.7s;
 `;
