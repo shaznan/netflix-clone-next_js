@@ -1,5 +1,6 @@
 import React from "react";
+import { MenuItemWrapper } from "../styles";
 
 export const MenuItem = ({ item }) => {
-  return <div>{item}</div>;
+  return <MenuItemWrapper>{item}</MenuItemWrapper>;
 };
