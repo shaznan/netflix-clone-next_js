@@ -16,6 +16,7 @@ import { SET_SELECTED_MENU_ITEM } from "../../../store/actionTypes/browse/browse
 import Avatar from "./Avatar";
 import useScreenSize from "../../../hooks/useScreenSize";
 import { breakPoints } from "../../../constants";
+import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -32,18 +33,22 @@ const Header = () => {
     <HeaderWrapper>
       <Logo size="medium" />
       <HeaderItemsWrapper>
-        {/* <HeaderLeftWrapper>
-          <MenuWrapper>
-            {menuItems.map((item, key) => (
-              <MenuItem
-                key={key}
-                item={item}
-                onSelectHandler={onSelectHandler}
-                selectedMenuItem={selectedMenuItem}
-              />
-            ))}
-          </MenuWrapper>
-        </HeaderLeftWrapper> */}
+        {width > breakPoints.TAB_SCREEN ? (
+          <HeaderLeftWrapper>
+            <MenuWrapper>
+              {menuItems.map((item, key) => (
+                <MenuItem
+                  key={key}
+                  item={item}
+                  onSelectHandler={onSelectHandler}
+                  selectedMenuItem={selectedMenuItem}
+                />
+              ))}
+            </MenuWrapper>
+          </HeaderLeftWrapper>
+        ) : (
+          <MobileMenu />
+        )}
         <HeaderRightWrapper>
           {width > breakPoints.MOBILE_SCREEN_SMALL && <SearchIcon />}
           <BellIcon />
