@@ -18,6 +18,8 @@ const awsmobile = {
     passwordPolicyCharacters: [],
   },
   aws_cognito_verification_mechanisms: ["EMAIL"],
+  aws_user_files_s3_bucket: process.env.AWS_USER_FILES_S3_BUCKET,
+  aws_user_files_s3_bucket_region: process.env.AWS_COGNITO_REGION,
 };
 
 export default awsmobile;
