@@ -14,6 +14,8 @@ import { menuItems } from "../../../constants/data";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_SELECTED_MENU_ITEM } from "../../../store/actionTypes/browse/browseVideosTypes";
 import Avatar from "./Avatar";
+import useScreenSize from "../../../hooks/useScreenSize";
+import { breakPoints } from "../../../constants";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,12 +26,13 @@ const Header = () => {
       payload: item,
     });
   };
+  const { width } = useScreenSize();
 
   return (
     <HeaderWrapper>
       <Logo size="medium" />
       <HeaderItemsWrapper>
-        <HeaderLeftWrapper>
+        {/* <HeaderLeftWrapper>
           <MenuWrapper>
             {menuItems.map((item, key) => (
               <MenuItem
@@ -40,9 +43,9 @@ const Header = () => {
               />
             ))}
           </MenuWrapper>
-        </HeaderLeftWrapper>
+        </HeaderLeftWrapper> */}
         <HeaderRightWrapper>
-          <SearchIcon />
+          {width > breakPoints.MOBILE_SCREEN_SMALL && <SearchIcon />}
           <BellIcon />
           <Avatar />
         </HeaderRightWrapper>

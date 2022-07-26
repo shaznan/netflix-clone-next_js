@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ImSearch } from "react-icons/im";
 import { GoBell } from "react-icons/go";
+import { breakPoints, breakPoints_px } from "../../constants/index";
 
 export const MainWrapper = styled.div`
   background-color: black;
@@ -11,6 +12,13 @@ export const MainWrapper = styled.div`
 export const HeaderWrapper = styled.div`
   display: flex;
   padding: 1.2rem 3.5rem;
+
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    padding: 0.8rem 1.5rem;
+  }
+  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    padding: 0.8rem 1rem;
+  }
 `;
 
 export const MenuWrapper = styled.div`
