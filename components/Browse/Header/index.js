@@ -1,10 +1,19 @@
 import React from "react";
-import { HeaderWrapper, MenuWrapper } from "../styles";
+import {
+  HeaderWrapper,
+  MenuWrapper,
+  HeaderItemsWrapper,
+  HeaderRightWrapper,
+  HeaderLeftWrapper,
+  SearchIcon,
+  BellIcon,
+} from "../styles";
 import Logo from "../../common/Logo/Logo";
 import { MenuItem } from "./MenuItem";
 import { menuItems } from "../../../constants/data";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_SELECTED_MENU_ITEM } from "../../../store/actionTypes/browse/browseVideosTypes";
+import Avatar from "./Avatar";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,16 +28,25 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Logo size="medium" />
-      <MenuWrapper>
-        {menuItems.map((item, key) => (
-          <MenuItem
-            key={key}
-            item={item}
-            onSelectHandler={onSelectHandler}
-            selectedMenuItem={selectedMenuItem}
-          />
-        ))}
-      </MenuWrapper>
+      <HeaderItemsWrapper>
+        <HeaderLeftWrapper>
+          <MenuWrapper>
+            {menuItems.map((item, key) => (
+              <MenuItem
+                key={key}
+                item={item}
+                onSelectHandler={onSelectHandler}
+                selectedMenuItem={selectedMenuItem}
+              />
+            ))}
+          </MenuWrapper>
+        </HeaderLeftWrapper>
+        <HeaderRightWrapper>
+          <SearchIcon />
+          <BellIcon />
+          <Avatar />
+        </HeaderRightWrapper>
+      </HeaderItemsWrapper>
     </HeaderWrapper>
   );
 };
