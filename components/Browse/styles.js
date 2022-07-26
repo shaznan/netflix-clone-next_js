@@ -10,11 +10,17 @@ export const MainWrapper = styled.div`
 `;
 
 //Header styles
+
 export const HeaderWrapper = styled.div`
   display: flex;
   padding: 1.2rem 3.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
 
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    align-items: center;
     padding: 0.8rem 1.5rem;
   }
   @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
