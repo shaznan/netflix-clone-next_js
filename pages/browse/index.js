@@ -16,6 +16,11 @@ const Browse = () => {
 
   const getURL = async () => {
     const result = await Storage.get(`Brooklyn-Nine-Nine_trailer.mp4`, {
+      customPrefix: {
+        public: "",
+        protected: "",
+        private: "",
+      },
       level: "public",
       download: false,
       contentType: "video/mp4",
@@ -23,7 +28,7 @@ const Browse = () => {
 
     await Storage.list("", requestConfig)
       .then((result) => console.log("Result:", result)) // {key: "test.txt"}
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
     // console.log(await Storage.list(), "LIST");
     console.log(result, "RESULT");
     // console.log(

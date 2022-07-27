@@ -132,5 +132,4 @@ const Signin = () => {
   );
 };
 
-export default S;
-ignin;
+export default Signin;
