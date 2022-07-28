@@ -6,6 +6,8 @@ import Hero from "../../components/Browse/Hero/index";
 
 Storage.configure({ level: "public" });
 
+//TODO: Derive a hook for get bucket url
+
 const Browse = () => {
   return (
     <MainWrapper>

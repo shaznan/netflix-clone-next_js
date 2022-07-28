@@ -27,6 +27,14 @@ export const HeaderWrapper = styled.div`
     padding: 0.8rem 1rem;
   }
   width: 100%;
+  z-index: +5;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7595413165266106) 0%,
+    rgba(0, 0, 0, 0) 100%,
+    rgba(0, 0, 0, 0) 100%
+  );
 `;
 
 export const MenuWrapper = styled.div`
