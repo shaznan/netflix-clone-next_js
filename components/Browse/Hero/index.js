@@ -44,7 +44,7 @@ const Hero = () => {
   return (
     <div>
       <HeroContentContainer>
-        <HeroImage src={heroImage} layout="fill" />
+        <HeroImage src={heroImage} layout="responsive" />
         {/* <Image
           src="https://netflix-clone-project.s3.amazonaws.com/public-directory/Devices.png"
           width="250"
