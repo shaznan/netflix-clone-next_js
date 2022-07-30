@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Storage } from "aws-amplify";
 import Image from "next/image";
@@ -27,24 +27,55 @@ const HeroImage = styled(Image)`
 
 const Hero = () => {
   Storage.configure({ level: "public" });
+  const [videoUrl, setVideoUrl] = useState(null);
+  const [isHeroVideoLoading, setIsHeroVideoLoading] = useState(false);
 
   //TODO: Need to create a seperate hook to getURL
   const getURL = async () => {
     const result = await Storage.get(`Brooklyn-Nine-Nine_trailer.mp4`, {
       download: false,
       contentType: "video/mp4",
+      expires: 18000,
+      progressCallback(progress) {
+        console.log(`Downloaded: ${progress.loaded}/${progress.total}`);
+      },
     });
-    console.log(result);
+
+    setVideoUrl(result);
+
+    // const a = document.createElement('a');
+    // a.href = url;
   };
 
   useEffect(() => {
     getURL();
+    setIsHeroVideoLoading(true);
   }, []);
 
+  //   useEffect(() => {
+  //     videoRef.current.play();
+  //   }, []);
+  console.log(videoUrl, "vide url");
   return (
     <div>
       <HeroContentContainer>
-        <HeroImage src={heroImage} layout="responsive" />
+        {isHeroVideoLoading && (
+          <HeroImage src={heroImage} layout="responsive" />
+        )}
+
+        <video
+          loop
+          muted
+          autoPlay
+          src={videoUrl}
+          preload={"auto"}
+          type={"video/mp4"}
+          onLoadedData={() => setIsHeroVideoLoading(false)}
+          //   onLoadEnd={(e) => console.log(e, "ended")}
+          // className={classes.video}
+          // ref={ref => this.headerVideo}
+        ></video>
+
         {/* <Image
           src="https://netflix-clone-project.s3.amazonaws.com/public-directory/Devices.png"
           width="250"
@@ -56,3 +87,11 @@ const Hero = () => {
 };
 
 export default Hero;
+
+// ref={videoRef}
+// width="500"
+// height="240"
+// autoplay={true}
+// muted
+// loop
+// src="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
