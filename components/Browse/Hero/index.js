@@ -54,9 +54,10 @@ const HeroBody = styled.div`
 const TitleImage = styled(Image)``;
 
 const TitleImageWrapper = styled.div`
-  width: 400px;
+  width: ${({ isVideoPlaying }) => (isVideoPlaying ? "250px" : "400px")};
   height: auto;
-  margin-bottom: 3rem;
+  margin-bottom: ${({ isVideoPlaying }) => (isVideoPlaying ? 0 : "3rem")};
+  transition: 2s linear;
 `;
 
 const LeftContainer = styled.div`
@@ -89,7 +90,6 @@ const Hero = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [isHeroVideoPlaying, setIsHeroVideoPlaying] = useState(false);
   const [showVideoPlayer, setShowVideoPlayer] = useState(true);
-  const [showVideoDescription, setShowVideoDescription] = useState(true);
 
   //TODO: Need to create a seperate hook to getURL
   const getURL = async () => {
@@ -115,10 +115,10 @@ const Hero = () => {
       <HeroContentContainer>
         <HeroBody>
           <LeftContainer>
-            <TitleImageWrapper>
+            <TitleImageWrapper isVideoPlaying={isHeroVideoPlaying}>
               <TitleImage src={BrooklynLogo} />
             </TitleImageWrapper>
-            {showVideoDescription && (
+            {!isHeroVideoPlaying && (
               <Text type="primary" textShadow color="white" left>
                 Brilliant but immature Brooklyn detective Jake Peralta must
                 learn to follow the rules and be a team player when his squad
@@ -153,14 +153,10 @@ const Hero = () => {
             type={"video/mp4"}
             onLoadedData={() => {
               setIsHeroVideoPlaying(true);
-              setTimeout(() => {
-                setShowVideoDescription(false);
-              }, 4000);
             }}
             onEnded={() => {
               setIsHeroVideoPlaying(false);
               setShowVideoPlayer(false);
-              setShowVideoDescription(true);
             }}
           ></VideoPlayer>
         )}
