@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Storage } from "aws-amplify";
 import Image from "next/image";
+import heroImage from "../../../public/images/coverImages/Brooklyn-Nine-Nine/b99_cover_image.png";
+import BrooklynLogo from "../../../public/images/coverImages/Brooklyn-Nine-Nine/Brooklyn_Nine-Nine_Logo.png";
 import { Fade } from "../../common/Animation";
 
 const HeroContentContainer = styled.div`
@@ -28,6 +30,17 @@ const VideoPlayer = styled.video`
   height: auto;
 `;
 
+const HeroBody = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const TitleImage = styled(Image)``;
+
+export const TitleImageWrapper = styled.div`
+  width: 400px;
+  height: auto;
+`;
 /**
  * TODO:
  * 1. create multiple hero images and videos
@@ -57,10 +70,7 @@ const Hero = () => {
   }, []);
 
   const RenderHeroImage = () => (
-    <HeroImage
-      src="https://netflix-clone-project.s3.amazonaws.com/public-directory/brooklyn99/b99_cover_image.png"
-      layout="responsive"
-    />
+    <HeroImage src={heroImage} layout="responsive" />
   );
 
   return (
@@ -87,6 +97,11 @@ const Hero = () => {
             }}
           ></VideoPlayer>
         )}
+        <HeroBody>
+          <TitleImageWrapper>
+            <TitleImage src={BrooklynLogo} />
+          </TitleImageWrapper>
+        </HeroBody>
       </HeroContentContainer>
     </div>
   );
