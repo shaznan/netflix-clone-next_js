@@ -7,6 +7,9 @@ import BrooklynLogo from "../../../public/images/coverImages/Brooklyn-Nine-Nine/
 import { Fade } from "../../common/Animation";
 import { Text } from "../../common/Text/Text";
 import { breakPoints_px } from "../../../constants";
+import { Button } from "../../common/Button/Button";
+import { BsFillPlayFill } from "react-icons/bs";
+import { BiInfoCircle } from "react-icons/bi";
 
 const HeroContentContainer = styled.div`
   width: 100vw;
@@ -59,7 +62,20 @@ const TitleImageWrapper = styled.div`
 const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 700px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  margin-top: 1.5rem;
+`;
+
+const PlayIcon = styled(BsFillPlayFill)`
+  font-size: 3rem;
+`;
+const InfoIcon = styled(BiInfoCircle)`
+  font-size: 2rem;
+  margin-right: 0.8rem;
 `;
 /**
  * TODO:
@@ -101,11 +117,21 @@ const Hero = () => {
             <TitleImageWrapper>
               <TitleImage src={BrooklynLogo} />
             </TitleImageWrapper>
-            <Text type="secondary" textShadow color="white" left>
+            <Text type="primary" textShadow color="white" left>
               Brilliant but immature Brooklyn detective Jake Peralta must learn
               to follow the rules and be a team player when his squad gets an
               exciting new captian
             </Text>
+            <ButtonWrapper>
+              <Button customType="playMain" mr="1">
+                <PlayIcon />
+                Trailer
+              </Button>
+              <Button customType="playSecondary">
+                <InfoIcon />
+                More Info
+              </Button>
+            </ButtonWrapper>
           </LeftContainer>
         </HeroBody>
         {!isHeroVideoPlaying &&
