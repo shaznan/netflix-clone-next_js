@@ -50,16 +50,18 @@ const Hero = () => {
     getURL();
   }, []);
 
+  const RenderHeroImage = () => (
+    <HeroImage src={heroImage} layout="responsive" />
+  );
+
   return (
     <div>
       <HeroContentContainer>
         {!isHeroVideoPlaying &&
           (!showVideoPlayer ? (
-            <Fade>
-              <HeroImage src={heroImage} layout="responsive" />
-            </Fade>
+            <Fade>{RenderHeroImage()}</Fade>
           ) : (
-            <HeroImage src={heroImage} layout="responsive" />
+            RenderHeroImage()
           ))}
 
         {showVideoPlayer && (
