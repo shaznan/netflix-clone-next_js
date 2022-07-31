@@ -21,6 +21,14 @@ const HeroImage = styled(Image)`
   height: 100%;
 `;
 
+const VideoPlayer = styled.video`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+`;
+
 /**
  * TODO:
  * 1. create multiple hero images and videos
@@ -38,9 +46,6 @@ const Hero = () => {
       download: false,
       contentType: "video/mp4",
       expires: 18000,
-      progressCallback(progress) {
-        console.log(`Downloaded: ${progress.loaded}/${progress.total}`);
-      },
     });
 
     setVideoUrl(result);
@@ -65,7 +70,7 @@ const Hero = () => {
           ))}
 
         {showVideoPlayer && (
-          <video
+          <VideoPlayer
             muted
             autoPlay
             src={videoUrl}
@@ -76,7 +81,7 @@ const Hero = () => {
               setIsHeroVideoPlaying(false);
               setShowVideoPlayer(false);
             }}
-          ></video>
+          ></VideoPlayer>
         )}
       </HeroContentContainer>
     </div>
