@@ -89,6 +89,7 @@ const Hero = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [isHeroVideoPlaying, setIsHeroVideoPlaying] = useState(false);
   const [showVideoPlayer, setShowVideoPlayer] = useState(true);
+  const [showVideoDescription, setShowVideoDescription] = useState(true);
 
   //TODO: Need to create a seperate hook to getURL
   const getURL = async () => {
@@ -117,15 +118,17 @@ const Hero = () => {
             <TitleImageWrapper>
               <TitleImage src={BrooklynLogo} />
             </TitleImageWrapper>
-            <Text type="primary" textShadow color="white" left>
-              Brilliant but immature Brooklyn detective Jake Peralta must learn
-              to follow the rules and be a team player when his squad gets an
-              exciting new captian
-            </Text>
+            {showVideoDescription && (
+              <Text type="primary" textShadow color="white" left>
+                Brilliant but immature Brooklyn detective Jake Peralta must
+                learn to follow the rules and be a team player when his squad
+                gets an exciting new captian
+              </Text>
+            )}
             <ButtonWrapper>
               <Button customType="playMain" mr="1">
                 <PlayIcon />
-                Trailer
+                Play
               </Button>
               <Button customType="playSecondary">
                 <InfoIcon />
@@ -148,10 +151,16 @@ const Hero = () => {
             src={videoUrl}
             preload={"auto"}
             type={"video/mp4"}
-            onLoadedData={() => setIsHeroVideoPlaying(true)}
+            onLoadedData={() => {
+              setIsHeroVideoPlaying(true);
+              setTimeout(() => {
+                setShowVideoDescription(false);
+              }, 4000);
+            }}
             onEnded={() => {
               setIsHeroVideoPlaying(false);
               setShowVideoPlayer(false);
+              setShowVideoDescription(true);
             }}
           ></VideoPlayer>
         )}
