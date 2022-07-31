@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Storage } from "aws-amplify";
 import Image from "next/image";
-import heroImage from "../../../public/images/coverImages/b99_cover_image.png";
 import { Fade } from "../../common/Animation";
 
 const HeroContentContainer = styled.div`
@@ -34,6 +33,8 @@ const VideoPlayer = styled.video`
  * 1. create multiple hero images and videos
  */
 
+//  "Brilliant but immature Brooklyn detective Jake Peralta must learn to follow the rules and be a team player when his squad gets an exciting new captian"
+
 const Hero = () => {
   Storage.configure({ level: "public" });
   const [videoUrl, setVideoUrl] = useState(null);
@@ -56,7 +57,10 @@ const Hero = () => {
   }, []);
 
   const RenderHeroImage = () => (
-    <HeroImage src={heroImage} layout="responsive" />
+    <HeroImage
+      src="https://netflix-clone-project.s3.amazonaws.com/public-directory/brooklyn99/b99_cover_image.png"
+      layout="responsive"
+    />
   );
 
   return (
