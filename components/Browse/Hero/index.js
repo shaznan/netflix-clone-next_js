@@ -28,7 +28,8 @@ const HeroImage = styled(Image)`
 const Hero = () => {
   Storage.configure({ level: "public" });
   const [videoUrl, setVideoUrl] = useState(null);
-  const [isHeroVideoLoading, setIsHeroVideoLoading] = useState(false);
+  const [isHeroVideoPlaying, setIsHeroVideoPlaying] = useState(false);
+  const [showVideoPlayer, setShowVideoPlayer] = useState(true);
 
   //TODO: Need to create a seperate hook to getURL
   const getURL = async () => {
@@ -42,14 +43,10 @@ const Hero = () => {
     });
 
     setVideoUrl(result);
-
-    // const a = document.createElement('a');
-    // a.href = url;
   };
 
   useEffect(() => {
     getURL();
-    setIsHeroVideoLoading(true);
   }, []);
 
   //   useEffect(() => {
@@ -59,23 +56,27 @@ const Hero = () => {
   return (
     <div>
       <HeroContentContainer>
-        {isHeroVideoLoading && (
+        {!isHeroVideoPlaying && (
           <HeroImage src={heroImage} layout="responsive" />
         )}
 
-        <video
-          loop
-          muted
-          autoPlay
-          src={videoUrl}
-          preload={"auto"}
-          type={"video/mp4"}
-          onLoadedData={() => setIsHeroVideoLoading(false)}
-          //   onLoadEnd={(e) => console.log(e, "ended")}
-          // className={classes.video}
-          // ref={ref => this.headerVideo}
-        ></video>
-
+        {showVideoPlayer && (
+          <video
+            muted
+            autoPlay
+            src={videoUrl}
+            preload={"auto"}
+            type={"video/mp4"}
+            onLoadedData={() => setIsHeroVideoPlaying(true)}
+            onEnded={() => {
+              setIsHeroVideoPlaying(false);
+              setShowVideoPlayer(false);
+            }}
+            //   onLoadEnd={(e) => console.log(e, "ended")}
+            // className={classes.video}
+            // ref={ref => this.headerVideo}
+          ></video>
+        )}
         {/* <Image
           src="https://netflix-clone-project.s3.amazonaws.com/public-directory/Devices.png"
           width="250"
