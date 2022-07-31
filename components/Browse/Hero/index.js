@@ -5,6 +5,8 @@ import Image from "next/image";
 import heroImage from "../../../public/images/coverImages/Brooklyn-Nine-Nine/b99_cover_image.png";
 import BrooklynLogo from "../../../public/images/coverImages/Brooklyn-Nine-Nine/Brooklyn_Nine-Nine_Logo.png";
 import { Fade } from "../../common/Animation";
+import { Text } from "../../common/Text/Text";
+import { breakPoints_px } from "../../../constants";
 
 const HeroContentContainer = styled.div`
   width: 100vw;
@@ -14,7 +16,6 @@ const HeroContentContainer = styled.div`
   left: 0;
   right: 0;
   color: white;
-  opacity: 0.7;
 `;
 
 const HeroImage = styled(Image)`
@@ -33,13 +34,32 @@ const VideoPlayer = styled.video`
 const HeroBody = styled.div`
   display: flex;
   align-items: center;
+  background-color: none;
+  position: fixed;
+  top: 15vw;
+  z-index: +5;
+
+  padding-left: 3.5rem;
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    padding-left: 1.5rem;
+  }
+  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    padding-left: 1rem;
+  }
 `;
 
-export const TitleImage = styled(Image)``;
+const TitleImage = styled(Image)``;
 
-export const TitleImageWrapper = styled.div`
+const TitleImageWrapper = styled.div`
   width: 400px;
   height: auto;
+  margin-bottom: 3rem;
+`;
+
+const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
 `;
 /**
  * TODO:
@@ -76,6 +96,18 @@ const Hero = () => {
   return (
     <div>
       <HeroContentContainer>
+        <HeroBody>
+          <LeftContainer>
+            <TitleImageWrapper>
+              <TitleImage src={BrooklynLogo} />
+            </TitleImageWrapper>
+            <Text type="secondary" textShadow color="white" left>
+              Brilliant but immature Brooklyn detective Jake Peralta must learn
+              to follow the rules and be a team player when his squad gets an
+              exciting new captian
+            </Text>
+          </LeftContainer>
+        </HeroBody>
         {!isHeroVideoPlaying &&
           (!showVideoPlayer ? (
             <Fade>{RenderHeroImage()}</Fade>
@@ -97,11 +129,6 @@ const Hero = () => {
             }}
           ></VideoPlayer>
         )}
-        <HeroBody>
-          <TitleImageWrapper>
-            <TitleImage src={BrooklynLogo} />
-          </TitleImageWrapper>
-        </HeroBody>
       </HeroContentContainer>
     </div>
   );

@@ -7,6 +7,13 @@ import { MdPlayArrow } from "react-icons/md";
 export const MainWrapper = styled.div`
   background-color: black;
   height: 100vh;
+  padding-left: 3.5rem;
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    padding-left: 1.5rem;
+  }
+  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    padding-left: 1rem;
+  }
 `;
 
 //Header styles

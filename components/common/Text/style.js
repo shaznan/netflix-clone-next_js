@@ -22,6 +22,8 @@ export const LevelTwo = styled.p`
   font-weight: regular;
   text-align: ${({ left }) => (left ? "left" : "center")};
   margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
+  text-shadow: ${({ textShadow }) =>
+    textShadow ? "2px 2px rgba(0, 0, 0, 0.2)" : none};
 `;
 
 export const LevelTwoSmall = styled(LevelTwo)`
