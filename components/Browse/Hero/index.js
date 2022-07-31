@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Storage } from "aws-amplify";
 import Image from "next/image";
 import heroImage from "../../../public/images/coverImages/b99_cover_image.png";
+import { Fade } from "../../common/Animation";
 
 const HeroContentContainer = styled.div`
   width: 100vw;
@@ -49,16 +50,17 @@ const Hero = () => {
     getURL();
   }, []);
 
-  //   useEffect(() => {
-  //     videoRef.current.play();
-  //   }, []);
-  console.log(videoUrl, "vide url");
   return (
     <div>
       <HeroContentContainer>
-        {!isHeroVideoPlaying && (
-          <HeroImage src={heroImage} layout="responsive" />
-        )}
+        {!isHeroVideoPlaying &&
+          (!showVideoPlayer ? (
+            <Fade>
+              <HeroImage src={heroImage} layout="responsive" />
+            </Fade>
+          ) : (
+            <HeroImage src={heroImage} layout="responsive" />
+          ))}
 
         {showVideoPlayer && (
           <video
@@ -72,27 +74,11 @@ const Hero = () => {
               setIsHeroVideoPlaying(false);
               setShowVideoPlayer(false);
             }}
-            //   onLoadEnd={(e) => console.log(e, "ended")}
-            // className={classes.video}
-            // ref={ref => this.headerVideo}
           ></video>
         )}
-        {/* <Image
-          src="https://netflix-clone-project.s3.amazonaws.com/public-directory/Devices.png"
-          width="250"
-          height="70"
-        /> */}
       </HeroContentContainer>
     </div>
   );
 };
 
 export default Hero;
-
-// ref={videoRef}
-// width="500"
-// height="240"
-// autoplay={true}
-// muted
-// loop
-// src="https://netflix-clone-project.s3.amazonaws.com/public-directory/video-tv-0819.m4v"
