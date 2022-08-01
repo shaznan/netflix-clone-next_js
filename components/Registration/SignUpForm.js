@@ -65,7 +65,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
 
     if (!isEmailError && !isPasswordError) {
       signUp(inputEmailAddress, password);
-      Object.keys(userData)?.length && setStepCount(3);
+      Object.keys(userData || {})?.length && setStepCount(3);
     }
   };
 

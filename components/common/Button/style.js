@@ -46,3 +46,37 @@ export const WideBtn = styled(HeroBtn)`
     padding: 1.1rem 35%;
   }
 `;
+
+export const PlayMainBtn = styled.a`
+  background-color: white;
+  padding: 0.2rem 1.8rem;
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-right: ${({ mr }) => (mr ? `${mr}rem` : 0)};
+  margin-left: ${({ ml }) => (ml ? `${ml}rem` : 0)};
+  cursor: pointer;
+
+  // @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+  //   padding: 0.01rem 0.3rem;
+  //   font-size: 0.3rem;
+  // }
+
+  // @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+  //   padding: 0.05rem 0.8rem;
+  //   font-size: 0.3rem;
+  // }
+
+  @media (max-width: ${breakPoints_px.DESKTOP_SMALL}) {
+    font-size: 2vw;
+    padding: 0.5vw 2.5vw;
+  }
+`;
+
+export const PlaySecondaryBtn = styled(PlayMainBtn)`
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+`;

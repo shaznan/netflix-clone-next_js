@@ -16,12 +16,31 @@ export const LevelOne = styled.p`
   }
 `;
 
+export const LevelOneSmall = styled(LevelOne)`
+  @media (min-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 0.8rem;
+  }
+
+  @media (min-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    font-size: 1.1;
+  }
+
+  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: ${breakPoints_px.DESKTOP_SMALL}) {
+    font-size: 1.3rem;
+  }
+`;
+
 export const LevelTwo = styled.p`
   font-size: 1.2rem;
   color: ${({ color }) => (color ? color : "white")};
   font-weight: regular;
   text-align: ${({ left }) => (left ? "left" : "center")};
   margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
+  text-shadow: ${({ textShadow }) =>
+    textShadow ? "2px 2px rgba(0, 0, 0, 0.2)" : none};
 `;
 
 export const LevelTwoSmall = styled(LevelTwo)`

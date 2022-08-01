@@ -5,43 +5,42 @@ import {
   StyledBtnWithoutRadius,
   SimpleBtn,
   WideBtn,
+  PlayMainBtn,
+  PlaySecondaryBtn,
 } from "./style";
 import Link from "next/link";
 
-export const Button = ({
-  children,
-  href = "",
-  customType,
-  onClick = () => {},
-}) => {
+export const Button = ({ children, href = "", customType, ...props }) => {
   switch (customType) {
     case "primary":
       return (
         <Link href={href}>
-          <StyledBtn onClick={onClick}>{children}</StyledBtn>
+          <StyledBtn {...props}>{children}</StyledBtn>
         </Link>
       );
     case "heroBtn":
       return (
         <Link href={href}>
-          <HeroBtn onClick={onClick}>{children}</HeroBtn>
+          <HeroBtn {...props}>{children}</HeroBtn>
         </Link>
       );
     case "simplePrimary":
       return (
         <Link href={href}>
-          <StyledBtnWithoutRadius onClick={onClick}>
-            {children}
-          </StyledBtnWithoutRadius>
+          <StyledBtnWithoutRadius {...props}>{children}</StyledBtnWithoutRadius>
         </Link>
       );
     case "simple":
       return (
         <Link href={href}>
-          <SimpleBtn onClick={onClick}>{children}</SimpleBtn>
+          <SimpleBtn {...props}>{children}</SimpleBtn>
         </Link>
       );
     case "wide":
-      return <WideBtn onClick={onClick}>{children}</WideBtn>;
+      return <WideBtn {...props}>{children}</WideBtn>;
+    case "playMain":
+      return <PlayMainBtn {...props}>{children}</PlayMainBtn>;
+    case "playSecondary":
+      return <PlaySecondaryBtn {...props}>{children}</PlaySecondaryBtn>;
   }
 };
