@@ -6,10 +6,11 @@ import heroImage from "../../../public/images/coverImages/Brooklyn-Nine-Nine/b99
 import BrooklynLogo from "../../../public/images/coverImages/Brooklyn-Nine-Nine/Brooklyn_Nine-Nine_Logo.png";
 import { Fade } from "../../common/Animation";
 import { Text } from "../../common/Text/Text";
-import { breakPoints_px } from "../../../constants";
+import { breakPoints_px, breakPoints } from "../../../constants";
 import { Button } from "../../common/Button/Button";
 import { BsFillPlayFill } from "react-icons/bs";
 import { BiInfoCircle } from "react-icons/bi";
+import useScreenSize from "../../../hooks/useScreenSize";
 
 const HeroContentContainer = styled.div`
   width: 100vw;
@@ -54,10 +55,14 @@ const HeroBody = styled.div`
 const TitleImage = styled(Image)``;
 
 const TitleImageWrapper = styled.div`
-  width: ${({ isVideoPlaying }) => (isVideoPlaying ? "250px" : "400px")};
+  width: ${({ isVideoPlaying }) => (isVideoPlaying ? "15vw" : "20vw")};
   height: auto;
   margin-bottom: ${({ isVideoPlaying }) => (isVideoPlaying ? 0 : "3rem")};
-  transition: 2s linear;
+  transition: 1s ease-in-out;
+
+  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    margin-bottom: 0;
+  }
 `;
 
 const LeftContainer = styled.div`
@@ -73,10 +78,26 @@ const ButtonWrapper = styled.div`
 
 const PlayIcon = styled(BsFillPlayFill)`
   font-size: 3rem;
+
+  @media (max-width: ${breakPoints_px.DESKTOP_SMALL}) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 1rem;
+  }
 `;
 const InfoIcon = styled(BiInfoCircle)`
   font-size: 2rem;
   margin-right: 0.8rem;
+
+  @media (max-width: ${breakPoints_px.DESKTOP_SMALL}) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 1rem;
+  }
 `;
 /**
  * TODO:
@@ -90,6 +111,7 @@ const Hero = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [isHeroVideoPlaying, setIsHeroVideoPlaying] = useState(false);
   const [showVideoPlayer, setShowVideoPlayer] = useState(true);
+  const { width } = useScreenSize();
 
   //TODO: Need to create a seperate hook to getURL
   const getURL = async () => {
@@ -118,8 +140,8 @@ const Hero = () => {
             <TitleImageWrapper isVideoPlaying={isHeroVideoPlaying}>
               <TitleImage src={BrooklynLogo} />
             </TitleImageWrapper>
-            {!isHeroVideoPlaying && (
-              <Text type="primary" textShadow color="white" left>
+            {!isHeroVideoPlaying && width > breakPoints.TAB_SCREEN_SMALL && (
+              <Text type="primary-small" textShadow color="white" left>
                 Brilliant but immature Brooklyn detective Jake Peralta must
                 learn to follow the rules and be a team player when his squad
                 gets an exciting new captian

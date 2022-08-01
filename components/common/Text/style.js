@@ -16,6 +16,23 @@ export const LevelOne = styled.p`
   }
 `;
 
+export const LevelOneSmall = styled(LevelOne)`
+  @media (min-width: ${breakPoints_px.MOBILE_SCREEN}) {
+    font-size: 0.8rem;
+  }
+
+  @media (min-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    font-size: 1.1;
+  }
+
+  @media (min-width: ${breakPoints_px.TAB_SCREEN}) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: ${breakPoints_px.DESKTOP_SMALL}) {
+    font-size: 1.3rem;
+  }
+`;
+
 export const LevelTwo = styled.p`
   font-size: 1.2rem;
   color: ${({ color }) => (color ? color : "white")};
