@@ -60,16 +60,6 @@ export const PlayMainBtn = styled.a`
   margin-left: ${({ ml }) => (ml ? `${ml}rem` : 0)};
   cursor: pointer;
 
-  // @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-  //   padding: 0.01rem 0.3rem;
-  //   font-size: 0.3rem;
-  // }
-
-  // @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
-  //   padding: 0.05rem 0.8rem;
-  //   font-size: 0.3rem;
-  // }
-
   @media (max-width: ${breakPoints_px.DESKTOP_SMALL}) {
     font-size: 2vw;
     padding: 0.5vw 2.5vw;
