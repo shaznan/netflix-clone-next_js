@@ -9,6 +9,30 @@ import Image from "next/image";
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
+const StyledSwiper = styled(Swiper)`
+  width: 98vw;
+`;
+
+const StyledSwiperSlide = styled(SwiperSlide)`
+  cursor: pointer;
+  transition: all 450ms;
+  transform: center left;
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+  min-height: 0;
+  object-fit: contain;
+  &:hover {
+    transform: translate3d(6.5rem, 0, 0);
+    transform: scale(1.1) !important;
+  }
+`;
+
+const StyledThumbnailImageWrapper = styled.div`
+  height: auto;
+  width: 341px;
+  object-fit: contain;
+  border-radius: 5px;
+`;
 const DisplayMovieRow = ({
   title = "shaznan",
   isNetflixMovies = "true",
@@ -17,31 +41,6 @@ const DisplayMovieRow = ({
 }) => {
   //   const [windowDimensions] = useViewport();
   const { width } = useScreenSize();
-
-  const StyledSwiper = styled(Swiper)`
-    width: 98vw;
-  `;
-
-  const StyledSwiperSlide = styled(SwiperSlide)`
-    cursor: pointer;
-    transition: all 450ms;
-    transform: center left;
-    padding-top: 3.5rem;
-    padding-bottom: 4rem;
-    min-height: 0;
-    object-fit: contain;
-    // &:hover {
-    //   transform: translate3d(6.5rem, 0, 0);
-    //   transform: scale(1.1) !important;
-    // }
-  `;
-
-  const StyledThumbnailImageWrapper = styled.div`
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    border-radius: 5px;
-  `;
 
   return (
     <>
@@ -83,10 +82,21 @@ const DisplayMovieRow = ({
         >
           <StyledThumbnailImageWrapper>
             <Image
-              src="https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg"
-              width="100%"
-              height="100%"
+              src="https://netflix-clone-project.s3.amazonaws.com/public-directory/test/Project+Pictures/thumbnail__+deadToMe.jpg"
+              width="346px"
+              height="192px"
             />
+            <Image
+              src="https://netflix-clone-project.s3.amazonaws.com/public-directory/test/Project+Pictures/thumbnail__+deadToMe.jpg"
+              width="346px"
+              height="192px"
+            />
+            {/* <Image
+              src="https://netflix-clone-project.s3.amazonaws.com/public-directory/test/Project+Pictures/thumbnail__bigMouth.jpg"
+              //   width="100%"
+              //   height="100%"
+              layout="fixed"
+            /> */}
           </StyledThumbnailImageWrapper>
         </StyledSwiperSlide>
       </StyledSwiper>
