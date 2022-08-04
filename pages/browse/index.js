@@ -18,10 +18,10 @@ Storage.configure({ level: "public" });
 const Browse = () => {
   return (
     <MainWrapper>
+      {/* <Header /> */}
+      {/* <Hero /> */}
       <MovieThumbnailRow />
     </MainWrapper>
-    //   <Header />
-    //   <Hero />
   );
 };
 
