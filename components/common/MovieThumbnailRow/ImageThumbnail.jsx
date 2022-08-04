@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { SwiperSlide } from "swiper/react";
 
 const StyledThumbnailImageWrapper = styled.div`
   transition: all 450ms;
@@ -11,13 +12,39 @@ const StyledThumbnailImageWrapper = styled.div`
   }
 `;
 
-const StyledImage = styled(Image)``;
+const StyledSwiperSlide = styled(SwiperSlide)`
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  //   background: #fff;
+
+  //   /* Center slide text vertically */
+  //   display: -webkit-box;
+  //   display: -ms-flexbox;
+  //   display: -webkit-flex;
+  //   display: flex;
+  //   -webkit-box-pack: center;
+  //   -ms-flex-pack: center;
+  //   -webkit-justify-content: center;
+  //   justify-content: center;
+  //   -webkit-box-align: center;
+  //   -ms-flex-align: center;
+  //   -webkit-align-items: center;
+  //   align-items: center;
+`;
+
+const StyledImage = styled(Image)`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 
 const ImageThumbnail = ({ src, width, height }) => {
   return (
-    <StyledThumbnailImageWrapper>
+    <StyledSwiperSlide>
       <StyledImage src={src} width={width} height={height} />
-    </StyledThumbnailImageWrapper>
+    </StyledSwiperSlide>
   );
 };
 
