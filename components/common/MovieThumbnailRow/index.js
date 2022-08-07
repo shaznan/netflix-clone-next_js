@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import useScreenSize from "../../../hooks/useScreenSize";
@@ -9,6 +9,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { Text } from "../Text/Text";
+import { BiPlay } from "react-icons/bi";
+import { BsPlus } from "react-icons/bs";
+import { IoMdThumbsUp } from "react-icons/io";
+import { IoMdThumbsDown } from "react-icons/io";
+import { RiArrowDropDownLine } from "react-icons/ri";
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const StyledSwiper = styled(Swiper)`
@@ -44,6 +50,14 @@ const StyledImageWrapper = styled.div`
   }
 `;
 
+const ImageIconsWrapper = styled.div`
+  color: white;
+`;
+
+const MainIconsWrapper = styled.div``;
+
+const DropdownIconWrapper = styled.div``;
+
 const DisplayMovieRow = ({
   title = "Award-Winning US TV Comedies",
   isNetflixMovies = "true",
@@ -52,6 +66,7 @@ const DisplayMovieRow = ({
 }) => {
   //   const [windowDimensions] = useViewport();
   const { width } = useScreenSize();
+  const [isThumbnailOnFocus, setIsThumbnailOnFocus] = useState(false);
 
   const movies = [
     "https://netflix-clone-project.s3.amazonaws.com/public-directory/test/Project+Pictures/thumbnail__+deadToMe.jpg",
@@ -86,8 +101,23 @@ const DisplayMovieRow = ({
       >
         {movies?.map((movie) => (
           <SwiperSlide>
-            <StyledImageWrapper>
+            <StyledImageWrapper
+              onMouseEnter={() => setIsThumbnailOnFocus(true)}
+              onMouseLeave={() => setIsThumbnailOnFocus(false)}
+              isFocus={isThumbnailOnFocus}
+            >
               <Image src={movie} width="346px" height="192px" />
+              <ImageIconsWrapper>
+                <MainIconsWrapper>
+                  <BiPlay />
+                  <BsPlus />
+                  <IoMdThumbsUp />
+                  <IoMdThumbsDown />
+                </MainIconsWrapper>
+                <DropdownIconWrapper>
+                  <RiArrowDropDownLine />
+                </DropdownIconWrapper>
+              </ImageIconsWrapper>
             </StyledImageWrapper>
           </SwiperSlide>
         ))}
