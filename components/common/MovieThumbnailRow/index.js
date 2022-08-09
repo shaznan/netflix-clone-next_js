@@ -1,6 +1,12 @@
 import React, { Component, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectFade,
+} from "swiper";
 import useScreenSize from "../../../hooks/useScreenSize";
 import styled from "styled-components";
 import ImageThumbnail from "./ImageThumbnail";
@@ -10,6 +16,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { Text } from "../Text/Text";
 import Icon from "../Icon/index";
+import { Fade } from "../Animation";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
@@ -18,17 +25,27 @@ const StyledSwiper = styled(Swiper)`
   padding-top: 2rem;
   padding-bottom: 2rem;
   padding-left: 4rem;
+  position: relative;
 `;
 
 const StyledImageWrapper = styled.div`
-  transition: all 450ms;
+  -webkit-transition: all 0.2s 0s ease-in-out;
+  -moz-transition: all 0.2s 0s ease-in-out;
+  -o-transition: all 0.2s 0s ease-in-out;
+  transition: all 0.2s 0s ease-in-out;
   transform: center left;
+  background-color: black;
 
-  &:hover {
+  ${({ isFocus }) =>
+    isFocus &&
+    `&&& {
+    position: absolute;
+    top: 0;
     z-index: +5;
     transform: translate3d(6.5rem, 0, 0);
-    transform: scale(1.3) !important;
-  }
+    transform: scale(1.2);
+    cursor: pointer;
+  }`}
 `;
 
 const ImageIconsWrapper = styled.div`
@@ -57,7 +74,6 @@ const MatchTextWrapper = styled.div`
 
 const SlideFooter = styled.div`
   padding: 1rem 0.7rem 1.2rem 0.7rem;
-  background-color: black;
 `;
 
 const DisplayMovieRow = ({
@@ -68,7 +84,7 @@ const DisplayMovieRow = ({
 }) => {
   //   const [windowDimensions] = useViewport();
   const { width } = useScreenSize();
-  const [isThumbnailOnFocus, setIsThumbnailOnFocus] = useState(false);
+  const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
 
   const movies = [
     "https://netflix-clone-project.s3.amazonaws.com/public-directory/test/Project+Pictures/thumbnail__+deadToMe.jpg",
@@ -99,42 +115,50 @@ const DisplayMovieRow = ({
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        className="swiper"
       >
-        {movies?.map((movie) => (
+        {movies?.map((movie, key) => (
           <SwiperSlide>
             <StyledImageWrapper
-              onMouseEnter={() => setIsThumbnailOnFocus(true)}
-              onMouseLeave={() => setIsThumbnailOnFocus(false)}
-              isFocus={isThumbnailOnFocus}
+              onMouseEnter={() =>
+                setTimeout(() => {
+                  setThumbnailOnFocus(key);
+                }, [300])
+              }
+              onMouseLeave={() => setThumbnailOnFocus("")}
+              isFocus={ThumbnailOnFocus === key}
             >
               <Image src={movie} width="346px" height="192px" />
-              <SlideFooter>
-                <ImageIconsWrapper>
-                  <MainIconsWrapper>
-                    <Icon type="play" />
-                    <Icon type="plus" />
-                    <Icon type="thumbsUp" />
-                    <Icon type="thumbsDown" />
-                  </MainIconsWrapper>
-                  <DropdownIconWrapper>
-                    <Icon type="arrowDown" />
-                  </DropdownIconWrapper>
-                </ImageIconsWrapper>
-                <HighlightsWrapper>
-                  <Text type="small" bold color="#46d369" mr="0.5">
-                    97% Match
-                  </Text>
-                  <MatchTextWrapper>
-                    <Text type="small" bold>
-                      16+
-                    </Text>
-                  </MatchTextWrapper>
-                  <Text type="small" bold ml="0.5">
-                    7 Seasons
-                  </Text>
-                </HighlightsWrapper>
-              </SlideFooter>
+              {ThumbnailOnFocus === key && (
+                <Fade>
+                  <SlideFooter>
+                    <ImageIconsWrapper>
+                      <MainIconsWrapper>
+                        <Icon type="play" />
+                        <Icon type="plus" />
+                        <Icon type="thumbsUp" />
+                        <Icon type="thumbsDown" />
+                      </MainIconsWrapper>
+                      <DropdownIconWrapper>
+                        <Icon type="arrowDown" />
+                      </DropdownIconWrapper>
+                    </ImageIconsWrapper>
+                    <HighlightsWrapper>
+                      <Text type="small" bold color="#46d369" mr="0.5">
+                        97% Match
+                      </Text>
+                      <MatchTextWrapper>
+                        <Text type="small" bold>
+                          16+
+                        </Text>
+                      </MatchTextWrapper>
+                      <Text type="small" bold ml="0.5">
+                        7 Seasons
+                      </Text>
+                    </HighlightsWrapper>
+                  </SlideFooter>
+                </Fade>
+              )}
             </StyledImageWrapper>
           </SwiperSlide>
         ))}
