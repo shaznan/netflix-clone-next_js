@@ -8,6 +8,7 @@ export const MainWrapper = styled.div`
   background-color: black;
   height: 100vh;
   padding-left: 3.5rem;
+  overflow-x: hidden;
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     padding-left: 1.5rem;
   }

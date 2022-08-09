@@ -26,6 +26,7 @@ const StyledSwiper = styled(Swiper)`
   padding-bottom: 2rem;
   padding-left: 4rem;
   position: relative;
+  overflow: visible;
 `;
 
 const StyledImageWrapper = styled.div`
@@ -33,8 +34,9 @@ const StyledImageWrapper = styled.div`
   -moz-transition: all 0.2s 0s ease-in-out;
   -o-transition: all 0.2s 0s ease-in-out;
   transition: all 0.2s 0s ease-in-out;
-  transform: center left;
-  background-color: black;
+  -webkit-box-shadow: 0px -2px 25px -7px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 0px -2px 25px -7px rgba(0, 0, 0, 0.65);
+  box-shadow: 0px -2px 25px -7px rgba(0, 0, 0, 0.65);
 
   ${({ isFocus }) =>
     isFocus &&
@@ -42,7 +44,6 @@ const StyledImageWrapper = styled.div`
     position: absolute;
     top: 0;
     z-index: +5;
-    transform: translate3d(6.5rem, 0, 0);
     transform: scale(1.2);
     cursor: pointer;
   }`}
@@ -52,7 +53,6 @@ const ImageIconsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   color: white;
-  background-color: black;
 `;
 
 const MainIconsWrapper = styled.div`
@@ -74,6 +74,12 @@ const MatchTextWrapper = styled.div`
 
 const SlideFooter = styled.div`
   padding: 1rem 0.7rem 1.2rem 0.7rem;
+  background-color: black;
+`;
+
+const StyledImage = styled(Image)`
+  border-radius: ${({ active }) => (active ? "5px 5px 0 0" : "5px")};
+  opacity: ${({ active }) => (active ? "1" : "0.9")};
 `;
 
 const DisplayMovieRow = ({
@@ -107,7 +113,7 @@ const DisplayMovieRow = ({
       </Text>
       <StyledSwiper
         slidesPerView={6}
-        spaceBetween={0}
+        spaceBetween={10}
         slidesPerGroup={6}
         loop={true}
         pagination={{
@@ -120,15 +126,20 @@ const DisplayMovieRow = ({
         {movies?.map((movie, key) => (
           <SwiperSlide>
             <StyledImageWrapper
-              onMouseEnter={() =>
-                setTimeout(() => {
-                  setThumbnailOnFocus(key);
-                }, [300])
+              onMouseEnter={
+                () => setThumbnailOnFocus(key)
+                // setTimeout(() => {
+                // }, [100])
               }
               onMouseLeave={() => setThumbnailOnFocus("")}
               isFocus={ThumbnailOnFocus === key}
             >
-              <Image src={movie} width="346px" height="192px" />
+              <StyledImage
+                src={movie}
+                width="346px"
+                height="192px"
+                active={ThumbnailOnFocus === key}
+              />
               {ThumbnailOnFocus === key && (
                 <Fade>
                   <SlideFooter>
