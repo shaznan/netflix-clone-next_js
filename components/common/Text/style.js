@@ -53,6 +53,8 @@ export const LevelThree = styled(LevelTwo)`
   color: ${({ color }) => (color ? color : "white")};
   margin-bottom: ${({ mb }) => (mb ? `${mb}rem` : 0)};
   margin-top: ${({ mt }) => (mt ? `${mt}rem` : 0)};
+  margin-left: ${({ ml }) => (ml ? `${ml}rem` : 0)};
+  margin-right: ${({ mr }) => (mr ? `${mr}rem` : 0)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : "center")};
 
   @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
