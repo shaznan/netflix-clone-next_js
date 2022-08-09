@@ -6,9 +6,10 @@ import { MdPlayArrow } from "react-icons/md";
 
 export const MainWrapper = styled.div`
   background-color: black;
-  height: 100vh;
+  height: 100%;
   padding-left: 3.5rem;
   overflow-x: hidden;
+  position: relative;
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     padding-left: 1.5rem;
   }

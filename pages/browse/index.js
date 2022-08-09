@@ -4,6 +4,7 @@ import { MainWrapper } from "../../components/Browse/styles";
 import { Storage, Auth } from "aws-amplify";
 import Hero from "../../components/Browse/Hero/index";
 import MovieThumbnailRow from "../../components/common/MovieThumbnailRow";
+import MovieContainer from "../../containers/MovieContainer";
 
 Storage.configure({ level: "public" });
 
@@ -20,7 +21,7 @@ const Browse = () => {
     <MainWrapper>
       <Header />
       <Hero />
-      <MovieThumbnailRow />
+      <MovieContainer />
     </MainWrapper>
   );
 };
