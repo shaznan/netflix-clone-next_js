@@ -1,9 +1,17 @@
 import React from "react";
 import MovieThumbnailRow from "../components/common/MovieThumbnailRow/index";
 import styled from "styled-components";
+import { breakPoints_px } from "../constants";
 
 const Container = styled.div`
-  margin-top: 85vh;
+  margin-top: -10vw;
+  padding-left: 3.5rem;
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    padding-left: 1.5rem;
+  }
+  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    padding-left: 1rem;
+  }
 `;
 
 const MovieContainer = () => {
@@ -30,7 +38,7 @@ const MovieContainer = () => {
    */
   return (
     <Container>
-      <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
+      <MovieThumbnailRow movies={movies} title="Trending Now" />
       <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
     </Container>
   );

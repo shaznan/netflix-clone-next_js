@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import useScreenSize from "../../../hooks/useScreenSize";
@@ -19,23 +19,46 @@ import {
   SlideFooter,
   StyledImage,
 } from "./styles";
+import { breakPoints } from "../../../constants/index";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
-  //   const [windowDimensions] = useViewport();
   const { width } = useScreenSize();
   const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
 
+  const slidesPerView = useMemo(
+    () =>
+      width > breakPoints.STANDARD_DESKTOP_SCREEN
+        ? 6
+        : width > breakPoints.DESKTOP_SMALL
+        ? 5
+        : width > breakPoints.TAB_SCREEN
+        ? 4
+        : width > breakPoints.TAB_SCREEN_SMALL
+        ? 3
+        : width > breakPoints.MOBILE_SCREEN && 2,
+    [width]
+  );
+
+  const spaceBetween = useMemo(
+    () =>
+      width > breakPoints.DESKTOP_SMALL
+        ? 10
+        : width > breakPoints.TAB_SCREEN
+        ? 5
+        : 0,
+    [width]
+  );
+
   return (
     <>
-      <Text type="primary" bold>
+      <Text type="primary" bold style={{ position: "relative" }}>
         {title}
       </Text>
       <StyledSwiper
-        slidesPerView={6}
-        spaceBetween={10}
-        slidesPerGroup={6}
+        slidesPerView={slidesPerView}
+        spaceBetween={spaceBetween}
         loop={true}
         pagination={{
           clickable: true,

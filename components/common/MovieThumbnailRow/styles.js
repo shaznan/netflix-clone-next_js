@@ -5,18 +5,11 @@ import { breakPoints_px } from "../../../constants";
 
 export const StyledSwiper = styled(Swiper)`
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 2rem;
   padding-left: 4rem;
   position: relative;
   overflow: visible;
-  padding-left: 3.5rem;
-  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
-    padding-left: 1.5rem;
-  }
-  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
-    padding-left: 1rem;
-  }
 `;
 
 export const StyledImageWrapper = styled.div`
@@ -69,5 +62,8 @@ export const SlideFooter = styled.div`
 
 export const StyledImage = styled(Image)`
   border-radius: ${({ active }) => (active ? "5px 5px 0 0" : "5px")};
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    border-radius: 0;
+  }
   opacity: ${({ active }) => (active ? "1" : "0.9")};
 `;
