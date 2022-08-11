@@ -7,7 +7,7 @@ export const StyledSwiper = styled(Swiper)`
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 2rem;
-  padding-left: 4rem;
+  //   padding-left: 4rem;
   position: relative;
   overflow: visible;
 `;

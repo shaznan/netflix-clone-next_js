@@ -26,6 +26,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
   const { width } = useScreenSize();
   const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
+  const [showNavigation, setShowNavigation] = useState(false);
   const timerRef = useRef(null);
 
   const slidesPerView = useMemo(
@@ -48,8 +49,10 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
   );
 
   const handleOnMouseEnter = (key) => {
+    setShowNavigation(true);
     timerRef.current = setTimeout(() => {
       setThumbnailOnFocus(key);
+      setShowNavigation(false);
     }, 500);
   };
 
@@ -68,13 +71,9 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
         spaceBetween={spaceBetween}
         slidesPerGroup={slidesPerView}
         loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={!ThumbnailOnFocus}
+        navigation={showNavigation}
         modules={[Pagination, Navigation]}
         className="swiper"
-        onMouseEnter={() => console.log("entered")}
       >
         {movies?.map((movie, key) => (
           <SwiperSlide>
