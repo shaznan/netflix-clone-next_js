@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef } from "react";
 import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import useScreenSize from "../../../hooks/useScreenSize";
@@ -26,30 +26,37 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
   const { width } = useScreenSize();
   const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
+  const timerRef = useRef(null);
 
   const slidesPerView = useMemo(
     () =>
-      width > breakPoints.STANDARD_DESKTOP_SCREEN
-        ? 6
-        : width > breakPoints.DESKTOP_SMALL
-        ? 5
-        : width > breakPoints.TAB_SCREEN
-        ? 4
-        : width > breakPoints.TAB_SCREEN_SMALL
-        ? 3
-        : width > breakPoints.MOBILE_SCREEN && 2,
+      (width > breakPoints.STANDARD_DESKTOP_SCREEN && 6) ||
+      (width > breakPoints.DESKTOP_SMALL && 5) ||
+      (width > breakPoints.TAB_SCREEN && 4) ||
+      (width > breakPoints.TAB_SCREEN_SMALL && 3) ||
+      (width > breakPoints.MOBILE_SCREEN && 2) ||
+      2,
     [width]
   );
 
   const spaceBetween = useMemo(
     () =>
-      width > breakPoints.DESKTOP_SMALL
-        ? 10
-        : width > breakPoints.TAB_SCREEN
-        ? 5
-        : 0,
+      (width > breakPoints.DESKTOP_SMALL && 10) ||
+      (width > breakPoints.TAB_SCREEN && 5) ||
+      0,
     [width]
   );
+
+  const handleOnMouseEnter = (key) => {
+    timerRef.current = setTimeout(() => {
+      setThumbnailOnFocus(key);
+    }, 500);
+  };
+
+  const handleOnMouseLeave = () => {
+    timerRef.current && clearTimeout(timerRef.current);
+    setThumbnailOnFocus("");
+  };
 
   return (
     <>
@@ -59,19 +66,21 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
       <StyledSwiper
         slidesPerView={slidesPerView}
         spaceBetween={spaceBetween}
+        slidesPerGroup={slidesPerView}
         loop={true}
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        navigation={!ThumbnailOnFocus}
         modules={[Pagination, Navigation]}
         className="swiper"
+        onMouseEnter={() => console.log("entered")}
       >
         {movies?.map((movie, key) => (
           <SwiperSlide>
             <StyledImageWrapper
-              onMouseEnter={() => setThumbnailOnFocus(key)}
-              onMouseLeave={() => setThumbnailOnFocus("")}
+              onMouseEnter={() => handleOnMouseEnter(key)}
+              onMouseLeave={handleOnMouseLeave}
               isFocus={ThumbnailOnFocus === key}
             >
               <StyledImage
@@ -81,7 +90,7 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
                 active={ThumbnailOnFocus === key}
               />
               {ThumbnailOnFocus === key && (
-                <Fade>
+                <>
                   <SlideFooter>
                     <ImageIconsWrapper>
                       <MainIconsWrapper>
@@ -108,7 +117,7 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
                       </Text>
                     </HighlightsWrapper>
                   </SlideFooter>
-                </Fade>
+                </>
               )}
             </StyledImageWrapper>
           </SwiperSlide>
