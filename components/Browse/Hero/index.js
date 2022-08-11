@@ -15,11 +15,8 @@ import useScreenSize from "../../../hooks/useScreenSize";
 const HeroContentContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   color: white;
+  position: relative;
 `;
 
 const HeroImage = styled(Image)`
@@ -28,9 +25,6 @@ const HeroImage = styled(Image)`
 `;
 
 const VideoPlayer = styled.video`
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: auto;
 `;
@@ -39,7 +33,7 @@ const HeroBody = styled.div`
   display: flex;
   align-items: center;
   background-color: none;
-  position: fixed;
+  position: absolute;
   top: 15vw;
   z-index: +5;
 
@@ -103,8 +97,6 @@ const InfoIcon = styled(BiInfoCircle)`
  * TODO:
  * 1. create multiple hero images and videos
  */
-
-//  "Brilliant but immature Brooklyn detective Jake Peralta must learn to follow the rules and be a team player when his squad gets an exciting new captian"
 
 const Hero = () => {
   Storage.configure({ level: "public" });

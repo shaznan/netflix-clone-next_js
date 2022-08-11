@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Swiper } from "swiper/react";
 import Image from "next/image";
+import { breakPoints_px } from "../../../constants";
 
 export const StyledSwiper = styled(Swiper)`
   width: 100%;
@@ -9,6 +10,13 @@ export const StyledSwiper = styled(Swiper)`
   padding-left: 4rem;
   position: relative;
   overflow: visible;
+  padding-left: 3.5rem;
+  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+    padding-left: 1.5rem;
+  }
+  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
+    padding-left: 1rem;
+  }
 `;
 
 export const StyledImageWrapper = styled.div`

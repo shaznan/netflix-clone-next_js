@@ -20,8 +20,17 @@ const MovieContainer = () => {
     "https://netflix-clone-project.s3.amazonaws.com/public-directory/test/Project+Pictures/thumbnail__boJack_horseman.jpg",
     "https://netflix-clone-project.s3.amazonaws.com/public-directory/test/Project+Pictures/thumbnail__boJack_horseman.jpg",
   ];
+
+  //TODO:
+  /**
+   * show navigation arrow only when row is hovered, make it small, and scale it on hover
+   * bring the thumbnails to the left on initial render feels a bit off aligned
+   * add a seperate container or component for the hero section and make that height 100%
+   * scroll issue
+   */
   return (
     <Container>
+      <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
       <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
     </Container>
   );

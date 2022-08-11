@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   HeaderWrapper,
   MenuWrapper,
@@ -27,10 +27,22 @@ const Header = () => {
       payload: item,
     });
   };
+
+  const [isNavBarActive, setIsNavBarActive] = useState(false);
   const { width } = useScreenSize();
 
+  const changeNavBarActiveStatus = () => {
+    if (window.scrollY > 20) {
+      setIsNavBarActive(true);
+    } else {
+      setIsNavBarActive(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeNavBarActiveStatus);
+
   return (
-    <HeaderWrapper>
+    <HeaderWrapper active={isNavBarActive}>
       <Logo size="medium" />
       <HeaderItemsWrapper>
         {width > breakPoints.TAB_SCREEN ? (
