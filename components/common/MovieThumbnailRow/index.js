@@ -76,7 +76,7 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
         className="swiper"
       >
         {movies?.map((movie, key) => (
-          <SwiperSlide>
+          <SwiperSlide key={key}>
             <StyledImageWrapper
               onMouseEnter={() => handleOnMouseEnter(key)}
               onMouseLeave={handleOnMouseLeave}
