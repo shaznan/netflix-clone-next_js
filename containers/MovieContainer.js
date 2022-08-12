@@ -43,6 +43,9 @@ const MovieContainer = () => {
     <Container>
       <MovieThumbnailRow movies={movies} title="Trending Now" />
       <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
+      <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
+      <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
+      <MovieThumbnailRow movies={movies} title="Award-Winning US TV Comedies" />
     </Container>
   );
 };

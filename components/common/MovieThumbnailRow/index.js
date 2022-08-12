@@ -63,7 +63,7 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
 
   return (
     <>
-      <Text type="primary" bold style={{ position: "relative", zIndex: "+5" }}>
+      <Text type="primary" bold style={{ position: "relative", zIndex: "1" }}>
         {title}
       </Text>
       <StyledSwiper

@@ -17,9 +17,10 @@ export const StyledImageWrapper = styled.div`
   -moz-transition: all 0.2s 0s ease-in-out;
   -o-transition: all 0.2s 0s ease-in-out;
   transition: all 0.2s 0s ease-in-out;
-  -webkit-box-shadow: 0px -2px 25px -7px rgba(0, 0, 0, 0.65);
-  -moz-box-shadow: 0px -2px 25px -7px rgba(0, 0, 0, 0.65);
-  box-shadow: 0px -2px 25px -7px rgba(0, 0, 0, 0.65);
+  -webkit-box-shadow: 0px 0px 17px 8px rgba(0, 0, 0, 0.43);
+  -moz-box-shadow: 0px 0px 17px 8px rgba(0, 0, 0, 0.43);
+  box-shadow: 0px 0px 17px 8px rgba(0, 0, 0, 0.43);
+  cursor: pointer;
 
   ${({ isFocus }) =>
     isFocus &&
@@ -28,7 +29,6 @@ export const StyledImageWrapper = styled.div`
     top: 0;
     z-index: +5;
     transform: scale(1.2);
-    cursor: pointer;
   }`}
 `;
 
