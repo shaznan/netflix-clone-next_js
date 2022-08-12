@@ -39,3 +39,20 @@ a {
   box-sizing: border-box;
   font-size: 16px;
 }
+
+.swiper-button-next {
+  transform: scale(0.5);
+  color: white !important;
+}
+
+.swiper-button-next:hover {
+  transform: scale(0.8);
+}
+.swiper-button-prev:hover {
+  transform: scale(0.8);
+}
+
+.swiper-button-prev {
+  transform: scale(0.5);
+  color: white !important;
+}

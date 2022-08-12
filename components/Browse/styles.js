@@ -5,15 +5,9 @@ import { breakPoints, breakPoints_px } from "../../constants/index";
 import { MdPlayArrow } from "react-icons/md";
 
 export const MainWrapper = styled.div`
-  background-color: black;
-  height: 100vh;
-  padding-left: 3.5rem;
-  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
-    padding-left: 1.5rem;
-  }
-  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
-    padding-left: 1rem;
-  }
+  background-color: rgb(20, 20, 20);
+  overflow-x: hidden;
+  position: relative;
 `;
 
 //Header styles
@@ -33,15 +27,16 @@ export const HeaderWrapper = styled.div`
   @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
     padding: 0.8rem 1rem;
   }
+  transition: 0.3s ease-in-out;
   width: 100%;
   z-index: +5;
   background: rgb(0, 0, 0);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.7595413165266106) 0%,
-    rgba(0, 0, 0, 0) 100%,
-    rgba(0, 0, 0, 0) 100%
-  );
+
+  background: ${({ active }) =>
+    active
+      ? "rgb(20, 20, 20)"
+      : "linear-gradient(180deg,rgba(0, 0, 0, 0.7595413165266106) 0%,rgba(0, 0, 0, 0) 100%,rgba(0, 0, 0, 0) 100%)"};
+  z-index: 99;
 `;
 
 export const MenuWrapper = styled.div`
