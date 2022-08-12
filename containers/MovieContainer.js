@@ -4,8 +4,11 @@ import styled from "styled-components";
 import { breakPoints_px } from "../constants";
 
 const Container = styled.div`
-  margin-top: -10vw;
+  margin-top: -12vw;
   padding-left: 3.5rem;
+  @media (max-width: ${breakPoints_px.STANDARD_DESKTOP_SCREEN}) {
+    margin-top: -10vw;
+  }
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     padding-left: 1.5rem;
   }

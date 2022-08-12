@@ -65,5 +65,5 @@ export const StyledImage = styled(Image)`
   @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
     border-radius: 0;
   }
-  opacity: ${({ active }) => (active ? "1" : "0.9")};
+  opacity: 1;
 `;

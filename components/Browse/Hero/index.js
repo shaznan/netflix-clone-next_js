@@ -13,19 +13,37 @@ import { BiInfoCircle } from "react-icons/bi";
 import useScreenSize from "../../../hooks/useScreenSize";
 
 const HeroContentContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
   color: white;
   position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 0.8s;
+    background: rgb(20, 20, 20);
+    background: linear-gradient(
+      0deg,
+      rgba(20, 20, 20, 1) 0%,
+      rgba(20, 20, 20, 0.17690826330532217) 25%,
+      rgba(20, 20, 20, 0.008841036414565795) 51%,
+      rgba(20, 20, 20, 0) 65%,
+      rgba(20, 20, 20, 0) 100%
+    );
+    z-index: +1;
+  }
 `;
 
 const HeroImage = styled(Image)`
   width: 100%;
-  height: 100%;
+  height: auto;
 `;
 
 const VideoPlayer = styled.video`
   width: 100%;
+  display: ${({ active }) => (active ? "inline" : "none")};
   height: auto;
 `;
 
@@ -172,6 +190,7 @@ const Hero = () => {
               setIsHeroVideoPlaying(false);
               setShowVideoPlayer(false);
             }}
+            active={isHeroVideoPlaying}
           ></VideoPlayer>
         )}
       </HeroContentContainer>
