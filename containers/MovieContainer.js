@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MovieThumbnailRow from "../components/common/MovieThumbnailRow/index";
 import styled from "styled-components";
 import { breakPoints_px, movieSectionTitles } from "../constants";
+import { Storage } from "aws-amplify";
 
 const Container = styled.div`
   margin-top: -12vw;
@@ -35,6 +36,35 @@ const MovieContainer = () => {
   const formatTitle = (title) => {
     return title.replace(/_/g, " ");
   };
+
+  //   useEffect(() => {
+  //     first;
+
+  //     return () => {
+  //       second;
+  //     };
+  //   }, [third]);
+  const getBucketList = async () => {
+    Storage.configure({ level: "public" });
+
+    const requestConfig = {
+      customPrefix: {
+        public: "",
+        protected: "",
+        private: "",
+      },
+      level: "public",
+      cacheControl: "no-cache",
+    };
+
+    await Storage.list("MovieThumbnails/AwardWinning/")
+      .then((result) => console.log("Result:", result)) // {key: "test.txt"}
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getBucketList();
+  }, []);
 
   return (
     <Container>
