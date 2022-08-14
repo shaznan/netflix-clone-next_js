@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import useScreenSize from "../../../hooks/useScreenSize";
@@ -20,14 +20,58 @@ import {
   StyledImage,
 } from "./styles";
 import { breakPoints } from "../../../constants/index";
+import useHandleS3Bucket from "../../../hooks/useHandleS3Bucket";
+import { Storage } from "aws-amplify";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
+const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
+  console.log(title, "title");
   const { width } = useScreenSize();
   const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
   const [showNavigation, setShowNavigation] = useState(false);
   const timerRef = useRef(null);
+  const { getBucketUrl } = useHandleS3Bucket();
+  const [movieThumbnails, setMovieThumbnails] = useState([]);
+
+  /**
+   * once u get result then do a map and call the getURL hook -> return the url to a variable and push that to an array called movies
+   */
+
+  //  const getHeroCoverVideoUrl = async () => {
+  //   const videoUrl = await getBucketUrl(
+  //     `Brooklyn-Nine-Nine_trailer.mp4`,
+  //     "video/mp4",
+  //     false
+  //   );
+  //   setVideoUrl(videoUrl);
+  // };
+
+  const getThumbnailImages = async (result) => {
+    const imageUrlPromises = result?.map(async (fileKey) => {
+      return await getBucketUrl(fileKey, "image/jpeg", false);
+    });
+
+    const listOfThumbnailImageUrl = await Promise.all(imageUrlPromises);
+    console.log(listOfThumbnailImageUrl, "XXX");
+    setMovieThumbnails(listOfThumbnailImageUrl);
+  };
+
+  //Get list of bucket keys in s3 folder
+  const getBucketList = async (path) => {
+    console.log(path, "path");
+    try {
+      Storage.configure({ level: "public" });
+      const result = await Storage.list(path);
+      getThumbnailImages(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    path?.length && getBucketList(path);
+  }, []);
 
   const slidesPerView = useMemo(
     () =>
@@ -75,7 +119,7 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
         modules={[Pagination, Navigation]}
         className="swiper"
       >
-        {movies?.map((movie, key) => (
+        {movieThumbnails?.map((movie, key) => (
           <SwiperSlide key={key}>
             <StyledImageWrapper
               onMouseEnter={() => handleOnMouseEnter(key)}

@@ -44,21 +44,11 @@ const MovieContainer = () => {
   //       second;
   //     };
   //   }, [third]);
-  const getBucketList = async () => {
+  const getBucketList = async (path) => {
     Storage.configure({ level: "public" });
 
-    const requestConfig = {
-      customPrefix: {
-        public: "",
-        protected: "",
-        private: "",
-      },
-      level: "public",
-      cacheControl: "no-cache",
-    };
-
-    await Storage.list("MovieThumbnails/AwardWinning/")
-      .then((result) => console.log("Result:", result)) // {key: "test.txt"}
+    await Storage.list(path)
+      .then((result) => console.log("Result", result)) // {key: "test.txt"}
       .catch((err) => console.log(err));
   };
 
@@ -66,62 +56,71 @@ const MovieContainer = () => {
     getBucketList();
   }, []);
 
+  const movieCatergoryDetails = [
+    {
+      title: formatTitle(movieSectionTitles.TRENDING_NOW),
+      path: "MovieThumbnails/Trending_Now/",
+    },
+  ];
+
   return (
     <Container>
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.TRENDING_NOW)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.AWARD_WINNING_US_TV_COMEDIES)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.ONLY_ON_NETFLIX)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.HOLLYWOOD_MOVIES)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.COMEDIES)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.NEW_RELEASES)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.WATCH_TOGETHER_FOR_OLDER_KIDS)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.WATCH_IT_AGAIN)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.EXCITING_MOVIES)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.MOVIES_FROM_1990)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.AWARD_WINNING_FILMS)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.CRIME_COMEDIES)}
-      />
-      <MovieThumbnailRow
-        movies={movies}
-        title={formatTitle(movieSectionTitles.HOLLYWOOD_DRAMA_MOVIES)}
-      />
+      {movieCatergoryDetails.map((details, key) => (
+        <MovieThumbnailRow key={key} {...details} />
+      ))}
     </Container>
   );
 };
 
 export default MovieContainer;
+
+{
+  /* <MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.AWARD_WINNING_US_TV_COMEDIES)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.ONLY_ON_NETFLIX)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.HOLLYWOOD_MOVIES)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.COMEDIES)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.NEW_RELEASES)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.WATCH_TOGETHER_FOR_OLDER_KIDS)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.WATCH_IT_AGAIN)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.EXCITING_MOVIES)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.MOVIES_FROM_1990)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.AWARD_WINNING_FILMS)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.CRIME_COMEDIES)}
+/>
+<MovieThumbnailRow
+  movies={movies}
+  title={formatTitle(movieSectionTitles.HOLLYWOOD_DRAMA_MOVIES)}
+/> */
+}
