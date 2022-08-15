@@ -48,18 +48,17 @@ const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
   // };
 
   const getThumbnailImages = async (result) => {
-    const imageUrlPromises = result?.map(async (fileKey) => {
+    const customResult = result.map(({ key }) => key);
+    const imageUrlPromises = customResult?.map(async (fileKey) => {
       return await getBucketUrl(fileKey, "image/jpeg", false);
     });
 
     const listOfThumbnailImageUrl = await Promise.all(imageUrlPromises);
-    console.log(listOfThumbnailImageUrl, "XXX");
     setMovieThumbnails(listOfThumbnailImageUrl);
   };
 
   //Get list of bucket keys in s3 folder
   const getBucketList = async (path) => {
-    console.log(path, "path");
     try {
       Storage.configure({ level: "public" });
       const result = await Storage.list(path);
