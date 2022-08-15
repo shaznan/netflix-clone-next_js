@@ -34,19 +34,6 @@ const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
   const { getBucketUrl } = useHandleS3Bucket();
   const [movieThumbnails, setMovieThumbnails] = useState([]);
 
-  /**
-   * once u get result then do a map and call the getURL hook -> return the url to a variable and push that to an array called movies
-   */
-
-  //  const getHeroCoverVideoUrl = async () => {
-  //   const videoUrl = await getBucketUrl(
-  //     `Brooklyn-Nine-Nine_trailer.mp4`,
-  //     "video/mp4",
-  //     false
-  //   );
-  //   setVideoUrl(videoUrl);
-  // };
-
   const getThumbnailImages = async (result) => {
     const customResult = result.map(({ key }) => key);
     const imageUrlPromises = customResult?.map(async (fileKey) => {
