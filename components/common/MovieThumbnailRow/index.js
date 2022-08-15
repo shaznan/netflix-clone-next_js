@@ -26,7 +26,6 @@ import { Storage } from "aws-amplify";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
-  console.log(title, "title");
   const { width } = useScreenSize();
   const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
   const [showNavigation, setShowNavigation] = useState(false);

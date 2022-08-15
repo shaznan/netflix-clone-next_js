@@ -29,10 +29,9 @@ export const movieSectionTitles = {
   COMEDIES: "Comedies",
   NEW_RELEASES: "New_Releases",
   WATCH_TOGETHER_FOR_OLDER_KIDS: "Watch_Together_for_Older_Kids",
-  WATCH_IT_AGAIN: "Watch It Again",
   EXCITING_MOVIES: "Exciting_movies",
   MOVIES_FROM_1990: "Movies_from_the_1990's",
-  AWARD_WINNING_FILMS: "Award Winning Films",
-  CRIME_COMEDIES: "Crime Comedies",
-  HOLLYWOOD_DRAMA_MOVIES: "Hollywood Drama Movies",
+  AWARD_WINNING_FILMS: "Award_Winning_Films",
+  CRIME_COMEDIES: "Crime_Comedies",
+  HOLLYWOOD_DRAMA_MOVIES: "Hollywood_Drama_Movies",
 };
