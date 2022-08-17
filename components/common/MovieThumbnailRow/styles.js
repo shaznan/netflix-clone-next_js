@@ -7,29 +7,35 @@ export const StyledSwiper = styled(Swiper)`
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 2rem;
-  //   padding-left: 4rem;
   position: relative;
   overflow: visible;
 `;
 
 export const StyledImageWrapper = styled.div`
-  -webkit-transition: all 0.2s 0s ease-in-out;
-  -moz-transition: all 0.2s 0s ease-in-out;
-  -o-transition: all 0.2s 0s ease-in-out;
-  transition: all 0.2s 0s ease-in-out;
+  -webkit-transition: all 0.4s 0s ease-in-out;
+  -moz-transition: all 0.4s 0s ease-in-out;
+  -o-transition: all 0.4s 0s ease-in-out;
+  transition: all 0.4s 0s ease-in-out;
   -webkit-box-shadow: 0px 0px 17px 8px rgba(0, 0, 0, 0.43);
   -moz-box-shadow: 0px 0px 17px 8px rgba(0, 0, 0, 0.43);
   box-shadow: 0px 0px 17px 8px rgba(0, 0, 0, 0.43);
   cursor: pointer;
 
   ${({ isFocus }) =>
-    isFocus &&
-    `&&& {
+    isFocus
+      ? `&&& {
     position: absolute;
     top: 0;
     z-index: +5;
     transform: scale(1.2);
-  }`}
+    @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
+        transform: scale(1);
+        bottom:0;
+        left:0;
+        
+      }
+  }`
+      : ""}
 `;
 
 export const ImageIconsWrapper = styled.div`
