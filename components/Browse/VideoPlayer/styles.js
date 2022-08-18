@@ -167,6 +167,8 @@ export const Controlls = styled.div`
     }
 
     .info-video {
+      padding-top: 0.5rem;
+      margin-left: 50px;
       font-size: 16px;
       margin-top: -1px;
 
@@ -178,7 +180,7 @@ export const Controlls = styled.div`
 
       .info-secund {
         font-weight: lighter;
-        opacity: 0.5;
+        opacity: 0.9;
       }
     }
 

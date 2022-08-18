@@ -488,21 +488,7 @@ const VideoPlayer = ({ src, ref }) => {
         <section>
           {error && (
             <div>
-              <h1>{error}</h1>
-              {qualities.length > 1 && (
-                <div>
-                  <p>tryAccessingOtherQuality</p>
-                  <div className="links-error">
-                    {qualities.map((item, key) => (
-                      <div key={key} onClick={() => onChangeQuality(item.id)}>
-                        {item.prefix && <span>HD</span>}
-                        <span>{item.nome}</span>
-                        {item.playing && <FiX />}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <h1>Error Something went wrong </h1>
             </div>
           )}
         </section>
@@ -517,7 +503,6 @@ const VideoPlayer = ({ src, ref }) => {
       onDoubleClick={chooseFullScreen}
       fullPlayer={fullPlayer}
       hideVideo={!!error}
-      // fontFamily={fontFamily}
     >
       {(videoReady === false || (waitingBuffer === true && playing === true)) &&
         !error &&
@@ -528,7 +513,6 @@ const VideoPlayer = ({ src, ref }) => {
 
       {renderCloseVideo()}
 
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         ref={videoComponent}
         src={src}
@@ -538,7 +522,6 @@ const VideoPlayer = ({ src, ref }) => {
         onError={erroVideo}
         onEnded={onEndedFunction}
       />
-      {/* <track label="English" kind="subtitles" srcLang="en" src={subtitleMedia} default /> */}
 
       <Controlls
         show={showControls === true && videoReady === true && error === false}
@@ -659,8 +642,8 @@ const VideoPlayer = ({ src, ref }) => {
               )}
 
               <div className="item-control info-video">
-                <span className="info-first">{titleMedia}</span>
-                <span className="info-secund">{extraInfoMedia}</span>
+                <span className="info-first">{title}</span>
+                <span className="info-secund">{subTitle}</span>
               </div>
             </div>
 
@@ -701,108 +684,6 @@ const VideoPlayer = ({ src, ref }) => {
                       <SiSpeedtest size={"1.2em"} />
                     </span>
                   </IconPlayBackRate>
-                </div>
-              )}
-
-              {onNextClick && (
-                <div
-                  className="item-control"
-                  onMouseLeave={() => setShowDataNext(false)}
-                >
-                  {showDataNext === true && dataNext.title && (
-                    <ItemNext>
-                      <div>
-                        <div className="title">next episode</div>
-                        <div className="item" onClick={onNextClick}>
-                          <div className="bold">{dataNext.title}</div>
-                          {dataNext.description && (
-                            <div>{dataNext.description}</div>
-                          )}
-                        </div>
-                      </div>
-                      <div className="box-connector" />
-                    </ItemNext>
-                  )}
-
-                  <FaStepForward
-                    onClick={onNextClick}
-                    onMouseEnter={() => setShowDataNext(true)}
-                  />
-                </div>
-              )}
-
-              <div
-                className="item-control"
-                onMouseLeave={() => setShowReproductionList(false)}
-              >
-                {showReproductionList && (
-                  <ItemListReproduction>
-                    <div>
-                      <div className="title">playlist</div>
-                      <div
-                        ref={listReproduction}
-                        className="list-list-reproduction scroll-clean-player"
-                      >
-                        {reprodutionList.map((item, index) => (
-                          <div
-                            key={index}
-                            className={`item-list-reproduction ${
-                              item.playing && "selected"
-                            }`}
-                            onClick={() =>
-                              onClickItemListReproduction &&
-                              onClickItemListReproduction(item.id, item.playing)
-                            }
-                          >
-                            <div className="bold">
-                              <span style={{ marginRight: 15 }}>
-                                {index + 1}
-                              </span>
-                              {item.nome}
-                            </div>
-
-                            {item.percent && <div className="percent" />}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="box-connector" />
-                  </ItemListReproduction>
-                )}
-                {reprodutionList && reprodutionList.length > 1 && (
-                  <FaClone onMouseEnter={() => setShowReproductionList(true)} />
-                )}
-              </div>
-
-              {qualities && qualities.length > 1 && (
-                <div
-                  className="item-control"
-                  onMouseLeave={() => setShowQuality(false)}
-                >
-                  {showQuality === true && (
-                    <ItemListQuality>
-                      <div>
-                        {qualities &&
-                          qualities.map((item, key) => (
-                            <div
-                              key={key}
-                              onClick={() => {
-                                setShowQuality(false);
-                                onChangeQuality(item.id);
-                              }}
-                            >
-                              {item.prefix && <span>HD</span>}
-
-                              <span>{item.nome}</span>
-                              {item.playing && <FiCheck />}
-                            </div>
-                          ))}
-                      </div>
-                      <div className="box-connector" />
-                    </ItemListQuality>
-                  )}
-
-                  <FaCog onMouseEnter={() => setShowQuality(true)} />
                 </div>
               )}
 
