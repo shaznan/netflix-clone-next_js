@@ -45,6 +45,10 @@ a {
   color: white !important;
 }
 
+.swiper:hover {
+  z-index: +5;
+}
+
 .swiper-button-next:hover {
   transform: scale(0.8);
 }

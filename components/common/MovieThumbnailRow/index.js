@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import useScreenSize from "../../../hooks/useScreenSize";
@@ -20,14 +20,43 @@ import {
   StyledImage,
 } from "./styles";
 import { breakPoints } from "../../../constants/index";
+import useHandleS3Bucket from "../../../hooks/useHandleS3Bucket";
+import { Storage } from "aws-amplify";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
+const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
   const { width } = useScreenSize();
   const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
   const [showNavigation, setShowNavigation] = useState(false);
   const timerRef = useRef(null);
+  const { getBucketUrl } = useHandleS3Bucket();
+  const [movieThumbnails, setMovieThumbnails] = useState([]);
+
+  const getThumbnailImages = async (result) => {
+    const customResult = result.map(({ key }) => key);
+    const imageUrlPromises = customResult?.map(async (fileKey) => {
+      return await getBucketUrl(fileKey, "image/jpeg", false);
+    });
+
+    const listOfThumbnailImageUrl = await Promise.all(imageUrlPromises);
+    setMovieThumbnails(listOfThumbnailImageUrl);
+  };
+
+  //Get list of bucket keys in s3 folder
+  const getBucketList = async (path) => {
+    try {
+      Storage.configure({ level: "public" });
+      const result = await Storage.list(path);
+      getThumbnailImages(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    path?.length && getBucketList(path);
+  }, []);
 
   const slidesPerView = useMemo(
     () =>
@@ -63,7 +92,7 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
 
   return (
     <>
-      <Text type="primary" bold style={{ position: "relative", zIndex: "+5" }}>
+      <Text type="primary" bold style={{ position: "relative", zIndex: "1" }}>
         {title}
       </Text>
       <StyledSwiper
@@ -75,7 +104,7 @@ const DisplayMovieRow = ({ title, movies, selectMovieHandler }) => {
         modules={[Pagination, Navigation]}
         className="swiper"
       >
-        {movies?.map((movie, key) => (
+        {movieThumbnails?.map((movie, key) => (
           <SwiperSlide key={key}>
             <StyledImageWrapper
               onMouseEnter={() => handleOnMouseEnter(key)}

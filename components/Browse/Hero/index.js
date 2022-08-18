@@ -11,6 +11,7 @@ import { Button } from "../../common/Button/Button";
 import { BsFillPlayFill } from "react-icons/bs";
 import { BiInfoCircle } from "react-icons/bi";
 import useScreenSize from "../../../hooks/useScreenSize";
+import useHandleS3Bucket from "../../../hooks/useHandleS3Bucket";
 
 const HeroContentContainer = styled.div`
   color: white;
@@ -122,20 +123,19 @@ const Hero = () => {
   const [isHeroVideoPlaying, setIsHeroVideoPlaying] = useState(false);
   const [showVideoPlayer, setShowVideoPlayer] = useState(true);
   const { width } = useScreenSize();
+  const { getBucketUrl } = useHandleS3Bucket();
 
-  //TODO: Need to create a seperate hook to getURL
-  const getURL = async () => {
-    const result = await Storage.get(`Brooklyn-Nine-Nine_trailer.mp4`, {
-      download: false,
-      contentType: "video/mp4",
-      expires: 18000,
-    });
-
-    setVideoUrl(result);
+  const getHeroCoverVideoUrl = async () => {
+    const videoUrl = await getBucketUrl(
+      `Brooklyn-Nine-Nine_trailer.mp4`,
+      "video/mp4",
+      false
+    );
+    setVideoUrl(videoUrl);
   };
 
   useEffect(() => {
-    getURL();
+    getHeroCoverVideoUrl();
   }, []);
 
   const RenderHeroImage = () => (
