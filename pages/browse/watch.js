@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   max-height: 100vh;
 `;
 
-const videoplayer = () => {
+const Watch = () => {
   const [videoUrl, setVideoUrl] = useState("");
   const { getBucketUrl } = useHandleS3Bucket();
   const videoComponent = useRef(null);
@@ -38,4 +38,4 @@ const videoplayer = () => {
   );
 };
 
-export default videoplayer;
+export default Watch;

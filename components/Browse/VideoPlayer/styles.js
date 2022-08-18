@@ -83,16 +83,6 @@ export const Controlls = styled.div`
   padding: 10px;
   color: #fff;
   font-size: 1.5em;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.7) 20%,
-    rgba(0, 0, 0, 0) 40%,
-    rgba(0, 0, 0, 0) 60%,
-    rgba(0, 0, 0, 0.7) 80%,
-    rgba(0, 0, 0, 1) 100%
-  );
 
   .back {
     margin-bottom: auto;
@@ -148,6 +138,7 @@ export const Controlls = styled.div`
     margin: 20px 0;
     display: flex;
     justify-items: center;
+    color: white;
 
     .end {
       margin-left: auto;
@@ -161,6 +152,18 @@ export const Controlls = styled.div`
     .item-control {
       position: relative;
       margin: auto 15px;
+
+      .timeSkip {
+        cursor: pointer;
+        opacity: 0.9;
+        font-size: 25px;
+        transition: all 0.2s ease-out;
+
+        &:hover {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
     }
 
     .info-video {
@@ -181,7 +184,7 @@ export const Controlls = styled.div`
 
     svg {
       cursor: pointer;
-      opacity: 0.2;
+      opacity: 0.9;
       font-size: 25px;
       transition: all 0.2s ease-out;
 
@@ -277,13 +280,13 @@ export const VideoPreLoading = styled.div`
     align-items: center;
 
     h1 {
-      color: ${(props) => props.colorTitle};
+      color: white;
       font-size: 1.5em;
       font-weight: bold;
     }
 
     h2 {
-      color: ${(props) => props.colorSubTitle};
+      color: "white";
       font-size: 1.1em;
     }
 
@@ -363,7 +366,7 @@ export const StandyByInfo = styled.div`
     padding-left: 100px;
 
     h3 {
-      color: #fff;
+      color: rgba(255, 255, 255, 0.7);
       font-size: 1.1em;
       margin-bottom: 5px;
     }
@@ -371,12 +374,12 @@ export const StandyByInfo = styled.div`
     h1 {
       font-weight: bold;
       font-size: 3em;
-      color: ${(props) => props.primaryColor};
+      color: white;
       margin: 10px 0;
     }
 
     h2 {
-      color: ${(props) => props.secundaryColor};
+      color: rgba(255, 255, 255, 0.9);
       font-size: 20px;
       margin-top: -5px;
       font-weight: bold;
@@ -498,7 +501,7 @@ export const IconPlayBackRate = styled.div`
   }
 
   span {
-    opacity: 0.2;
+    opacity: 1;
     font-size: 25px;
     transition: all 0.2s ease-out;
 

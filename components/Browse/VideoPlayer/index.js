@@ -15,6 +15,11 @@ import {
   FaCompress,
   FaRedoAlt,
 } from "react-icons/fa";
+import { SiSpeedtest } from "react-icons/si";
+import forward10 from "../../../public/icons/forward.png";
+import backward10 from "../../../public/icons/backward.png";
+import Image from "next/image";
+
 import { FiCheck, FiX } from "react-icons/fi";
 import {
   Loading,
@@ -31,8 +36,8 @@ import {
 } from "./styles";
 
 const VideoPlayer = ({ src, ref }) => {
-  let title = false;
-  let subTitle = false;
+  let title = "Narcos Mexico";
+  let subTitle = "Gangstar paradise";
   let titleMedia = false;
   let extraInfoMedia = false;
 
@@ -99,7 +104,7 @@ const VideoPlayer = ({ src, ref }) => {
   const [showReproductionList, setShowReproductionList] = useState(false);
 
   const primaryColor = "red";
-  const secundaryColor = "yellow";
+  const secundaryColor = "white";
 
   const secondsToHms = (d) => {
     d = Number(d);
@@ -575,11 +580,23 @@ const VideoPlayer = ({ src, ref }) => {
               </div>
 
               <div className="item-control">
-                <FaUndoAlt onClick={() => previousSeconds(5)} />
+                <Image
+                  className="timeSkip"
+                  src={backward10}
+                  width="35px"
+                  height="35px"
+                  onClick={() => previousSeconds(5)}
+                />
               </div>
 
               <div className="item-control">
-                <FaRedoAlt onClick={() => nextSeconds(5)} />
+                <Image
+                  className="timeSkip"
+                  src={forward10}
+                  width="35px"
+                  height="35px"
+                  onClick={() => nextSeconds(5)}
+                />
               </div>
 
               {muted === false && (
@@ -604,7 +621,7 @@ const VideoPlayer = ({ src, ref }) => {
                       </div>
                     </div>
                   )}
-
+                  {/* render seperate volume icons to correspond to volume levels */}
                   {volume >= 60 && (
                     <FaVolumeUp
                       onMouseEnter={() => setShowControlVolume(true)}
@@ -680,8 +697,7 @@ const VideoPlayer = ({ src, ref }) => {
                     onMouseEnter={() => setShowPlaybackRate(true)}
                   >
                     <span>
-                      {playbackRate === "Normal" ? "1" : `${playbackRate}`}
-                      <small>x</small>
+                      <SiSpeedtest size={"1.2em"} />
                     </span>
                   </IconPlayBackRate>
                 </div>
