@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReactPlayer from "react-player/lazy";
 import useHandleS3Bucket from "../../hooks/useHandleS3Bucket";
 import styled from "styled-components";
+import VideoPlayer from "../../components/Browse/VideoPlayer";
 
 const Wrapper = styled.div`
   overflow: hidden;
@@ -12,6 +13,7 @@ const Wrapper = styled.div`
 const videoplayer = () => {
   const [videoUrl, setVideoUrl] = useState("");
   const { getBucketUrl } = useHandleS3Bucket();
+  const videoComponent = useRef(null);
   const fetchBucketUrl = async () => {
     const url = await getBucketUrl(
       "MovieTrailers/Award_Winning_US_TV_Comedies/narcos_mexico_trailer.mp4",
@@ -27,14 +29,11 @@ const videoplayer = () => {
 
   console.log(videoUrl, "video");
 
+  //TODO:
+  //https://github.com/Lucasmg37/react-netflix-player/blob/master/src/components/ReactNetflixPlayer/index.tsx
   return (
     <Wrapper>
-      <ReactPlayer
-        url={videoUrl}
-        controls={true}
-        width="100vw"
-        height="100vh"
-      />
+      <VideoPlayer src={videoUrl} ref={videoComponent} />
     </Wrapper>
   );
 };
