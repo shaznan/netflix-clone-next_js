@@ -493,8 +493,8 @@ const VideoPlayer = ({ src, ref }) => {
                 <div>
                   <p>tryAccessingOtherQuality</p>
                   <div className="links-error">
-                    {qualities.map((item) => (
-                      <div onClick={() => onChangeQuality(item.id)}>
+                    {qualities.map((item, key) => (
+                      <div key={key} onClick={() => onChangeQuality(item.id)}>
                         {item.prefix && <span>HD</span>}
                         <span>{item.nome}</span>
                         {item.playing && <FiX />}
@@ -674,8 +674,9 @@ const VideoPlayer = ({ src, ref }) => {
                     <ItemPlaybackRate>
                       <div>
                         <div className="title">speeds</div>
-                        {playbackRateOptions.map((item) => (
+                        {playbackRateOptions.map((item, key) => (
                           <div
+                            key={key}
                             className="item"
                             onClick={() => onChangePlayBackRate(item)}
                           >
@@ -744,6 +745,7 @@ const VideoPlayer = ({ src, ref }) => {
                       >
                         {reprodutionList.map((item, index) => (
                           <div
+                            key={index}
                             className={`item-list-reproduction ${
                               item.playing && "selected"
                             }`}
@@ -781,8 +783,9 @@ const VideoPlayer = ({ src, ref }) => {
                     <ItemListQuality>
                       <div>
                         {qualities &&
-                          qualities.map((item) => (
+                          qualities.map((item, key) => (
                             <div
+                              key={key}
                               onClick={() => {
                                 setShowQuality(false);
                                 onChangeQuality(item.id);
