@@ -1,18 +1,18 @@
 import React from "react";
 import { Play, Plus, ThumbsUp, ThumbsDown, ArrowDown } from "./styles";
 
-const Icon = ({ type }) => {
+const Icon = ({ type, ...props }) => {
   switch (type) {
     case "play":
-      return <Play />;
+      return <Play {...props} />;
     case "plus":
-      return <Plus />;
+      return <Plus {...props} />;
     case "thumbsUp":
-      return <ThumbsUp />;
+      return <ThumbsUp {...props} />;
     case "thumbsDown":
-      return <ThumbsDown />;
+      return <ThumbsDown {...props} />;
     case "arrowDown":
-      return <ArrowDown />;
+      return <ArrowDown {...props} />;
   }
 };
 
