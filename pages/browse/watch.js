@@ -5,6 +5,7 @@ import styled from "styled-components";
 import VideoPlayer from "../../components/Browse/VideoPlayer";
 import { useRouter } from "next/router";
 import { removeUnderScoreFromString } from "../../helper";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
   overflow: hidden;
@@ -17,6 +18,7 @@ const Watch = () => {
   const [videoUrl, setVideoUrl] = useState("");
   const { getBucketUrl } = useHandleS3Bucket();
   const videoComponent = useRef(null);
+  const { userData } = useSelector((state) => state?.Auth);
   const {
     query: { fileName },
   } = router;
