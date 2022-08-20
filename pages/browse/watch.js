@@ -17,10 +17,14 @@ const Watch = () => {
   const [videoUrl, setVideoUrl] = useState("");
   const { getBucketUrl } = useHandleS3Bucket();
   const videoComponent = useRef(null);
-
   const {
     query: { fileName },
   } = router;
+
+  const isUserAuthenticated = useMemo(
+    () => userData?.signInUserSession?.idToken?.jwtToken?.length,
+    [JSON.stringify(userData)]
+  );
 
   const fetchBucketUrl = async () => {
     const url = await getBucketUrl(
@@ -42,6 +46,11 @@ const Watch = () => {
       ),
     [fileName]
   );
+
+  if (!isUserAuthenticated) {
+    router.push("/");
+    return;
+  }
 
   return (
     <Wrapper>
