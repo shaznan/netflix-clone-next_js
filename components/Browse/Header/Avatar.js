@@ -51,7 +51,7 @@ const Dropdown = styled.div`
   }
 `;
 
-const Avatar = ({ size = "large" }) => {
+const Avatar = ({ size = "large", signoutHandler }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   //TODO: Need to handle showDropdown
@@ -62,7 +62,7 @@ const Avatar = ({ size = "large" }) => {
       <RenderIcon onClick={() => setShowDropdown((prevState) => !prevState)} />
       {showDropdown && (
         <Dropdown onMouseLeave={() => setShowDropdown(false)}>
-          <span>Sign out</span>
+          <span onClick={signoutHandler}>Sign out</span>
         </Dropdown>
       )}
     </>
