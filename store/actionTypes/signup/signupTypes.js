@@ -1,1 +1,2 @@
 export const SET_STEP_COUNT = "SET_STEP_COUNT";
+export const CLEAR_STEP_COUNT = "CLEAR_STEP_COUNT";

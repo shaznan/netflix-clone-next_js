@@ -74,7 +74,7 @@ const Signin = () => {
     isPasswordError,
     setisEmailError,
     setisPasswordError,
-    type: "signin",
+    InputType: "signin",
   };
 
   const onSubmit = (e) => {

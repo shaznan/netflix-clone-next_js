@@ -89,7 +89,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
     isPasswordError,
     setisEmailError,
     setisPasswordError,
-    type: "signup",
+    inputType: "signup",
   };
 
   return (
