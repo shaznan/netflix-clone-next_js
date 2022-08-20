@@ -6,16 +6,22 @@ import {
 } from "../../Landing/style";
 import Logo from "../Logo/Logo";
 import { headerTheme } from "../../../constants";
-
+import { useRouter } from "next/router";
 import { Button } from "../Button/Button";
 
 const Header = ({ theme = headerTheme.DARK, type = "" }) => {
+  const router = useRouter();
+
+  const redirectHandler = () => {
+    router.push("/");
+  };
+
   return (
     <HeaderContainer
       borderBottom={theme === headerTheme.LIGHT ? "1px solid #e6e6e6" : ""}
     >
       <HeaderWrapper>
-        <Logo />
+        <Logo onClick={redirectHandler} />
         {type !== "signin" && (
           <HeaderBtnWrapper>
             <Button
