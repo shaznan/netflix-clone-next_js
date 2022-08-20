@@ -3,6 +3,7 @@ import Image from "next/image";
 import NetflixLogo from "../../../public/images/Netflix_logo.png";
 import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
+import { useRouter } from "next/router";
 
 const RenderImage = ({ className, ...props }) => (
   <div className={className} {...props}>
@@ -27,7 +28,9 @@ const StyledImage = styled(RenderImage)`
 `;
 
 const Logo = ({ size = "large", ...props }) => {
-  return <StyledImage size={size} {...props} />;
+  const router = useRouter();
+  const redirectHandler = () => router.push("/");
+  return <StyledImage size={size} onClick={redirectHandler} {...props} />;
 };
 
 export default Logo;
