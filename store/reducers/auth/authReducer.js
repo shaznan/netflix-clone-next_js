@@ -8,6 +8,7 @@ import {
   CLEAR_SIGNUP_STATE,
 } from "../../actionTypes/auth/authTypes";
 
+//TODO: Implement protected routes:  https://dev.to/seven/how-to-implement-protected-routes-in-nextjs-1m50
 const initialState = {
   userData: null,
   isSubmitError: false,
@@ -52,6 +53,7 @@ const Auth = (state = initialState, action) => {
         isInputEmailError: false,
         isInputPasswordError: false,
         inputPassword: "",
+        inputEmailAddress: "",
       };
     default:
       return state;
