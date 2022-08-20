@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/common/Header/Header";
 import {
   MainWrapper,
@@ -21,12 +21,14 @@ import { Button } from "../../components/common/Button/Button";
 import { Text } from "../../components/common/Text/Text";
 import Link from "next/link";
 import useAuth from "../../hooks/useAuth";
+import { useRouter } from "next/router";
 
 const Signin = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { signIn } = useAuth();
   const {
-    email,
+    userData,
     isSubmitError,
     submitErrorMsg,
     inputEmailAddress,
@@ -83,6 +85,20 @@ const Signin = () => {
     }
   };
 
+  useEffect(() => {
+    const isUserAuthenticated =
+      userData?.signInUserSession?.idToken?.jwtToken?.length;
+    isUserAuthenticated && router.push("/browse");
+  }, [JSON.stringify(userData)]);
+
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: CLEAR_SIGNUP_STATE,
+      });
+    };
+  }, []);
+
   return (
     <MainWrapper>
       <Header type="signin" />
@@ -112,7 +128,7 @@ const Signin = () => {
           >
             New to Netflix?
             <CustomTextWrapper>
-              <Link href="/registration/signup"> Sign up now.</Link>
+              <Link href="/signup/registration"> Sign up now.</Link>
             </CustomTextWrapper>
           </Text>
 
