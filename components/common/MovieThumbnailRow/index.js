@@ -99,8 +99,6 @@ const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
   };
 
   const navigateHandler = (movieUrl) => {
-    console.log("hello");
-
     const redirectPath = "/browse/watch";
     const fileName = getMovieInfoFromUrl(movieUrl);
     router.push(

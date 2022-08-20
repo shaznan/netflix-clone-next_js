@@ -1,117 +1,30 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+
 import { Storage } from "aws-amplify";
-import Image from "next/image";
+
 import heroImage from "../../../public/images/coverImages/Brooklyn-Nine-Nine/b99_cover_image.png";
 import BrooklynLogo from "../../../public/images/coverImages/Brooklyn-Nine-Nine/Brooklyn_Nine-Nine_Logo.png";
 import { Fade } from "../../common/Animation";
 import { Text } from "../../common/Text/Text";
-import { breakPoints_px, breakPoints } from "../../../constants";
+import { breakPoints } from "../../../constants";
 import { Button } from "../../common/Button/Button";
-import { BsFillPlayFill } from "react-icons/bs";
-import { BiInfoCircle } from "react-icons/bi";
+
 import useScreenSize from "../../../hooks/useScreenSize";
 import useHandleS3Bucket from "../../../hooks/useHandleS3Bucket";
+import { useRouter } from "next/router";
+import {
+  HeroContentContainer,
+  HeroImage,
+  VideoPlayer,
+  HeroBody,
+  TitleImage,
+  TitleImageWrapper,
+  LeftContainer,
+  ButtonWrapper,
+  PlayIcon,
+  InfoIcon,
+} from "./styles";
 
-const HeroContentContainer = styled.div`
-  color: white;
-  position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    transition: all 0.8s;
-    background: rgb(20, 20, 20);
-    background: linear-gradient(
-      0deg,
-      rgba(20, 20, 20, 1) 0%,
-      rgba(20, 20, 20, 0.17690826330532217) 25%,
-      rgba(20, 20, 20, 0.008841036414565795) 51%,
-      rgba(20, 20, 20, 0) 65%,
-      rgba(20, 20, 20, 0) 100%
-    );
-    z-index: +1;
-  }
-`;
-
-const HeroImage = styled(Image)`
-  width: 100%;
-  height: auto;
-`;
-
-const VideoPlayer = styled.video`
-  width: 100%;
-  display: ${({ active }) => (active ? "inline" : "none")};
-  height: auto;
-`;
-
-const HeroBody = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: none;
-  position: absolute;
-  top: 15vw;
-  z-index: +5;
-
-  padding-left: 3.5rem;
-  @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
-    padding-left: 1.5rem;
-  }
-  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
-    padding-left: 1rem;
-  }
-`;
-
-const TitleImage = styled(Image)``;
-
-const TitleImageWrapper = styled.div`
-  width: ${({ isVideoPlaying }) => (isVideoPlaying ? "15vw" : "20vw")};
-  height: auto;
-  margin-bottom: ${({ isVideoPlaying }) => (isVideoPlaying ? 0 : "3rem")};
-  transition: 1s ease-in-out;
-
-  @media (max-width: ${breakPoints_px.TAB_SCREEN_SMALL}) {
-    margin-bottom: 0;
-  }
-`;
-
-const LeftContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 700px;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  margin-top: 1.5rem;
-`;
-
-const PlayIcon = styled(BsFillPlayFill)`
-  font-size: 3rem;
-
-  @media (max-width: ${breakPoints_px.DESKTOP_SMALL}) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    font-size: 1rem;
-  }
-`;
-const InfoIcon = styled(BiInfoCircle)`
-  font-size: 2rem;
-  margin-right: 0.8rem;
-
-  @media (max-width: ${breakPoints_px.DESKTOP_SMALL}) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: ${breakPoints_px.MOBILE_SCREEN}) {
-    font-size: 1rem;
-  }
-`;
 /**
  * TODO:
  * 1. create multiple hero images and videos
@@ -124,6 +37,7 @@ const Hero = () => {
   const [showVideoPlayer, setShowVideoPlayer] = useState(true);
   const { width } = useScreenSize();
   const { getBucketUrl } = useHandleS3Bucket();
+  const router = useRouter();
 
   const getHeroCoverVideoUrl = async () => {
     const videoUrl = await getBucketUrl(
@@ -142,6 +56,19 @@ const Hero = () => {
     <HeroImage src={heroImage} layout="responsive" />
   );
 
+  const redirectHandler = () => {
+    const redirectPath = "/browse/watch";
+    //TODO: Need to make fileName dynamic based on which movie is previewing in hero slide
+    const fileName = `Brooklyn-Nine-Nine_trailer`;
+    router.push(
+      {
+        pathname: redirectPath,
+        query: { fileName },
+      },
+      redirectPath
+    );
+  };
+
   return (
     <div>
       <HeroContentContainer>
@@ -158,7 +85,7 @@ const Hero = () => {
               </Text>
             )}
             <ButtonWrapper>
-              <Button customType="playMain" mr="1">
+              <Button customType="playMain" mr="1" onClick={redirectHandler}>
                 <PlayIcon />
                 Play
               </Button>
