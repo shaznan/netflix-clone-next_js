@@ -9,8 +9,10 @@ import {
   TickIcon,
   BenefitsWrapper,
 } from "./styles";
+import { useRouter } from "next/router";
 
 const ChooseYourPlan = ({ stepCount, setStepCount }) => {
+  const router = useRouter();
   const benefits = [
     "No commitments, cancel anytime.",
     "Everything on Netflix for one low price.",
@@ -34,8 +36,9 @@ const ChooseYourPlan = ({ stepCount, setStepCount }) => {
         Enjoy your free plan.
       </Title>
       {benefits.map((item, key) => renderBenefits(item, key))}
-      <Button customType="wide" onClick={() => setStepCount(4)}>
-        Finish
+      {/* TODO: Find out a way to signin user to aws when signup process is completed and redirect to browse page */}
+      <Button customType="wide" onClick={() => router.push("/signin")}>
+        Sign In to continue
       </Button>
     </ChooseYourPlanWrapper>
   );

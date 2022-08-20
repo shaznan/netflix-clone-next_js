@@ -11,7 +11,7 @@ const EmailAndPasswordForm = ({
   isPasswordError,
   setisEmailError,
   setisPasswordError,
-  type,
+  inputType,
 }) => {
   const validateEmail = (email) => {
     const emailValidation = String(email)
@@ -45,11 +45,12 @@ const EmailAndPasswordForm = ({
         onChange={setEmail}
         onBlur={() => validateEmail(inputEmailAddress)}
         borderColor={isEmailError && "red"}
-        type={type}
+        inputType={inputType}
+        type="email"
       />
       {isEmailError ? (
         <ErrorMessage
-          color={type === "signin" ? "#e87c03" : "red"}
+          color={inputType === "signin" ? "#e87c03" : "red"}
           fontSize="14px"
         >
           Please enter a valid email
@@ -58,16 +59,17 @@ const EmailAndPasswordForm = ({
       <TextInput
         label="Add a password"
         value={password}
+        type="password"
         onChange={setPassword}
         mb={isPasswordError ? "0" : "1"}
         mt="1"
-        type={type}
+        inputType={inputType}
         borderColor={isPasswordError && "red"}
         onBlur={() => validatePassword(password)}
       />
       {isPasswordError ? (
         <ErrorMessage
-          color={type === "signin" ? "#e87c03" : "red"}
+          color={inputType === "signin" ? "#e87c03" : "red"}
           fontSize="14px"
           mb={isPasswordError ? "1" : "0"}
         >

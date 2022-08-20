@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
 
-const isTypeSignIn = (type) => type === "signin";
+const isInputTypeSignIn = (InputType) => InputType === "signin";
 
 export const InputGroup = styled.div`
   position: relative;
   margin-bottom: ${({ mb }) => `${mb}rem`};
   margin-top: ${({ mt }) => `${mt}rem`};
-  color: ${({ type }) => (isTypeSignIn(type) ? "grey" : "black")};
+  color: ${({ InputType }) =>
+    isInputTypeSignIn(InputType) ? "grey" : "black"};
 `;
 
 export const InputLabel = styled.label`
@@ -23,12 +24,15 @@ export const InputLabel = styled.label`
 export const InputField = styled.input`
   outline: none;
   padding: 25px 12px 16px 12px;
-  color: ${({ type }) => (isTypeSignIn(type) ? "grey" : "black")};
+  color: ${({ InputType }) =>
+    isInputTypeSignIn(InputType) ? "grey" : "black"};
 
-  background-color: ${({ type }) => (isTypeSignIn(type) ? "#333" : "white")};
-  border-radius: ${({ type }) => (isTypeSignIn(type) ? "4px" : "0")};
-  border: ${({ borderColor, type }) =>
-    isTypeSignIn(type)
+  background-color: ${({ InputType }) =>
+    isInputTypeSignIn(InputType) ? "#333" : "white"};
+  border-radius: ${({ InputType }) =>
+    isInputTypeSignIn(InputType) ? "4px" : "0"};
+  border: ${({ borderColor, InputType }) =>
+    isInputTypeSignIn(InputType)
       ? "none"
       : borderColor
       ? `1px solid ${borderColor}`
@@ -44,7 +48,8 @@ export const InputField = styled.input`
     font-size: ${({ value }) => (value?.length ? "12px" : "16px")};
 
     font-weight: ${({ value }) => (value?.length ? "bold" : "normal")};
-    background-color: ${({ type }) => (isTypeSignIn(type) ? "#333" : "white")};
+    background-color: ${({ InputType }) =>
+      isInputTypeSignIn(InputType) ? "#333" : "white"};
 
     @media (max-width: ${breakPoints_px.TAB_SCREEN}) {
       left: 28%;

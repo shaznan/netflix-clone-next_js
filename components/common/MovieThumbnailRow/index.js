@@ -22,11 +22,13 @@ import {
 import { breakPoints } from "../../../constants/index";
 import useHandleS3Bucket from "../../../hooks/useHandleS3Bucket";
 import { Storage } from "aws-amplify";
+import { useRouter } from "next/router";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
   const { width } = useScreenSize();
+  const router = useRouter();
   const [ThumbnailOnFocus, setThumbnailOnFocus] = useState("");
   const [showNavigation, setShowNavigation] = useState(false);
   const timerRef = useRef(null);
@@ -90,6 +92,25 @@ const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
     setThumbnailOnFocus("");
   };
 
+  const getMovieInfoFromUrl = (url) => {
+    const splitUrl = url.split("/");
+    const fileKey = splitUrl[6].split(".")[0];
+    return fileKey.split("___")[0];
+  };
+
+  const navigateHandler = (movieUrl) => {
+    const redirectPath = "/browse/watch";
+    const fileName = getMovieInfoFromUrl(movieUrl);
+    router.push(
+      {
+        pathname: redirectPath,
+        query: { fileName },
+        // shallow: true,
+      },
+      redirectPath
+    );
+  };
+
   return (
     <>
       <Text type="primary" bold style={{ position: "relative", zIndex: "1" }}>
@@ -122,7 +143,10 @@ const DisplayMovieRow = ({ title, path, selectMovieHandler }) => {
                   <SlideFooter>
                     <ImageIconsWrapper>
                       <MainIconsWrapper>
-                        <Icon type="play" />
+                        <Icon
+                          type="play"
+                          onClick={() => navigateHandler(movie)}
+                        />
                         <Icon type="plus" />
                         <Icon type="thumbsUp" />
                         <Icon type="thumbsDown" />

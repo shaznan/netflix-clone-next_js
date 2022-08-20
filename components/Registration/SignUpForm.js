@@ -65,9 +65,12 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
 
     if (!isEmailError && !isPasswordError) {
       signUp(inputEmailAddress, password);
-      Object.keys(userData || {})?.length && setStepCount(3);
     }
   };
+
+  useEffect(() => {
+    Object.keys(userData || {})?.length && setStepCount(3);
+  }, [userData]);
 
   useEffect(() => {
     return () => {
@@ -86,7 +89,7 @@ const SignUpForm = ({ stepCount, setStepCount }) => {
     isPasswordError,
     setisEmailError,
     setisPasswordError,
-    type: "signup",
+    inputType: "signup",
   };
 
   return (

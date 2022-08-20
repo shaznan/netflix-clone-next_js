@@ -530,6 +530,7 @@ export const ItemPlaybackRate = styled(ItemControllBar)`
       font-weight: bold;
       padding: 10px;
       margin: 0;
+      text-transform: capitalize;
     }
 
     .item {
@@ -570,6 +571,7 @@ export const ItemNext = styled(ItemControllBar)`
       font-weight: bold;
       padding: 10px;
       margin: 0;
+      text-transform: capitalize;
     }
 
     .item {
@@ -611,6 +613,7 @@ export const ItemListReproduction = styled(ItemControllBar)`
       font-weight: bold;
       padding: 10px;
       margin: 0;
+      text-transform: capitalize;
     }
 
     .list-list-reproduction {

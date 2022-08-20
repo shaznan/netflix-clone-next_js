@@ -6,6 +6,7 @@ import { SET_INPUT_EMAIL_ADDRESS } from "../../../store/actionTypes/auth/authTyp
 import SignUpForm from "../../../components/Registration/SignUpForm";
 import SignUpIntro from "../../../components/Registration/SignUpIntro";
 import ChooseYourPlan from "../../../components/Registration/ChooseYourPlan";
+import { CLEAR_STEP_COUNT } from "../../../store/actionTypes/signup/signupTypes";
 
 const Registration = () => {
   const router = useRouter();
@@ -28,6 +29,14 @@ const Registration = () => {
   const WrappedSignUpIntro = wrapper(SignUpIntro);
   const WrappedSignUpForm = wrapper(SignUpForm);
   const WrappedChooseYourPlan = wrapper(ChooseYourPlan);
+
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: CLEAR_STEP_COUNT,
+      });
+    };
+  }, []);
 
   return (
     <>

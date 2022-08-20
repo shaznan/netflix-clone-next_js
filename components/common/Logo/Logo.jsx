@@ -3,9 +3,10 @@ import Image from "next/image";
 import NetflixLogo from "../../../public/images/Netflix_logo.png";
 import styled from "styled-components";
 import { breakPoints_px } from "../../../constants";
+import { useRouter } from "next/router";
 
-const RenderImage = ({ className }) => (
-  <div className={className}>
+const RenderImage = ({ className, ...props }) => (
+  <div className={className} {...props}>
     <Image alt="A Logo of Netflix" placeholder="Netflix" src={NetflixLogo} />
   </div>
 );
@@ -13,6 +14,7 @@ const RenderImage = ({ className }) => (
 const StyledImage = styled(RenderImage)`
   max-width: ${({ size }) => (size === "medium" ? "100px" : "180px")};
   height: ${({ size }) => (size === "medium" ? "20px" : "36px")};
+  cursor: pointer;
 
   @media (max-width: ${breakPoints_px.STANDARD_DESKTOP_SCREEN}) {
     width: ${({ size }) => (size === "medium" ? "120px" : "140px")};
@@ -25,8 +27,10 @@ const StyledImage = styled(RenderImage)`
   } ;
 `;
 
-const Logo = ({ size = "large" }) => {
-  return <StyledImage size={size} />;
+const Logo = ({ size = "large", ...props }) => {
+  const router = useRouter();
+  const redirectHandler = () => router.push("/");
+  return <StyledImage size={size} onClick={redirectHandler} {...props} />;
 };
 
 export default Logo;

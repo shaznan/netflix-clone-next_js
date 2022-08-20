@@ -17,9 +17,11 @@ import Avatar from "./Avatar";
 import useScreenSize from "../../../hooks/useScreenSize";
 import { breakPoints } from "../../../constants";
 import MobileMenu from "./MobileMenu";
+import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const { signOut } = useAuth();
   const { selectedMenuItem } = useSelector((state) => state?.browse);
   const onSelectHandler = (item) => {
     dispatch({
@@ -64,7 +66,7 @@ const Header = () => {
         <HeaderRightWrapper>
           {width > breakPoints.MOBILE_SCREEN_SMALL && <SearchIcon />}
           <BellIcon />
-          <Avatar />
+          <Avatar signoutHandler={signOut} />
         </HeaderRightWrapper>
       </HeaderItemsWrapper>
     </HeaderWrapper>

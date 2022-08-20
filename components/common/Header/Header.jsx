@@ -6,7 +6,6 @@ import {
 } from "../../Landing/style";
 import Logo from "../Logo/Logo";
 import { headerTheme } from "../../../constants";
-
 import { Button } from "../Button/Button";
 
 const Header = ({ theme = headerTheme.DARK, type = "" }) => {

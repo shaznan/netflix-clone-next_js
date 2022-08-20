@@ -19,6 +19,7 @@ const wrapper =
       });
     };
 
+    //handle browser window back btn
     useEffect(() => {
       router.beforePopState(({ as }) => {
         if (as !== router.asPath) {

@@ -19,7 +19,7 @@ import { SiSpeedtest } from "react-icons/si";
 import forward10 from "../../../public/icons/forward.png";
 import backward10 from "../../../public/icons/backward.png";
 import Image from "next/image";
-
+import { useRouter } from "next/router";
 import { FiCheck, FiX } from "react-icons/fi";
 import {
   Loading,
@@ -35,30 +35,17 @@ import {
   ItemListQuality,
 } from "./styles";
 
-const VideoPlayer = ({ src, ref }) => {
-  let title = "Narcos Mexico";
-  let subTitle = "Gangstar paradise";
-  let titleMedia = false;
-  let extraInfoMedia = false;
-
+const VideoPlayer = ({ src, ref, title = "" }) => {
+  let subTitle = "Episode 1";
   let fullPlayer = true;
-  let backButton = undefined;
-
-  let autoPlay = false;
-
+  let backButton = true;
+  let autoPlay = true;
   let onCanPlay = undefined;
   let onTimeUpdate = undefined;
   let onEnded = undefined;
   let onErrorVideo = undefined;
-  let onNextClick = undefined;
-  let onClickItemListReproduction = undefined;
   let onCrossClick = () => {};
   let startPosition = 0;
-
-  let dataNext = {};
-  let reprodutionList = [];
-  let qualities = [];
-  let onChangeQuality = [];
   let playbackRateEnable = true;
   let overlayEnabled = true;
   let autoControllCloseEnabled = true;
@@ -80,7 +67,6 @@ const VideoPlayer = ({ src, ref }) => {
   const playerElement = useRef(null);
   const listReproduction = useRef(null);
 
-  // Estados
   const [videoReady, setVideoReady] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -105,6 +91,12 @@ const VideoPlayer = ({ src, ref }) => {
 
   const primaryColor = "red";
   const secundaryColor = "white";
+
+  const router = useRouter();
+
+  const goBackHandler = () => {
+    router.back();
+  };
 
   const secondsToHms = (d) => {
     d = Number(d);
@@ -530,9 +522,8 @@ const VideoPlayer = ({ src, ref }) => {
       >
         {backButton && (
           <div className="back">
-            <div onClick={backButton} style={{ cursor: "pointer" }}>
+            <div onClick={goBackHandler} style={{ cursor: "pointer" }}>
               <FaArrowLeft />
-              goBack
             </div>
           </div>
         )}

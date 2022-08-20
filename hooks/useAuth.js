@@ -1,5 +1,9 @@
 import { Auth } from "aws-amplify";
-import { AUTH_SUCCESS, AUTH_ERROR } from "../store/actionTypes/auth/authTypes";
+import {
+  AUTH_SUCCESS,
+  AUTH_ERROR,
+  CLEAR_USER_SESSION,
+} from "../store/actionTypes/auth/authTypes";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
@@ -51,7 +55,18 @@ const useAuth = () => {
     }
   }
 
-  return { signUp, signIn, isLoading };
+  async function signOut() {
+    try {
+      await Auth.signOut();
+      dispatch({
+        type: CLEAR_USER_SESSION,
+      });
+    } catch (error) {
+      console.log("error signing out: ", error);
+    }
+  }
+
+  return { signUp, signIn, signOut, isLoading };
 };
 
 export default useAuth;
