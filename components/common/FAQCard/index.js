@@ -28,6 +28,7 @@ const CardContainer = styled.div`
 const StyledPlusIcon = styled(AiOutlinePlus)`
   font-size: 2em;
   color: white;
+  cursor: pointer;
   transform: ${({ isCardOpen }) =>
     isCardOpen ? "rotate(45deg)" : "rotate(0deg)"};
 `;
