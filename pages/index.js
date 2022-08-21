@@ -3,8 +3,22 @@ import OurStorySection from "../components/Landing/OurStorySection";
 import FAQ from "../components/Landing/FAQ";
 import axios from "axios";
 import { LandingWrapper } from "../components/Landing/style";
+import { useSelector } from "react-redux";
+import { useMemo } from "react";
+import { useRouter } from "next/router";
 
 export default function Landing({ data }) {
+  const router = useRouter();
+  const { userData } = useSelector((state) => state.Auth);
+  const isUserAuthenticated = useMemo(
+    () => userData?.signInUserSession?.idToken?.jwtToken?.length,
+    [JSON.stringify(userData)]
+  );
+  if (isUserAuthenticated) {
+    router.push("/browse");
+    return;
+  }
+
   return (
     <LandingWrapper>
       <MainSection />

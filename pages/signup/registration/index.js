@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import wrapper from "../../../HOC/registration/wrapper";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,6 +12,11 @@ const Registration = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { stepCount } = useSelector((state) => state?.signUp);
+  const { userData } = useSelector((state) => state.Auth);
+  const isUserAuthenticated = useMemo(
+    () => userData?.signInUserSession?.idToken?.jwtToken?.length,
+    [JSON.stringify(userData)]
+  );
 
   const {
     query: { email },
@@ -37,6 +42,11 @@ const Registration = () => {
       });
     };
   }, []);
+
+  if (isUserAuthenticated) {
+    router.push("/browse");
+    return;
+  }
 
   return (
     <>
